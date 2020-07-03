@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    A <input type="checkbox" name="nm_ck" value="A" checked>
+    B <input type="checkbox" name="nm_ck" value="B">
+    C  <input type="checkbox" name="nm_ck" value="C" checked>
+
+    <select  id="dd">
+        <option value="aa">aa</option>
+        <option value="bb" selected> bb</option>
+        <option value="cc">cc</option>
+    </select>
+   <script>
+    //    console.log($("input[type=checkbox]:checked").length);
+       console.log($("#dd > option:checked").val());
+    </script>
+</body>
+</html>

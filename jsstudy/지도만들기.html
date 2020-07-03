@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이런 서비스를 OPEN API 라고 부름, 
+        데이타를 가진 회사로 부터 데이타를 이용할수 있게 해주는 서비스
+        무료도 있고 유료도 있음. 처음에만 무료인척 ... 나중엔 유료 
+        제대로 사용하기 위해서는 해당사이트 개발자등록을 통한 API-KEY 발급이 필요
+    -->
+    <!-- 브라우져에서 해당 url의 리턴 데이타를 검증후 페이지에 삽입한다 -->
+    <!-- <img id="id_img" src="https://via.placeholder.com/200x200/FFFF00/0000ff?text=Dummy Image"><br>
+    아이디 <input id="id_id" type=text value=""><br>
+    <input type=button value="아바타이미지 생성" onclick="f_avatar()"> <br>
+    <script>
+        var v_id = document.getElementById("id_id");
+        var v_img = document.getElementById("id_img");
+        function f_avatar(){
+            var v_baseURL = "https://api.adorable.io/avatars/200/";
+            var v_url = v_baseURL + v_id.value + ".png";
+            v_img.src = v_url;
+        } -->
+    </script>
+    <!-- <iframe src="http://naver.me/5YPzm6lo" width=800 height=600></iframe> -->
+    <!-- * 카카오맵 - 지도퍼가기 -->
+<!-- 1. 지도 노드 -->
+<div id="daumRoughmapContainer1586156533460" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+<!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+	new daum.roughmap.Lander({
+		"timestamp" : "1586156533460",
+		"key" : "xtzy",
+		"mapWidth" : "640",
+		"mapHeight" : "360"
+	}).render();
+</script>
+</body>
+</html>

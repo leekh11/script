@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+           border: 1px solid black; /* 그냥 눈에 보이게 */
+            width: 80%;
+            margin: 0 auto;          /* 가운데 정렬 */
+            text-align: center;
+        }
+        .cl_hr {
+            display: inline-block;   /* 옆에 올 수 있게 */
+           /* border: 1px solid pink; */
+            width:32%;
+            height:60vh;
+            vertical-align: top;
+            text-align: center;
+        }
+        select {
+            width:90%;
+            height:99%;
+            overflow-y: hidden;  /* 수직 스크롤바 없애기 */
+        }
+        .cl_btn {
+            width:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="cl_hr">
+            <select multiple size=8 id="id_sel1">
+                <option>4</option>
+                <option>5</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <div class="cl_hr"><br><br><br>
+            <input  class="cl_btn" type=button value=">"><br>
+            <input  class="cl_btn" type=button value=">>"><br>
+            <input  class="cl_btn" type=button value="<"><br>
+            <input  class="cl_btn" type=button value="<<"><br>
+        </div>
+        <div class="cl_hr">
+            <select multiple size=8 id="id_sel2">
+                <option>1</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+        <br><br>
+        <input id="id_txt" type=text value="">
+        <input id="id_add" type=button value="추가">
+    </div>
+    <script>
+        var v_sel1 = document.getElementById("id_sel1");
+        var v_sel2 = document.getElementById("id_sel2");
+        var v_txt = document.getElementById("id_txt");
+        var v_add = document.getElementById("id_add");
+        var v_btns = document.getElementsByClassName("cl_btn");
+        var v_rightBtn = v_btns[0];
+        var v_rightAllBtn = v_btns[1];
+        var v_leftBtn = v_btns[2];
+        var v_leftAllBtn = v_btns[3];
+        v_rightBtn.onclick = function() {
+            // 선택된 것을 찾아야함,
+            var v_sel1Options = v_sel1.options;
+            // v_sel2.appendChild(v_sel1Options[v_sel1.selectedIndex]);
+            // for(var i=0; i<v_sel1Options.length; i++){
+            //     if(v_sel1Options[i].selected) {
+            //         v_sel2.appendChild(v_sel1Options[i]);
+            //         break;
+            //     }
+            // }
+            for(var i=0;i<v_sel1Options.length;i++){
+                if(v_sel1Options[i].selected){
+                    v_sel2.appendChild(v_sel1Options[i]); //선택된 옵션 이동
+                    i--; // 보내고 그자리 커서 고정하기
+                }
+            }
+        }
+       /* v_rightBtn.onclick = function(){
+            // 선택된걸 찾아야 함, 1개만 선택했다고 가정
+            var v_sel1Options = v_sel1.options;
+            //alert(v_sel1.selectedIndex);
+            //v_sel2.appendChild(v_sel1Options[v_sel1.selectedIndex]);
+            var v_childOpts = [];
+            // 배열에 option 참조값을 다 복사해둠
+            for(var i=0; i<=v_sel1Options.length; i++){
+                v_childOpts.push(v_sel1Options[i]);
+            }
+            
+            for(var i=0;i<v_childOpts.length;i++){
+                if(v_childOpts[i].selected){
+                    v_sel2.appendChild(v_childOpts[i]); //선택된 옵션 이동
+                }
+            } */
+        
+        v_leftBtn.onclick = function() {
+            // 선택된 것을 찾아야함,
+            var v_sel2Options = v_sel2.options;
+            for(var i=0; i<v_sel2Options.length; i++){
+                if(v_sel2Options[i].selected) {
+                    v_sel1.appendChild(v_sel2Options[i]);
+                    i--;
+                    // break;
+                }
+            }
+        }
+
+        v_rightAllBtn.onclick = function() {
+            var v_sel1Options = v_sel1.options;
+            var v_loopCnt = v_sel1Options.length;
+            for(var i=0; i< v_loopCnt; i++){
+                v_sel2.appendChild(v_sel1Options[0] );
+            }
+        }
+        v_leftAllBtn.onclick = function() {
+            var v_sel2Options = v_sel2.options;
+            var v_loopCnt = v_sel2Options.length;
+            for(var i=0; i< v_loopCnt; i++){
+                v_sel1.appendChild(v_sel2Options[0] );
+            }
+        }
+
+
+        v_add.addEventListener("click" , function() {
+            var v_txtVlaue = v_txt.value;
+            var v_option = document.createElement("option");
+            v_option.innerHTML = v_txtVlaue;
+            v_sel1.appendChild(v_option);
+        });
+</script>
+</body>
+</html>

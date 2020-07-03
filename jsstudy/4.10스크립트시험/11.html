@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            margin:0 auto;
+            position: relative;
+            overflow: hidden;
+            width: 600px;
+            height: 300px;
+            background-color:tomato;
+            border:10px groove pink;
+        }
+        .box {
+            display: none;
+            position: absolute;
+            width:50px;
+            height:50px;
+            top: 100px;
+            border:2px solid black;
+            font-size: 1.2em;
+            background-color: violet;
+            color:white;
+            text-align: center;
+            line-height: 50px;
+        }
+        #id_btn {
+            position: absolute;
+            bottom:10px;
+            width:200px;
+            left: 200px;
+            border:2px solid yellowgreen;
+            border-radius: 50%;
+            text-align: center;
+            color: yellow;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="box" id="box1">?</div>
+        <div class="box" id="box2">?</div>
+        <div class="box" id="box3">?</div>
+        <div class="box" id="box4">?</div>
+        <div class="box" id="box5">?</div>
+        <div class="box" id="box6">?</div>
+        <div id="id_btn">눌렁</div>
+    </div>
+    <script>
+        // 숫자 담을 배열
+        var nums = [];
+        // 중복체크
+        function f_is (p_num) {
+            var is = false;
+            for(var i =0; i<nums.length; i++) {
+                if(nums[i] == p_num) {
+                    is = true;
+                    break;
+                }
+            }
+            return is;
+        }
+        // 6개 번호 생성
+        function f_lotto(p_arr) {
+        while("lotto"){
+            if(p_arr.length == 6) break;
+            var ran = Math.floor(Math.random()*45)+1;
+            if( !f_is(ran)) {
+                p_arr.push(ran);
+            }
+        }
+        }
+        // 배열 정리
+        function f_sort(p_arr) { 
+            p_arr.sort(function(a, b ){
+                return b-a;
+            } );
+        }
+
+
+        var v_btn = document.getElementById("id_btn");
+
+        var v_topLimit = 100;
+        
+        var boxC = document.getElementsByClassName("box"). 
+        nums = [];
+        f_lotto(nums);
+        var plus = 75;
+    for(var i=0; i<nums.length; i++){
+                boxC[i].style.display = "block";
+                boxC[i].style.left = plus + "px";
+                // boxC[i].innerHTML = nums[i];
+                boxC[i].style.backgroundColor = f_ranColor();
+                plus = plus + 75;
+            }
+
+        v_btn.onclick = function(){
+            f_mvBtn();
+        }
+        var f_mvBtn = function() {
+            // var i =0;
+            nums = [];
+            plus = 75;
+            // 배열생성
+            f_lotto(nums);
+            // 배열 정렬
+            f_sort(nums);
+            for(var i=0; i<nums.length; i++){
+                boxC[i].style.display = "block";
+                    boxC[i].style.left = plus + "px";
+                    boxC[i].innerHTML = nums[i];
+                    boxC[i].style.backgroundColor = f_ranColor();
+                    plus = plus + 75;
+            }        
+    }
+
+
+
+        function f_ranColor(){
+        var v_red = Math.round(Math.random()* 255);
+        var v_green = Math.round(Math.random()* 255);
+        var v_blue = Math.round(Math.random()* 255);
+        var v_alpha = "0."+Math.round(Math.random()*9); 
+        if(v_alpha == "0.0"){  // 0은 완전투명이라 제외
+            v_alpha = 1;
+        }
+        return "rgb("+v_red+","+v_green+","+v_blue+","+v_alpha+")";
+        }
+
+
+</script>
+</body>
+</html>

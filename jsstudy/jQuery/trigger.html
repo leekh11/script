@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .cl_yhw {
+            background-color:  yellow;
+            color: black;
+        }
+        .cl_hsm {
+           font-size: 2em;
+           border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="id_ltw">현재 보이는 DIV</div>
+        <div onclick="f_clk()">눌렁</div> 
+        <div id="id_dv" >눌렁2</div>
+        <input type=file value="" id="id_file" style="display:none">
+    </div>
+    <script>
+        // type=file을 감추고 "눌렁"을 누르면 type=file을 누른 효과, 트릭
+        //var v_file = document.getElementById("id_file");
+        //function f_clk(){
+        //    v_file.click();
+        //}
+        var v_toggle=false;
+        $("#id_dv").click(function(){
+            if(!v_toggle){
+                $("#id_ltw").hide();  // 감추기
+                $("#id_dv").addClass("cl_yhw cl_hsm");
+                v_toggle = true;
+            }else {
+                $("#id_ltw").show();  // 보이기
+                $("#id_dv").removeClass("cl_yhw cl_hsm");
+                v_toggle = false;
+            }
+            //$("#id_file").trigger("click");
+        })
+    </script>
+</body>
+</html>

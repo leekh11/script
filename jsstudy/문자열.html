@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!--
+    문자열객체의 속성과 매소드 자주쓴느 것 기준으로 
+    웹프로그램에선 문자열을 잘 다뤄야함!
+-->
+<script>
+    // var v_str = "   이것은 문자열"; //싱글따옴표로 묶어도됨
+    /* 
+    alert(v_str.length);        자바스크립트는 .을 붙이면 객체로 변환해줌
+    alert("ppp"+v_str+"ppp")
+    alert("ppp"+v_str.trim()+"ppp"); // 공백제거 ,원본을 건들지않고 새로운 문자열 리턴!
+    alert("ppp"+v_str+"ppp");
+    v_str = v_str.trim();
+    alert("ppp"+v_str); 
+    */
+    /*replace
+     alert(v_str.replace("  이것은","하이")); // 공백도 적용, */
+
+    /*indexof 문자열의 특정 문자 찾기
+    alert(v_str.indexOf("이것은")); //존재하면 문자열 위치
+    alert(v_str.indexOf("헐크")); //존재하지 않으면 -1 */
+
+    /* split 문자열 쪼개기, 아주 많이 사용됨
+    v_str = " 123하하456하하789하하012";
+    alert(v_str.split("하하")[2]); //분할해서 배열로 반환
+    alert(v_str.split("하하").length); //분할해서 배열로 반환
+    alert(v_str.split("")); //분할해서 배열로 반환
+    */
+
+    /*부분 문자열 다루기, substring / substr
+    v_str = "123호호456호호789호호012";
+    alert(v_str.substr(1,3)); //인덱스 1번부터 3개
+    alert(v_str.substring(1,4)); //인덱스 1초과 4이하
+    */
+
+    /* 잘안쓰는 매소드는 필요시 찾아서 사용법 습득 , 직접해보면 됨
+    v_str = "12A호호456호호789호호012";
+    alert(v_str.charAt(2));
+    alert(v_str.charCodeAt(2));
+    alert(v_str.toUpperCase()); // 대문자 변환
+    */
+
+    //테스트
+    var v_str = "피카츄 파이리 피카츄 파이리 피카츄 파이리 피카츄 파이리"
+    // alert(v_str.replace("피카츄", "라이츄"));
+    // indexOf
+   /* alert(v_str.indexOf("피카츄"));
+    v_str = v_str.replace("피카츄","라이츄");
+    alert(v_str.indexOf("피카츄"));
+    v_str = v_str.replace("피카츄","라이츄");
+    alert(v_str.indexOf("피카츄"));
+    v_str = v_str.replace("피카츄","라이츄");
+    alert(v_str.indexOf("피카츄"));
+    v_str = v_str.replace("피카츄","라이츄");
+    alert(v_str.indexOf("피카츄")); */
+   /*
+    if(v_str.indexOf("피카츄") != -1) {
+        for(var i=0; i<v_str.split("파이리").length; i++){
+            v_str= v_str.split("파이리")[i].replace("피카츄","라이츄");
+        }
+    }
+    alert(v_str); */
+
+    while(v_str.indexOf("피카츄") != -1) {
+       v_str = v_str.replace("피카츄","라이츄") ;
+       alert(v_str); //확인 
+    }
+    alert(v_str);
+
+
+</script>

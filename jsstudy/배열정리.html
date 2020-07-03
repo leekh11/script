@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 자주 쓰는 배열의 속성, 메소드
+    // 속성은 오직 length만 
+    // push, indexOf, splice
+    var v_arr = [1,2,3] ;
+    v_arr[v_arr.length] = 4;
+    v_arr.push(5); // v_arr[v_arr.length] = 5 라고 쓴 것과 동일
+   //alert( v_arr.indexOf(3) ); // 배열의 순서 
+
+   // splice 배열 요소 지울때
+   v_arr.splice(1,1); //(시작 번호 , 몇개 )
+   // alert(v_arr);
+
+   // 배열의 중요한 문제
+   // 부분 변경만 가능 지우는것은 splice 메소드를 사용한다. ex) arr.splice(0, arr.length)
+
+   var v_arr2 = ["가" , "나" , "다" , "라" , "마"  ];
+//    var v_arr3 = v_arr2;
+//    v_arr3[1] = "흥흥";
+//    처음 할당된 변수를 이용해서 지우기는 가능
+//    참조 변수를 이용한 지우기는 불가능
+//    참조 변수를 이용한 특정 값 변경은 가능
+   alert("ppp" + v_arr2 + "ppp");
+
+</script>

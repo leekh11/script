@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>현재페이지 가운데로 오게하기</title>
+    <style>
+        .cl_curP {
+            font-size: 2em;
+            color:blueviolet;
+        }
+        .cl_space {
+            display: inline-block;
+            font-size: 1.5em;
+            width:25px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <script>
+    var v_disp = document.getElementById("id_disp");
+    
+    var v_toTalPage=14;               // 총 14페이지라고 가정
+    var v_curPage =v_toTalPage; 
+    if(location.href.split("?")[1]){
+        v_curPage = location.href.split("?")[1].split("=")[1];
+    }
+    
+
+    var v_dispPageSu = 7;               // 홀수로 잡는 것이 좋음
+    var v_startPage = parseInt(v_curPage) + Math.floor(v_dispPageSu/2);
+    var v_endPage = parseInt(v_curPage) - Math.floor(v_dispPageSu/2);
+
+    var v_strPage="";
+
+    if(v_curPage < (v_toTalPage-Math.floor(v_dispPageSu/2))){
+        v_strPage += "<a href=curCenter.html?curPage="+(v_startPage+1) + "><div class=cl_space>&larr;</div></a>&nbsp;&nbsp;&nbsp;";
+    }
+
+    for(var i=v_startPage; i>=v_endPage; i--){
+        if(i<1 || i > v_toTalPage){
+            v_strPage += "<div class=cl_space>&#9829</div>";
+        }else {
+            if(i==v_curPage){
+                v_strPage += "<a class=cl_curP href=curCenter.html?curPage="+i+">"+i+"</a>&nbsp;&nbsp;&nbsp;";
+            }else {
+                v_strPage += "<a href=curCenter.html?curPage="+i+">"+i+"</a>&nbsp;&nbsp;&nbsp;";
+            }
+        }
+    }
+
+    if(v_curPage > Math.floor(v_dispPageSu/2)){
+        v_strPage += "<a href=curCenter.html?curPage="+(v_endPage-1) + "><div class=cl_space>&rarr;</div></a>";
+    }
+
+
+    v_disp.innerHTML = v_strPage;
+    </script>
+</body>
+<script></script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <input id="but1" type="button" value="2단 출력" onclick="f_two()">
+    <input id="but2" type="button" value="구구단 전체 출력" onclick="f_gugu()">
+    <select id="sel_gugu" onchange="f_selGugu()">
+        <option value="0">선택하세요</option>
+        <option value="2">2단</option>
+        <option value="3">3단</option>
+        <option value="4">4단</option>
+        <option value="5">5단</option>
+        <option value="6">6단</option>
+        <option value="7">7단</option>
+        <option value="8">8단</option>
+        <option value="9">9단</option>
+        <option value="10">10단</option>
+        <option value="11">11단</option>
+        <option value="12">12단</option>
+    </select>
+    <script>
+        var sel_num = 0;
+
+    function f_selGugu(){
+        var selVal = document.getElementById("sel_gugu").value;   // <------------value까지!
+        if (selVal >0) {
+        var v_rsltStr ="";
+        v_rsltStr += "<table border=2><tr><th>"+selVal+"단</th></tr>";
+        for(var i=1; i<=9; i++){
+            v_rsltStr += "<tr><td>"+ selVal +" X "+ i + " = " + (selVal * i) +"</td></tr>"; 
+        } 
+        v_rsltStr += "</table>";
+
+        document.getElementById("id_disp").innerHTML = v_rsltStr; }
+        // 0 일때 종료 처리
+        else {  alert("선택하세요!"); document.getElementById("id_disp").innerHTML = ""; }
+    }
+
+    function f_gugu(){
+        var v_rsltStr ="<table><tr>";
+
+        for(var m=2; m<=9; m++){
+        v_rsltStr += "<td><table border=2><tr><th>"+m+"단</th></tr>";     // table tr (table tr td /td/tr/table)  /tr /table
+            for(var i=1; i<=9; i++){
+                v_rsltStr += "<tr><td>"+ m +" X "+ i + " = " + (m * i) +"</td></tr>"; 
+            } 
+        v_rsltStr += "</table></td>";    
+        }
+
+        v_rsltStr += "</tr></table>";
+        document.getElementById("id_disp").innerHTML = v_rsltStr; 
+    }
+/*
+    function f_selDan(p_dan){
+        var v_rsltStr ="<table border=2>";
+        v_rsltStr += "<tr><th>"+ p_dan+"단</th></tr>";
+        for(var i=1; i<=9; i++){
+            // 문자열 더하기 아주 익숙해져야 함!.
+            v_rsltStr += "<tr><td>"+ p_dan+" X "+ i + " = " + (p_dan * i) +"</td></tr>"; 
+        } 
+        v_rsltStr += "</table>";
+        return v_rsltStr;                   // 만든 문자열을 리턴
+    }
+    function f_gugu1(){
+        var v_tableStr = "<table border=1><tr>"
+        for(var i=2; i<=9; i++){
+            v_tableStr = v_tableStr + "<td>" + f_selDan(i) + "</td>"; 
+        }
+        v_tableStr = v_tableStr + "</tr></table>";
+        document.getElementById("id_disp").innerHTML = v_tableStr;
+    }
+*/   // <----------------선생님이 한 것!
+    function f_two(){
+        var v_rsltStr ="<table border=2>";
+        v_rsltStr += "<tr><th>2단</th></tr>";
+        for(var i=1; i<=9; i++){                      //<------------------- 문자열 더하기 아주 익숙해져야 함!.
+            v_rsltStr += "<tr><td>"+ "2 X "+ i + " = " + (2 * i) +"</td></tr>"; 
+        } 
+        v_rsltStr += "</table>";
+        document.getElementById("id_disp").innerHTML = v_rsltStr;  
+    }
+
+    </script>
+</body>
+</html>

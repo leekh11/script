@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<div id="id_disp"></div>
+<input type="button" value="생성" onclick="f_lotto()">
+<script>
+
+    // 오늘 과제 로또 번호 생성 (중복체크로직의 좋은 사용예)
+    var v_nums = [];  // 로또번호를 담기위한 배열
+    // 1~45
+    for(var i=1; i<=45; i++){
+        v_nums[v_nums.length] = i;
+    }
+    //alert(v_nums); // 확인 끝
+
+    var v_ranNum = null;
+    
+    // 위 소스를 참고하여, 6개의 중복되지 않은 로또번호를 맹그세용
+    // 초보때는 인터넷 검색해서 소스를 카피하는 것이 좋지 않아요
+    // 잘 되지 않아도, 본인 머리를 괴롭혀서 합니당!
+
+    // 몇번을 돌려야 6개의 다른 숫자를 고를수 있나요? - 알수 없어요
+
+    // 중복체크는 반복사용될 가능성이 높으므로 함수로...
+    function ckRepeat(p_arr, p_num){
+        var v_isRepeat = false;  // 없다고 가정!
+        for(var i=0; i< p_arr.length; i++){
+            if(p_arr[i] == p_num){
+                v_isRepeat = true;         // false라는 가정이 틀렸음, 같은게 있음
+                break;                     // 같은거 1개만 찾아도 더 돌 필요가 없음
+            }
+        }
+        return v_isRepeat;
+    }
+    // 함수 테스트 검증
+    //alert(ckRepeat([1,2,3],7)); 
+
+    function f_lotto(){
+        var v_selNums =[];          // 6개를 담을 빈 배열
+        for(;1;){                   // 무한반복
+            // 무한루핑이므로 종료조건이 필요함
+            if(v_selNums.length >=6) break;
+
+            v_ranNum =v_nums[Math.floor(Math.random()*(v_nums.length))]; // 1~45사이 랜덤 숫자 선택
+           //같은게 없을 때 곧 v_isRepeat이 false인 경우에만
+           if(!ckRepeat(v_selNums,v_ranNum)){
+              v_selNums[v_selNums.length] = v_ranNum;
+            }
+        }    
+           //출력
+        document.getElementById("id_disp").innerHTML += v_selNums + "<br>";
+        //alert("랜덤하게 선택된 로또번호는" + v_selNums + "입니다");
+    }
+
+</script>

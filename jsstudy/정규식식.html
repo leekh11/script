@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_txt">
+    <input type="button" onclick="f_ch()" value="확인">
+    <script>
+        function korCheck(p_test) {
+        var v_regExp1 = /([가-힣])/;
+        while(v_regExp1.test(p_test)){
+            p_test = p_test.replace(v_regExp1 , "" );
+        }
+        if(p_test) {
+            alert("전부 한글이 아님");
+        }else {
+            alert("한글이야");
+        }
+        }
+       var v_txt = document.getElementById("id_txt");
+        function f_ch() {
+            korCheck(v_txt.value);
+        }
+    </script>
+</body>
+</html>

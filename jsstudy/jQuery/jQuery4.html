@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/아이린7.jpg" width="100" height="100">
+    <img src="../images/아이린8.jpg" width="100" height="100">
+    <img src="../images/아이린9.jpg" width="100" height="100">
+    <img id="aa" src="../images/아이린10.jpg" width="100" height="100">
+    <div id="disp" style="border: 1px solid black;">
+
+    </div>
+    <script>
+        // $("img")
+        // jQuery에서의 createElement
+        $("<img></img>").attr("src" , "../images/아이린1.jpg" ).attr("width" , 200).attr("height", 200).appendTo("body")
+        // $("body").append($("<img></img>").attr("src" , "../images/아이린2.jpg" ));
+        $("#disp").append($("#aa"));
+        function f_move(){
+            $("img").eq(0).appendTo($("#disp"));
+            setTimeout(f_move, 300);
+        }
+        f_move().eq(4).remove(); // 없애버리기
+    </script>
+</body>
+</html>

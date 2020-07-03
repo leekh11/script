@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #scene {
+            width:600px;
+            height:200px;
+            border:2px solid black;
+            perspective: 1500px;  /* 장면에서 얼마나 떨어져 있는지 */
+            perspective-origin: bottom right; /* 바라보는 위치, 기본값 center */
+        }
+        #obj3d {
+            position: relative;
+            left:200px;
+            top:50px;
+            width:200px;
+            height:200px;
+            transform-style: preserve-3d;
+            transform-origin: 75px 0 0;    /* 회전이나 움직일 때 기분점 */
+        }
+        .common {
+            position: absolute;
+            border: 1px solid black;
+            width:100px;
+            height:100px;
+            padding-left:50px;
+            background-color: rgba(255,255,255,0.2);
+        }
+        .cl_img1 {
+            /* transform은 같이 세팅되어야 하는 것은 한줄에 기술 */
+            transform:  rotateY(0deg) translateX(75px);
+        }
+        .cl_img2 {
+            transform: rotateY(-72deg) translateX(75px);
+        }
+        .cl_img3 {
+            transform:  rotateY(-144deg) translateX(75px);
+        }
+        .cl_img4 {
+            transform:  rotateY(-216deg) translateX(75px);
+        }
+        .cl_img5 {
+            transform:  rotateY(-288deg) translateX(75px);
+        }
+        /* 
+            반복된 실험결과
+            transform-origin은 이미지 넓이 * 3 /4 정도가 적당
+            padding-left값은 이미지 넓이 / 2 정도가 적당
+         */
+
+    </style>
+</head>
+<body>
+    <input type="button" value="Y축 회전" onclick="f_rotY()">
+    <div id="scene">
+        <div id="obj3d">
+            <img src="images/아이린5.jpg" class="common cl_img1" onmouseover="f_disp(this)">
+            <img src="images/아이린10.jpg" class="common cl_img2" onmouseover="f_disp(this)">
+            <img src="images/아이린7.jpg" class="common cl_img3" onmouseover="f_disp(this)">
+            <img src="images/아이린8.jpg" class="common cl_img4" onmouseover="f_disp(this)">
+            <img src="images/아이린9.jpg" class="common cl_img5" onmouseover="f_disp(this)">
+        </div>
+    </div>
+    <div id="id_disp" onmouseover="f_clk()"></div>
+    <script>
+        var v_obj3d = document.getElementById("obj3d");
+        var v_disp = document.getElementById("id_disp");
+        var v_gakdo =0;
+        var v_sigak1 = ["top","center","bottom"];
+        var v_sigak2 = ["left","center","right"];
+        function f_rotY(){
+            v_gakdo += 10;
+            v_gakdo = v_gakdo % 360;
+            v_obj3d.style.transform = "rotateY(-" + v_gakdo+ "deg)";
+            // var v_updown = v_sigak1[ Math.floor(Math.random()*v_sigak1.length)];
+            // var v_leftright = v_sigak2[ Math.floor(Math.random()*v_sigak2.length)];
+            // document.getElementById("scene").style.perspectiveOrigin = v_updown + " " + v_leftright;
+            setTimeout(f_rotY,100);
+        }
+        function f_disp(p_this){
+            v_disp.innerHTML = "";    // 기존것 싹 지우기
+            var v_img = document.createElement("img");
+            v_img.setAttribute("src",p_this.src);
+            v_img.setAttribute("width","300");
+            v_disp.appendChild(v_img);
+        }
+        function f_clk(){
+            v_disp.innerHTML = "";
+        }
+    </script>
+</body>
+</html>

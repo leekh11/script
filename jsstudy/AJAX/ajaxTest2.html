@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp">출력</div>
+    </table>
+    <input type="button" value="call Ajax" id="id_btn">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_disp = document.getElementById("id_disp");
+        v_btn.addEventListener("click", function() {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "data.xml", true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                    var v_xmlDoc = v_ajax.responseXML; // txt로 읽지않고 태그문서로 읽음
+                    var v_saram = v_xmlDoc.getElementsByTagName("saram");
+                    for(var i=0; i<v_saram.length; i++){
+                        document.getElementById("id_disp").innerHTML += v_saram[i].children[2].innerHTML + "<br>";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="nm_fm">
+        <img src="#" alt="이미지 나올자링" width="100" height="100"> <br>
+        <input type=file name="nm_file" value="">
+        <input type=button value="확인용" onclick="f_ck()">
+        이름 <input type=text name="nm_name" value="ojinsuck"><br>
+        직책
+        <select name="nm_manager">
+            <option value="ceo">CEO</option>
+            <option value="cfo">CFO</option>
+            <option value="god" selected>GOD</option>
+            <option value="cute">귀요미</option>
+        </select><br>
+        보유기술<br>
+        자바<input type="checkbox" name="nm_skills" value="java">
+        jQuery<input type="checkbox" name="nm_skills" value="jquery" checked>
+        JSP<input type="checkbox" name="nm_skills" value="jsp">
+        JS<input type="checkbox" name="nm_skills" value="js" checked>
+    </form>
+    <script>
+        // fileupload를 jquery ajax로 할 때 주의할 부분이 있음!
+        function f_ck() {
+            var v_formData = new FormData($("form")[0]);
+            // 생성자에 form 객체를 넘기면 자동으로 input  관련 name = value 값이 들어감!
+            v_formData.append("fileToUpload", $("input[name=nm_file")[0].files[0]);
+            $.ajax({
+                type: "post",
+                url: "upload.php",
+                data: v_formData,
+                // 아래 3줄은 파일업로드 구현시에는 꼭 써줘야 함!
+                // 그외 경우에는 필요없음, jQuery의 디폴트설정으로 인한 문제
+                contentType: false,      // upload시 필수
+                processData: false,      // upload시 필수
+                cache: false,            // 이건 필수는 아님
+                success: function (p_result) {
+                    $("img").eq(0).attr("src" , p_result);
+                    console.log(p_result);
+                }
+            })
+        }
+
+        //alert($("form[name=nm_fm]").serialize());
+        /* jQuery AJAX 기본 틀!, 공식을 만들수 있는 사람은
+           공식을 외우지 않습니다.
+
+        var $$={};
+        $$.ajax=function(p_setJSON){
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open(p_setJSON.method,p_setJSON.url,true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    p_setJSON.success(v_ajax.responseText);
+                }
+            }
+        }
+        $$.ajax({
+            method:"get",
+            url:"imsi.txt",
+            success:function(p_jayoung){
+                alert(p_jayoung);
+            }
+        })
+        */
+        //jQuery AJAX  참 쉬워서 많이들 사용합니다.
+        /*
+        $.ajax({
+            method:"get",   // type 이라고 적어도 됨
+            url:"check.php",
+            data: $("form[name=nm_fm]").serialize(),
+            success:function(p_result){
+                alert(p_result);
+            }
+        });
+        */
+    </script>
+</body>
+
+</html>

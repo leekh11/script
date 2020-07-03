@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ckeditor/ckeditor.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="contact.html">
+        <table style="border: 1px solid black;" >
+            <tr>
+                <td>
+                    index
+                </td>
+                <td>
+                    <input type="text" id="index" name="index" value="hi"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    time
+                </td>
+                <td>
+                    <input type="date" name="time" id="time"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    id
+                </td>
+                <td>
+                    <input type="text" name="id" id="id" value="hi"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    head
+                </td>
+                <td>
+                    <input type="text" name="head"  id="head" value="hy"> <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="id_txa" id="id_txa" style="width:  300px; height: 300px;"></textarea><br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 100px; position: relative; left: 200px;">
+                    <input type=submit value="작성완료!">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        CKEDITOR.replace('id_txa');
+        //값확인
+        function f_check() {
+            console.log(document.getElementById("index").value);
+            console.log(document.getElementById("time").value);
+            console.log(document.getElementById("id").value);
+            console.log(document.getElementById("head").value);
+        }
+    </script>
+</body>
+</html>

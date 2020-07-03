@@ -1,0 +1,42 @@
+비동기(Asynchronouse)란?
+순차적, 비순차적! , 효율이 좋아짐! 
+일 시켜두고(언제 끝날지 모름)// 다음 일을 진행하는 것!
+AJAX -> asynchronouse Javascript XML의 약자
+구글에서 GMAIL, 구글맵을 AJAX로 구현하면서 
+거의 웹의 표준이 되어버림
+
+
+기본틀!!
+    var v_ajax = new XMLHttpRequest(); // 통신객체(대리 행위 객체)
+    v_ajax.open( "get","imsi.txt", true ); // 인수 세개 !!  method(get/post), url, 동기(false)/비동기(true) 여부
+    v_ajax.send(); //서버에 연락
+    // 통신객체는 상태값이 바뀔때 마다 이벤트를 발생시켜 알려줌
+    v_ajax.onreadystatechange = function() {
+        // 우리가 관심있는 것은 통신이 잘 끝난 상황만 관심있음!
+        if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+            // readyState 4 : 통신을 완료했다 // status 200 : 서버에서 보내는 완료 상태 
+            alert("통신완료");
+        }
+    }
+
+
+    (comma-separated values) csv 파일
+    콤마로 구분된 // 용량을 작게 데이터를 전송할 수 있음
+
+
+    xml은 태그를 정의하여 사용 할 수있다.
+    html은 정해진 태그만 사용
+
+    / AJAX로 파일업로드 구현시에는 파일객체를 담아서 보내주지 않으면 안됨
+    // 파일이 전송이 안됨
+    // post 방식 전송시 아래 라인 추가 , send전에 해야함
+    // v_ajax.setRequestHeader("content-type" , "application/x-www-form-urlencoded");
+    // formData를 이용한 데이타 붙이기
+    // console.dir(v_file.files[0]);
+
+        // ajax는 기본적으로 크로스 오리진 문제를 가지고있다. (block 되어있어서 허용해야 사용가능 ) but JSONP는 없어도 사용 가능
+        // 오리진 구성요소 3개  프로토콜 + 도메인(ip) + 포트 번호 (default 80)
+        
+        // 크로스 오리진 : 교차 출처 리소스 공유 Cross origin resource sharing(CORS)
+        최초 자원으로 서비스된  도메인 밖으로 다른 도메인으로부터 요청할 수 있게 허용하는 구조 (임베드)
+        

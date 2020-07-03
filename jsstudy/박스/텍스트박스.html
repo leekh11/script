@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    아이디 <input id="id_txt" type=text value="초기값" placeholder="prompt text"> <br> <!-- text 박스 -->
+    비밀번호 <input id="id_txt2" type=password value="" placeholder="pw"> <br> <!-- password 박스-->
+    <input id="id_txt3" type=text value="" placeholder="hi!" readonly > <br> 
+    <!-- readonly 서버에 값 전송 disabled 서버에 값 전송 불가 -->
+    <input type=hidden value="숨겨진 값">  <!--hidden 사용자에겐 보여줄 필요가 없지만 프로그램적으로 알고 있어야 할 값을 숨겨 놓을 때-->
+    <input type="button" value="클릭" onclick="f_check()">
+    <script>
+        var v_myTxt = document.getElementById("id_txt");
+        var v_myTxt2 = document.getElementById("id_txt3");
+
+        function f_check() {
+            v_myTxt2.value += v_myTxt.value ;
+
+        }
+    </script>
+</body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+    검색어<input type=text id="id_sch" value=""><br>
+    <input type=button value="구글뉴스에서 찾기"  id="id_btn">
+    <div id="id_disp">
+
+    </div>
+    <script>
+        var v_sch = document.getElementById("id_sch");
+
+
+        $("#id_btn").click(function () {
+            $.ajax({
+                method: "get",
+                url:  $("#id_sch").val(),
+                success: function (p_result) {
+                    // console.log(p_result);
+                    var v_recevData = JSON.parse(p_result);
+                    // console.log(v_recevData);
+                        $("#id_disp").append(  );
+
+
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

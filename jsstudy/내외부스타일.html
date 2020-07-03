@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 스타일을 외부파일로 뺀 것을 외부스타일시트라고 부름  -->
+    <style>
+        .fgBlack {
+            color:black;
+        }
+        .fgYellow {
+            color:yellow;            
+        }
+        .fgGreen {
+            color:green;
+        }
+    </style>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <!-- http로 가져온건 스크립트에서 읽을 수 있지만  http로 가져온건 cssRules에서 읽히지 않음,
+    예전에 나쁜 해커가 css파일안에 악성스크립트를 넣었던 사건때문 -->
+    <style>
+        
+        .bgYellow {
+            background-color: yellow;
+        }
+        .bgBlack {
+            background-color: black;
+        }
+        .bgGreen {
+            background-color: green;
+        }
+
+    
+    
+    </style>
+</head>
+<body>
+    <div class="fgYellow bgBlack">그냥1</div>
+    <div class="fgBlack bgYellow">그냥2</div>
+    <div class="bgGreen fgYellow">그냥3</div> <br>
+    <input id="id_btn" type="button" value="click" >
+    <script>
+  
+        var v_btn = document.getElementById("id_btn");
+        v_btn.addEventListener("click",function(){
+            //내부외부스타일시트 접근법은 동일
+            // cssRule은 style, selectorText, cssText가 대표속성
+            //alert(document.styleSheets[0].cssRules[1].style.color);
+            //alert(document.styleSheets[0].cssRules[1].selectorText);
+            //alert(document.styleSheets[0].cssRules[1].cssText);
+            alert(document.styleSheets[1].cssRules[0].cssText) // 외부스타일시트 접근법
+        });
+        // stylesheet가 여러개인 경우 선택자를 검색해서 cssRule을 리턴받아 사용
+        var v_styles = document.styleSheets;
+        function f_search(p_sel){
+            for(var i=0; i<v_styles.length; i++){
+                var v_cssRules= v_styles[i].cssRules;
+                for(var j=0; j<v_cssRules.length; j++){
+                    if(v_cssRules[j].selectorText == p_sel){
+                        return v_cssRules[j];
+                    }
+                }
+            }
+        }
+
+        // 위 함수 검증!
+        console.log(f_search("div").style.fontSize);
+    
+    
+    </script>
+</body>
+</html>

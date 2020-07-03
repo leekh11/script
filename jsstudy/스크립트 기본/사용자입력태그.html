@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=button value="나는 버튼이다"> <br>
+    아이디 <input type=text value="입력"> <br>
+    
+    <!-- 라디오 버튼은 name속성으로 묶어주면 그중에 오직 하나만 체크 -->
+    남 <input type=radio name="nm_sb"> 여 <input type=radio name="nm_sb"> <br>
+    내국인 <input type=radio name="nm_nation"> 외국인 <input type=radio name="nm_nation"> <br>
+    
+    취미 <br>
+    JS 프로그래밍 <input type=checkbox name="nm_hobby">
+    JAVA 프로그래밍 <input type=checkbox name="nm_hobby"> <br>
+    SQL 프로그래밍 <input type=checkbox name="nm_hobby">
+    C 프로그래밍 <input type=checkbox name="nm_hobby"> <br>
+    
+    <select size="4" multiple> <!--모바일과 pc에서 사용차이에 주의-->
+        <option>도커</option>
+        <option>오픈스택</option>
+        <option>하둡</option>
+    </select> <br>
+    
+    <textarea rows=20 cols=40>여기에 쓰는 글들이 초깃값</textarea> <br>
+
+    <!-- 택스트박스인데 눈에 보이지 않음. 값을 숨겨놓을 필요가 있을때 사용 -->
+    <input type=hidden value="안보여"> <br>
+
+    <input type=file value=""> <!--사용자 파일 선택-->
+
+</body>
+</html>

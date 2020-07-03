@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="fm_id1" action="주소읽기.html" name="nm_id1">
+        <table border=1>
+            <tr>
+                <td>아이디</td>
+                <td><input type=text id="nm_id" name="nm_id" value="" required></td>
+            </tr>
+            <tr>
+                <td>암호</td>
+                <td><input type=password id="nm_pw" name="nm_pw" value="" required></td>
+            </tr>
+            <tr>
+                <td>취미</td>
+                <td>
+                    독서<input type=checkbox name="nm_hobby" value="reading" >
+                    영화<input type=checkbox name="nm_hobby" value="movie" >
+                    음악<input type=checkbox name="nm_hobby" value="music" >
+                    해킹<input type=checkbox name="nm_hobby" value="hacking" >
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 style="text-align: center;"><input type=submit value="서버에전송">
+                <input type=reset value="다시쓰기">
+                <input type="button" value="액션가면" onclick="f_action()"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function f_action() {
+            // console.log(v_form.elements[8]); 
+            // elements는 잘사용하지 않는데
+            // 라이브러리 만들때는 사용한다!
+            var v_queryStr = "";
+            var v_idStr = v_id.name + "=" + v_id.value;
+            var v_pwStr = v_pw.name + "=" + v_pw.value;
+            v_queryStr = v_idStr + "&" + v_pw;
+            location.replace("주소읽기.html?"+v_queryStr);
+
+        }
+        // 폼 접근법 - 옛날방식 - 혹 이런 소스가 남아 있을 수도 있음.
+        console.log(document.forms[0]); // 배열식 접근
+        console.log(fm_id1);  // 이런식의 사용은 90년말 2000년초방식, 가독성이 완전히 무너짐
+        console.log(document.forms["nm_id1"]);
+        console.log(document.forms["nm_id1"].nm_id.value);
+        console.log(document.forms["nm_id1"].nm_hobby[3].value);
+        // 
+       var v_form = document.getElementById("fm_id1");
+       var v_id = document.getElementById("nm_id");
+       var v_pw= document.getElementById("nm_pw");
+       var v_hobbies = document.getElementsByName("nm_hobby");
+      // v_form.action="test.php";
+       /*
+       v_form.addEventListener("submit",function(){
+           // 아이디를 안 썼다면 
+            if(v_id.value.trim()=="" || v_id.value.trim().length < 5){
+                alert("아이디 없엉? 뭐라도 쓰징 회원가입을 하던가 흥!\n 너무 짧앙");
+                event.preventDefault(); 
+                return;
+            }
+           // 암호를 안 썼다면
+           if(v_pw.value.trim()=="" || v_pw.value.trim().length < 5){
+                alert("암호 몰랑! ㅠㅠ");
+                event.preventDefault(); 
+                return;
+            }
+           // 취미를 1개도 선택하지 않았다면 
+            var v_isChecked = false;    // 현재 체크박스가 체크되지 않은 상황 false 표현
+            for(var i=0; i< v_hobbies.length; i++){
+                if(v_hobbies[i].checked){
+                    v_isChecked = true;
+                   break;
+                }
+            }
+            if(!v_isChecked){
+                alert("취미 1개도 없엉? 너 몇살이얌?");
+                event.preventDefault();
+                return;  // 함수 종료, 더 아래 코드를 진행할 이유가 없음
+            }
+
+            return true;   // 필요없지만 전송을 명시적으로 표현
+
+           //event.preventDefault();   // 기본 장착기능 막기
+           // event.stopPropagation();  // 이벤트 버블링 막기
+       })
+       */
+    </script>
+</body>
+</html>

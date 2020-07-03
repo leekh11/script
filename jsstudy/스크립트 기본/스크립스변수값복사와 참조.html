@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<script>
+    /* 원시타입인 경우 값의 복사가 이뤄짐, 최종적으로 따로 놀고있음.
+    var v_a = 337; //  숫자형 원시타입
+    var v_b = v_a;
+    v_b = 448; // 값변경
+    alert(v_a);
+    alert(v_b);
+    */
+    /* 값의 참조(reference) 라고 부름. 값이 넘어간게 아니라 값이 존재하는 주소가 넘어감 
+    var v_arrA = [1,2,3,4,5,6];
+    var v_arrB = v_arrA;  // 같은 주소 값을 가리킴
+    v_arrB[0] = "하하하";
+    alert(v_arrA); // 참조형은 하나씩 값을 입력해줘서 복사를 해야함
+    */
+    var v_arrA = [1,2,3,4,5,6];
+    var v_arrB = [];
+    for(var i=0; i<v_arrA.length; i++) {
+        v_arrb[i] = v_arrA[i];
+    } //값 복사
+    
+    
+</script>

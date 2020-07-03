@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="test.php" id="id_fm">
+        아이디<input type=text name="nm_id" value=""><br>
+        암호<input type=password name="nm_pw" value=""><br>
+    <!--    <input type=button value="전송" onclick="f_submit()">  -->
+    <!-- button 태그가 폼안에 있으면 자동으로 type=submit 으로 동작 
+        모르면 크게 고생할 수 있음!.
+    -->
+        <button type=button>눌렁!!</button>
+        <input type=button value="초기화" onclick="f_reset()">
+    </form>
+ 
+    <script>
+        function f_submit(){
+            // form객체에 submit() 메소드가 존재함!
+            // onsubmit 이벤트를 발생시키지 않음! - 주의
+            document.getElementById("id_fm").submit();
+        }
+        function f_reset(){
+            // 그저 reset 버튼 기능도 만들수 있다는 걸 보여주기 위함
+            document.getElementsByName("nm_id")[0].value="";
+            document.getElementsByName("nm_pw")[0].value="";
+        }
+    </script>
+</body>
+</html>

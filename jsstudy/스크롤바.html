@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_bar {
+            position:absolute;
+            width:100vw;
+            height:3px;
+            background-color: violet;
+            border:2px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 아주 적당한 집에서도 해야하는 고급 주말과제 
+        막대가 스크롤바 중간에 계속 위치 하도록 해 보세용!
+        크롬보다 파이어폭스에서 먼저 해보면 도움 됨!
+        관찰력과 산수가 필요한 문제!
+    -->
+    <div id="id_bar"></div>
+    <script>
+        // 스크롤바가 생기도록 더미 데이타 
+        for(var i=1; i<=4; i++){
+            var v_img = document.createElement("img");
+            v_img.src = "images/아이린"+i+".jpg";
+            document.body.appendChild(v_img);
+        }
+        //사용자 스크롤 이벤트
+        var v_cnt=1;
+        var v_bar = document.getElementById("id_bar");
+        window.onscroll=function(){
+            //console.log(window.devicePixelRatio);  // Zoom값
+            var v_top = document.documentElement.scrollTop;
+            var v_clH = document.documentElement.clientHeight; //보이는 영역높이
+            var v_docH = document.documentElement.scrollHeight;// 문서전체 높이
+            var v_ratio = v_clH / v_docH;
+
+            v_bar.style.top = v_top + (v_top * v_ratio) + "px"; 
+        }
+    </script>
+</body>
+</html>

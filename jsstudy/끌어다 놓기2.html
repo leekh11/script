@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cl_upper {
+            display:inline-block;
+            width: 100px; height: 100px;
+            border: 1px solid black;
+            background-size: 100px 100px;
+        }
+        #id_dv1{background-image: url("./images/다아.png");}
+        #id_dv2{background-image: url("./images/지이구.png");}
+        #id_dv3{background-image: url("./images/태양.jpg");}
+        #id_disp{
+            width: 310px;
+            height: 210px;
+            border: 2px dashed pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="cl_upper" draggable="true" id="id_dv1" ondragstart="f_dragStart()"></div>
+    <div class="cl_upper" draggable="true" id="id_dv2" ondragstart="f_dragStart()"></div>
+    <div class="cl_upper" draggable="true" id="id_dv3" ondragstart="f_dragStart()"></div>
+    <div id="id_disp" ondragover="f_dragOver()" ondrop="f_drop()"></div>
+
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        function f_dragOver() {
+            event.preventDefault();
+        }
+        function f_dragStart() {
+            // event target - 이벤트를 발생시킨 객체를 가리킴
+            // event.dataTransfer의 setData(키,값) 메소드르르 이용 필요한 값을 저장
+            event.dataTransfer.setData("imgID",event.target.id); // "imgID"은 키값
+            // console.log(event.target.id);
+        }
+
+        function f_drop() {
+            event.preventDefault();
+            // console.log(event.dataTransfer.getData("imgID"));
+            var v_id = event.dataTransfer.getData("imgID");
+            v_disp.appendChild(document.getElementById(v_id));
+        }
+    </script>
+</body>
+</html>

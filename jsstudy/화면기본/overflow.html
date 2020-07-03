@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_par {
+            overflow: hidden;
+            position: relative;
+            /* overflow - 부모영역을 벗어난 것을 감추기 
+                hidden / scroll / auto
+            */
+            width: 302px;
+            height: 305px;
+            border: 3px solid black;
+        }
+        .cl_child {
+            position: absolute;
+            top: 1.5px;
+            width: 1220px;
+            height: 300px;
+            border: 1px solid pink;
+        }
+        #id_chi2 {
+            left: 1220px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>overflow는 자식이 부모를 넘어버리는 경우를 콘트롤</h1>
+    <div id="id_par">
+        <div id="id_chi1" class="cl_child">
+            <img src="images/지수13.jpeg" width="300" height="300">
+            <img src="images/지수15.jpeg" width="300" height="300">
+            <img src="images/지수14.jpeg" width="300" height="300">
+            <img src="images/지수18.jpeg" width="300" height="300">
+        </div>
+    <div id="id_chi2" class="cl_child">
+            <img src="images/지수11.jpeg" width="300" height="300">
+            <img src="images/지수12.jpeg" width="300" height="300">
+            <img src="images/지수3.jpeg" width="300" height="300">
+            <img src="images/지수4.jpeg" width="300" height="300">
+        </div>
+    </div>
+    <input type="button" value="click" onclick="f_slide()">
+    <script>
+        var v_child1 = document.getElementById("id_chi1");
+        var v_child2 = document.getElementById("id_chi2");
+        function f_slide() {
+            if(!v_child1.style.left) { // 정의가 안되어있다면!
+                v_child1.style.left = "0px"; // 강제 스트립트로 초기화
+                v_child2.style.left = "1220px"; // 강제 스트립트로 초기화
+            }
+            v_child1.style.left = parseInt(v_child1.style.left) - 10 +"px";
+            v_child2.style.left = parseInt(v_child2.style.left) - 10 +"px";
+            // 첫번째 자식 오른쪽끝이 부모 왼쪽을 벗어나면 두번째 자식뒤에 붙게 두번째 자식도!
+            if(parseInt(v_child1.style.left) + 1220 < 0 ) {
+                // v_child1.style.left ="1220px"
+                // for(var i=0; i<v_child1.children.length; i++){
+                //     v_child1.children[i].src = "images/지수9" + (i+1) + "jpeg";
+                // } 사진 바꾸기 
+                v_child1.style.left = parseInt(v_child2.style.left) + 1220 + "px";
+            }
+            if(parseInt(v_child2.style.left) +1220 < 0 ) {
+                // v_child2.style.left = "1220px";
+                v_child2.style.left = parseInt(v_child1.style.left) + 1220 + "px";
+
+            }
+            setTimeout(f_slide, 30);
+        }
+    </script>
+</body>
+</html>

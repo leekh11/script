@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="images/아이린1.jpg" width="200" height="200" onclick="f_large(this.src)">
+    <img src="images/아이린2.jpg" width="200" height="200" onclick="f_large(this.src)">
+    <img src="images/아이린3.jpg" width="200" height="200" onclick="f_large(this.src)">
+    <img id="id_img" src="" width="500" height="500" style="display: none;" onclick="f_clr(this)">
+<script>
+    var v_img = document.getElementById("id_img");
+    function f_clr(p_this) {
+        p_this.style.display = "none";
+    }
+    function f_large(p_src) {
+        // alert(p_src);
+        v_img.src = p_src;
+        v_img.style.position ="absolute";
+        v_img.style.left ="50px";
+        v_img.style.top ="10px";
+        v_img.style.border ="10px solid pink";
+        v_img.style.display = "block" // 안보이는 걸 보여주도록 
+    }    
+</script>
+</body>
+</html>

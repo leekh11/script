@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <img id="id_img" src="images/태양.jpg" width="100" height="100">
+        <img id="id_jigu" src="images/지이구.png" width="50" height="50" style="border-radius: 50;">
+        <img id="id_dal" src="images/다아.png" width="25" height="25" style="border-radius: 25;">
+    <script>
+  
+  var v_img = document.getElementById("id_img");
+    var v_gImg = document.getElementById("id_jigu");
+    var v_dImg = document.getElementById("id_dal");
+        var v_CenterX, v_CenterY;
+        var v_gCenterX, v_gCenterY;
+
+        v_gImg.style.position="absolute";
+        v_dImg.style.position="absolute";
+        v_img.style.position="absolute"; // 움직이려면 position을 바꿔줘야 함
+        v_img.style.borderRadius="50px"; // 둥글게 둥글게...
+        function f_center(){
+            var v_winWidth = window.innerWidth;
+            var v_winHeight = window.innerHeight;
+            v_CenterX = v_winWidth / 2;   // 화면 중앙 x값
+            v_CenterY = v_winHeight /2;   // 화면 중앙 y값
+            v_img.style.left = (v_winWidth - parseInt(v_img.width))/2 + "px"; 
+            v_img.style.top = (v_winHeight - parseInt(v_img.height))/2 + "px";
+            v_gCenterX = v_CenterX/2;
+            v_gCenterY = v_CenterY/2;
+        }
+        // 지구 돌리는 함수
+        var v_Radius = 200; 
+        var v_GgakDo = 0;
+        function f_gRotate(){
+            v_GgakDo = v_GgakDo + 10;
+            v_GgakDo = v_GgakDo % 360;
+            v_gImg.style.left = v_CenterX + v_Radius*Math.cos(v_GgakDo * Math.PI/180) -25 + "px"; 
+            v_gImg.style.top =  v_CenterY + v_Radius*Math.sin(v_GgakDo * Math.PI/180) -25 + "px"; // -25 : width의 반
+            setTimeout(f_gRotate,300);
+        }   
+        // 달을 돌리는 함수        
+        var v_dRadius = 75;
+        var v_dGgakDo = 0;
+        function f_dRotate(){
+            v_dGgakDo = v_dGgakDo + 10;
+            v_dGgakDo = v_dGgakDo % 360;
+
+            v_dImg.style.left = parseInt(v_gImg.style.left) + v_dRadius*Math.cos(v_dGgakDo * Math.PI/180) + "px"; 
+            v_dImg.style.top = parseInt(v_gImg.style.top) + v_dRadius*Math.sin(v_dGgakDo * Math.PI/180) + "px";
+            setTimeout(f_dRotate,50);
+            /*
+            v_mimg.style.left = (v_CenterX -parseInt(v_gimg.width) /2 ) + v_Radius*Math.cos(v_Ggakdo * Math.PI/180) +
+            parseInt(v_mimg.width) / 2  + v_MRadius * Math.cos (v_Mgakdo * Math.PI / 180 ) + "px" ;
+
+            v_mimg.style.top = (v_CenterY -parseInt(v_gimg.height)/2 ) + v_Radius*Math.sin(v_Ggakdo * Math.PI/180)  + parseInt(v_mimg.height) / 2 + 
+            v_MRadius * Math.sin (v_Mgakdo * Math.PI / 180 ) + "px" ;
+
+            setTimeout(f_mRotate , 20); */
+        }   
+
+
+        var v_gakDo=0;
+        function f_Mrotate(){
+            v_gakDo = v_gakDo + 20;
+            v_gakDo = v_gakDo % 360;  // 360도 넘어가는 값은 필요없으므로
+            v_img.style.transform = "rotate("+ v_gakDo + "deg)";
+            setTimeout(f_Mrotate,300);
+        }
+
+        window.onresize = function() {
+            f_center();
+        }
+
+        window.addEventListener("load", function() {
+            f_center();
+            f_Mrotate();
+            f_gRotate();
+            f_dRotate();
+        })
+
+
+        // var v_img = document.getElementById("id_img");
+        // var v_gimg = document.getElementById("id_jigu");
+        // var v_mimg = document.getElementById("id_moon");
+        // var v_CenterX, v_CenterY;
+        // v_img.style.position = "absolute";                                  // 움직이려면 포지션을 바꿔줘야함
+        // v_gimg.style.position = "absolute";
+        // v_mimg.style.position = "absolute";
+        // v_img.style.borderRadius = "100px" 
+        // v_gimg.style.borderRadius = "100px"
+        // v_mimg.style.borderRadius = "100px"                             // 둥글게 만들어 주기
+        // function f_center() {
+        //     var v_winWidth = window.innerWidth;
+        //     var v_winHeight = window.innerHeight;
+
+        //     v_CenterX = v_winWidth / 2 ;                // 화면 중앙 x 값 
+        //     v_CenterY = v_winHeight / 2 ;                // 화면 중앙 y 값
+        //     v_img.style.left = (v_winWidth -parseInt(v_img.width))/2 + "px";
+        //     v_img.style.top = (v_winHeight -parseInt(v_img.height))/2 + "px";
+
+        // }
+        // // 지구 돌리는 함수
+        // var v_Radius = 300;
+        // var v_Ggakdo = 0;
+        // function f_gRotate() {
+        //     v_Ggakdo += 10;
+        //     v_Ggakdo %= 360;
+        //     v_gimg.style.left = (v_CenterX -parseInt(v_gimg.width) /2 ) + v_Radius*Math.cos(v_Ggakdo * Math.PI/180)  + "px"; 
+        //     v_gimg.style.top = (v_CenterY -parseInt(v_gimg.height)/2 ) + v_Radius*Math.sin(v_Ggakdo * Math.PI/180)  + "px";
+        //     setTimeout(f_gRotate , 300);
+        // }
+
+        // //달 돌리는 함수
+        // var v_MRadius = 100;
+        // var v_Mgakdo = 0;
+        // function f_mRotate () {
+        //     v_Mgakdo += 10 ;
+        //     v_Mgakdo %= 360;
+
+        //     v_mimg.style.left = (v_CenterX -parseInt(v_gimg.width) /2 ) + v_Radius*Math.cos(v_Ggakdo * Math.PI/180) +
+        //     parseInt(v_mimg.width) / 2  + v_MRadius * Math.cos (v_Mgakdo * Math.PI / 180 ) + "px" ;
+
+        //     v_mimg.style.top = (v_CenterY -parseInt(v_gimg.height)/2 ) + v_Radius*Math.sin(v_Ggakdo * Math.PI/180)  + parseInt(v_mimg.height) / 2 + 
+        //     v_MRadius * Math.sin (v_Mgakdo * Math.PI / 180 ) + "px" ;
+        //     setTimeout(f_mRotate , 20);
+
+    
+        // }
+        // // 태양 돌리는 함수
+        //     var v_gakdo = 0;
+        // function f_Srotate() {
+        //     v_gakdo += 20;
+        //     v_gakdo %= 360; // 360도 넘어가는 값은 필요가 없음.
+        //     v_img.style.transform = "rotateZ(" + v_gakdo + "deg)";
+        //     setTimeout(f_Srotate, 50)
+        // }
+        // window.onresize = function() {
+        //     // 사이즈 변경될때
+        //     // 이미지 화면 중앙
+        //     f_center();
+        // }
+        //     window.addEventListener("load" , function(){
+        //     // 페이지 로딩이 끝나면
+        //     // 이미지 화면 중앙
+        //     // window.innerWidth , window.innerHeight 사용
+        //     f_center();
+        //     f_Srotate();
+        //     f_gRotate();
+        //     f_mRotate();
+        // })
+    
+    
+    </script>
+    
+</body>
+</html>

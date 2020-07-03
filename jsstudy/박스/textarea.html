@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <!-- text는 한줄 textarea는 여러줄을 입력받을 때 사용-->
+    <textarea id="id_ta" rows="20" cols="50">여기에 쓰면 나온다
+        한줄 더
+    </textarea> <br>
+    <input type="button" value="확인" onclick="f_taVal()">
+    <script>
+        function f_taVal() {
+            alert(document.getElementById("id_ta").value); //읽기
+            document.getElementById("id_ta").value = "? \n hi \t dd" //쓰기
+        }
+    </script>
+</body>

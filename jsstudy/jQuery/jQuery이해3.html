@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+    <div class="aaa">개1</div>
+    <div>양2</div>
+    <div class="aaa">소3</div>
+    <div id="bbb">말4</div>
+    <div class="aaa">닭4</div>
+</body>
+
+<script>
+    // 여기서 부터 집중합시당!
+    /*function getElem(p_selector) {
+        var v_elems = document.querySelectorAll(p_selector);
+        this.length = v_elems.length;
+        for (var i = 0; i < v_elems.length; i++) {
+            this[i] = v_elems[i];
+        }
+        return this;   // 명시적 표현, 없어도 됨! 
+    }
+
+    // var v_divs = new getElem("div");
+    // console.log(v_divs);
+
+    function $(p_selector){
+        return new getElem(p_selector);
+    };
+    */
+    // 아주 많이 있어보이게 바꾸기
+
+    // 즉시실행함수 && 전역변수 선언
+    (function(){
+        var $=    function(p_selector){
+        return new getElem(p_selector);
+     }
+      var getElem =  function(p_selector) {
+        var v_elems = document.querySelectorAll(p_selector);
+        this.length = v_elems.length;
+        for (var i = 0; i < v_elems.length; i++) {
+            this[i] = v_elems[i];
+        }
+        return this;   // 명시적 표현, 없어도 됨! 
+    }
+    window.$ = $; // 전역변수로 선언!
+    // $.prototype = getElem.prototype;
+    $.fn = getElem.prototype;  //$의 fn 은 getElem의 함수 아무거나올수있음
+    })()
+    // getElem(쿼리셀렉터올(매개변수)로 // 전부(포문) 선택-> 설정해서 반환)의 프로토타입(클래스(설계도) )
+
+    //요건 html 프로토타입을 지정
+    $.fn.html = function(p_callback){
+        for(var i=0; i<this.length; i++){
+            p_callback(i, this[i]);
+            // this[i].innerHTML = p_str +i;
+        }
+        return this; // 메소드 체이닝 구현을 위한 return 없으면 실행만 하고 뒤에는 안됨!
+    }
+
+    // 요건 html을 사용
+    // $("div").html(function(p_index, p_item){
+    //     if(p_index == 2){
+    //         p_item.innerHTML = "세번째다다다다다다다다"
+    //     }
+    // });
+
+    // 요건 css라는 함수를 정의
+    $.fn.css =function(p_attr, p_val){
+        for(var i=0; i<this.length; i++){
+            var v_style = p_attr +":" + p_val;
+            this[i].setAttribute("style", v_style);
+        }
+        return this;
+    }
+
+    // 요건 css와 html을 사용
+    $("div").css("color", "blue").html(function(p_index, p_item){
+        if(p_index== 1){
+            p_item.innerHTML = "div속성전부 color을 blue로 한다음 매서드 체이닝  this[p_index]의 p_item을 지정하는 곳"
+        }
+    });
+
+    
+    // $(".aaa").css("color", "blue" ); // <- class aaa의 글자를 파란색
+
+
+    // $("div").html("안녕"); //  div 속성을 "안녕"문자열을 매개로 html이란 함수 실행
+
+
+
+    // 메소드 추가, jquery에선 plugin이라고 부름 누구나 개발해서 추가사용할수있음.
+   
+    /*$.fn.HelloWorld = function(){
+        console.log("안녕 세상아!@")
+    } // $ <- getElem의 프로토타입인 것이 (fn) - HelloWorld라는 함수를 설정 
+    $.fn.HelloWorld(); // 요건 getElem의 프로토타입인 것이 (fn) 이 HelloWorld를 실행
+
+    $("div").HelloWorld();
+    $(".aaa").HelloWorld();
+    */
+
+    // $("div")[2].style.backgroundColor = "pink";
+
+</script>

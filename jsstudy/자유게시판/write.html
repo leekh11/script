@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ckeditor/ckeditor.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="writeaction.html">
+        제목 <input type=text name="nm_title" value="일단제목"><br>
+        글쓴사람 <input type=text name="nm_writer" value="난작가"><br>
+        내용<br>
+        <textarea name="myEditor"></textarea><br>
+        <input type=submit value="등록할랭">
+    </form>
+    <input type=button value="내용 확인" onclick="f_ck()">
+    <script>
+        function f_ck() {
+            // document.getElementsByTagName("iframe")[0].contentDocument.body.innerHTML;
+            alert(v_ckeditor.getData());
+        }
+        var v_ckeditor = CKEDITOR.replace('myEditor', {
+            height: 200,
+            filebrowserUploadUrl: "/jsstudy/자유게시판/serverPhp.php?type=file",
+            filebrowserImageUploadUrl: "/jsstudy/자유게시판/serverPhp.php?type=image",
+        });
+    </script>
+</body>
+
+</html>

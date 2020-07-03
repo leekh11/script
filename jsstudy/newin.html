@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="id_child" type="text" value="난 열린창 텍스트"> <br>
+    <input type="button" value="열어준창에 값 전달" onclick="f_sendOpener()">
+    <script>
+        function f_sendOpener() {
+            // 키워드 -> 열어준 창을 의미하는 예약어 opener
+            opener.document.getElementById("id_par").value = document.getElementById("id_child").value
+        }
+    </script>
+</body>
+</html>

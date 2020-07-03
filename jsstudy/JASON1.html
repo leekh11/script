@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<body>
+    <script>
+        // JSON (JavaScript Object Notation 자바스크립트 객체 표기법)
+    // 자바의 static 객체에 해당됨
+    /* 
+    var v_json = {};  // 빈객체 선언
+    var v_json1 = {"name":"피카츄"};  // 초기화 포함 선언, name속성 추가
+    var v_json2 = {"name":"피카츄", 
+                    "print" : function(p_msg) {
+                        alert(p_msg);
+                        return this;
+                    },
+                    "print1" : function(p_msg) {
+                        alert(p_msg);
+                        return this;
+                    }
+
+                    };  // 초기화 포함 선언, name속성 추가 // function이 오면 메소드 
+    v_json2.print("a").print("b").print("c").print1("d"); // 메소드 체이닝
+    */
+    // 잘쓰는 방법, 초기화를 {} 안에 하지 않고 밖으로 빼서 많이 함
+    var v_json = {};
+    v_json.name = "피카츄";
+    // 메소드 추가
+    v_json.print = function(p_msg) {   
+        alert(p_msg);
+        return this;
+    }
+    // 메소드 추가
+    v_json.getName = function() {
+        alert(this.name);
+        return this;
+    }
+    v_json.setName = function(p_name) {
+        this.name = p_name;
+        return this;
+    }
+    //  alert(v_json.name);
+    //  v_json.setName("라이츄").getName().setName("파이리").getName().setName("꼬북이").getName();
+    //  v_json.getName();
+    var System= {};
+    System.out = {};
+    System.out.print = function(p_msg) {
+        console.log(p_msg);
+    };
+    System.out.print("hi");
+
+    function f_ranNum(p_maxNum) {
+        return Math.floor(Math.random()*p_maxNum);
+    }
+
+    var MyUtil = {};
+    MyUtil.ranNumber = function (p_maxNum) {
+        return Math.floor(Math.random()*p_maxNum);
+    }
+
+    // alert(MyUtil.ranNumber(100));
+    // JSON은 함수를 분류해서 패키지화 시키는데 사용해도 아주 좋음
+
+    // 보통 전역변수는 global에 다모음 
+    var global ={};
+    global.name = "넥스트";
+    global.year = "2020";
+    </script>

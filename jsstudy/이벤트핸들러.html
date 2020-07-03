@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 태그에 직접 이벤트와 이벤트핸들러를 기술하는 법
+          직관적이어서 디버깅에 유리하나 html소스가 있어보이지 않음 
+          객체에 이벤트를 연결시키는법 1.
+    -->
+    <input type="button" value="click" onclick="f_clk()"> <br>
+    <input id="id_btn" type="button" value="click" >
+    <select  id="id_sel" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <script>
+        function f_clk () {
+            alert("태그에 직접 기술하는 이벤트")
+        }
+        //객체에 이벤트를 연결시키는 법 2.
+        document.getElementById("id_btn").onclick = function() {
+            alert("두번째 방법 ")
+        } 
+        //세번째 방법 이벤트 연결법 <추천 방법 최신버젼> -- 콜백함수
+        document.getElementById("id_btn").addEventListener("click", function() {
+            alert("추천합니다.");
+        });
+
+        // ex) 3번방식
+        document.getElementById("id_sel").addEventListener("change" , function() {
+            alert("선택하신 값은" + document.getElementById("id_sel").value);
+        }) ;
+
+        // ex) 2번방식
+        document.getElementById("id_sel").onchange = f_a ; //함수명에 ()붙이면 바로 실행이 됨! () x
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="id_disp" style="border: 2px solid black;"></div>
+        <form id="id_form" method="POST" enctype="multipart/form-data">
+            <input type="file" id="id_file" value=""><br>
+            이름 <input type="text" name="nm_name" value=""> <br>
+            나이 <input type="text" name="nm_age" value=""> <br>
+            <input type="button" value="post" onclick="f_post()">
+        </form>
+        <script>
+            // AJAX로 파일업로드 구현시에는 파일객체를 담아서 보내주지 않으면 안됨
+            // 파일이 전송이 안됨
+            var v_file = document.getElementById("id_file");
+            function f_post(){
+                // console.dir(v_file.files[0]);
+                var v_formData = new FormData(document.getElementById("id_form"));
+                v_formData.append("fileToUpload", v_file.files[0]);
+                var v_ajax = new XMLHttpRequest();
+                v_ajax.open("post", "upload.php" , true);
+                // post 방식 전송시 아래 라인 추가 , send전에 해야함
+                // v_ajax.setRequestHeader("content-type" , "application/x-www-form-urlencoded");
+                // formData를 이용한 데이타 붙이기
+                v_ajax.send(v_formData); //post방식으로 전달할 때는 send안에 넣어줌
+                v_ajax.onreadystatechange = function(){
+                    if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                        document.getElementById("id_disp").innerHTML = "";
+                        var v_img = document.createElement("img");
+                        v_img.src = v_ajax.responseText;
+                        v_img.style.width = "200px"
+                        document.getElementById("id_disp").appendChild(v_img);
+                    }
+                }
+            }
+        </script>
+</body>
+</html>

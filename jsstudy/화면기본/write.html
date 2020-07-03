@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center> <!-- 좋지않은 태그, 임시로 쓴다-->
+       <!-- <h1>난 최고다</h1>
+        <h2>난 최고다</h2>
+        <h3>난 최고다</h3>
+        <h4>난 최고다</h4>
+        <h5>난 최고다</h5>
+        <h6>난 최고다</h6>
+        <h5>난 최고다</h5>
+        <h4>난 최고다</h4>
+        <h3>난 최고다</h3>
+        <h2>난 최고다</h2>
+        <h1>난 최고다</h1> -->
+    </center>
+    <input type="button" value="OK" onclick="f_check()">
+    <script>
+        /* function f_check() {
+            document.write("hello <br>");
+            setTimeout(f_check, 700);
+        }
+        // 권장되지는 않지만 잘 쓰면 유용한 document.write(문자열) 메소드
+        document.write("hi"); */
+        function f_check() {
+            var result ="<center>";
+            // for(var i=1; i<=6; i++){
+            // result += ("<h"+i+">난 최고다</h"+i+">" );
+            // }
+            // for(var m=6; m>=1; m--){
+            //     result += ("<h"+m+">난 최고다</h"+m+">" );
+            // }
+            
+            /*
+            var m = 1;
+            for(var i=1; i<=12; i++) {
+                if(i<=6) {
+                result += ("<h"+m+">난 최고다</h"+m+">" );
+                    m++;
+                }
+                if(i>6) {
+                    --m;
+                    result += ("<h"+m+">난 최고다</h"+m+">" );
+                }
+            }*/
+
+            // <---------------flag 변수 (상태 변수) 경우의 숫자 2의 제곱수에 따라 
+            //tog한다고 함
+            var v_bang = true;
+            var i = 1; 
+            for(; i>=1 && i<=6; ) {
+                if(i == 6) v_bang= false; // 상태변경
+
+                result += ("<h"+i+">난 최고다</h"+i+">" );
+                
+                if(v_bang) {
+                    i++;
+                } else {
+                    i--;
+                }
+            }
+
+            document.write(result+"</center>");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="id_val" value="">
+    <input type="button" onclick="f_result()" value="시간 확인"> <br>
+    <input type="text" id="id_val2" value="">
+    <input type="button" onclick="f_resultD()" value="거리 확인"> <br>
+    <div id="id_disp"></div>
+    <script>
+        var v_val = document.getElementById("id_val");
+        var v_val2 = document.getElementById("id_val2");
+        var v_disp = document.getElementById("id_disp");
+        
+        function f_time (p_time) {
+        var result = 0;
+            for(var i=1; i<=p_time; i++){
+                if(i%2 != 0){
+                    result = result +3;
+                } else {
+                    result = result -2;
+                }
+            }
+            return result; 
+        }
+        
+
+        function f_result() {
+           v_disp.innerHTML =  "올라간 거리는" + f_time(v_val.value);
+        }
+
+        var time = 0;
+
+        function f_distance(p_dis) {
+            var time =0;
+            while("hi") {
+                if(p_dis == f_time(time)) break;
+                time++;
+            }
+             return time;
+        }
+
+
+        // 1 2 3 4 5 6 7 8 9
+        // 3 1 4 2 5 3 6 4 7 
+        function f_resultD() {
+            v_disp.innerHTML = "걸리는 시간은" + f_distance(v_val2.value) + " 초";
+        }
+ 
+
+    </script>
+</body>
+</html>
+

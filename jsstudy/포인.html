@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+    // for(var 변수 in 객체){}
+    /*
+    var v_arr = ["a","b","c","d"];
+    for(var p_attr in v_arr){   // 배열에 for in문을 쓰면 index값이 넘어온다
+        alert(p_attr);
+    }
+    */
+
+    /*
+    var v_json = {
+        "attr1":"AAA",
+        "attr2":"BBB",
+        "attr3":"CCC",
+        "attr4":"DDD",
+    }
+
+    for(var p_attr  in v_json){
+       // alert(p_attr + "의 값은" +v_json[p_attr] );
+       alert(p_attr + "의 값은"+ eval("v_json." + p_attr));
+    }
+    */
+    /*
+    function f_sum(p_maxNum){
+        if(p_maxNum == 1) return 1;  // 재귀호출사용은 항상 종료조건에 주의
+        return p_maxNum + f_sum(p_maxNum -1);
+    }
+    alert(f_sum(10));    // 1~10까지의 합
+    */
+    // Array를 써서 배열 선언할 때 주의할 사항 (인자가 1개일 때는 length);
+    /*
+    var v_arr = new Array(1,2,3);   // [1,2,3]과 같음
+    var v_arr2 = new Array(10);    // [10]과 같지 않음
+    alert(v_arr2.length);
+    */
+   /*
+     function f_test(){
+        //return;
+     }
+     alert(f_test());  //?
+     */
+
+    /*
+    var v_a=1;
+    var v_b=2;
+    var v_c= v_a+v_b;
+
+    // 즉각실행함수, 메모리가 절약됨!, 곧 자원(resource)를 아낄수 있음
+    (function(){
+        var v_a=1;
+        var v_b=2;
+        return v_a+v_b;
+    })();
+    */
+
+    //var x;
+    /*
+    function f_local(){
+        var x=10;
+        window.x = x;      // 전역변수 x에 지역변수 x값을 할당!
+      //  return x;
+    }
+    f_local();  
+    alert(x);   // 10
+    */  
+
+    var v_arr = ["b","c","d","a","e"];
+   // 배열에서 b를 지우고 싶다
+   // v_arr.splice(1,3);          // index 1번부터 1개
+   //alert(v_arr);
+   //alert(v_arr.sort());   // 기본정렬 
+   /*alert(v_arr.sort(function(a,b){         //callback함수사용
+        // 문자열일 경우 제대로 되지 않으므로
+        return a.charCodeAt(0) - b.charCodeAt(0);                       // a-b 또는 b-a냐에 따라 정렬순서 바뀜
+   }));
+   */
+  var v_jsonArr = [
+   ["2020-02-01" , "피카츄"] ,
+   ["2019-04-11" , "라이츄"] ,
+   ["2018-06-23" , "파이리"] ,
+   ["2016-07-31" , "꼬북이"] ,
+   ["2014-08-09" , "고라니"]
+  ];
+  // 위 배열을 날자쑨으로 정렬하시오 sort함수를 사용해서
+  v_jsonArr.sort(function(a,b){
+        return a[0].replace(/-/g,"") - b[0].replace(/-/g,"");          //
+   });
+
+//    alert(v_jsonArr);
+
+var v_userArr = [];
+//while("무한루핑"){
+/*
+ for(;"무한루핑" ;){
+var v_userInput = prompt("이름을 입력하세요", "ex) 홍길동");
+if(!v_userInput ) {
+    v_userArr.push("null");
+    // alert(v_userArr);
+    break;}
+v_userArr.push(v_userInput);
+ }
+*/
+/*
+ var v_is = false;
+ function f_is(p_arr , p_num) {
+    if(p_arr.indexOf(p_num) > -1 ){
+        v_is = true;
+    }
+    
+    for(var i=0; i<p_arr.length; i++ ){
+        if(p_arr[i] == p_num) {
+            v_is = true;
+            break;
+        }
+    }
+    return v_is;
+ }
+ 
+var v_num = [];
+var v_ran;
+while("hi"){
+    if(v_num.length == 5) break;
+    v_ran = Math.floor(Math.random()*20);
+    if(!f_is(v_num , v_ran)){
+    v_num.push(v_ran);
+}
+}
+alert(v_num);
+*/
+    // 사람이름을 계속 입력받기/무한루핑
+    // 종료조건: 공백문자 또는 null(취소버튼 눌렀을 때)
+    // 종료시 입력받은 이름들어 있는 배열 출력
+    /*
+    var v_nameArr =[];  // 이름 넣을 배열
+    for(;"무한루핑";){
+        var v_userInput = prompt("사람이름 넣어주세요","예:이태원");
+        if(!v_userInput) break;
+        v_nameArr.push(v_userInput);
+    }
+    alert("입력하신 이름들은"+v_nameArr + " 임당");
+    */
+
+/*
+    var v_nums=[];            // 숫자담을 배열 
+    function isRepeat(p_userNum){      // 특정 숫자 중복여부 체크함수
+        var v_isIn = false;             // 배열에 없다고 가정
+        for(var i=0; i<v_nums.length; i++){
+            if(v_nums[i] == p_userNum){
+                v_isIn = true;
+                break;
+            }
+        }
+        return v_isIn;                 // 없으면 false, 있으면 true 리턴
+    }
+
+    for(;"숫자다른거다섯개";){
+        if(v_nums.length == 5) break;               // 종료조건, 5개
+        var v_userNum = prompt("숫자를 넣어주세용","1") -0;
+        // 중복 체크 , v_userNum이 배열 v_nums 안에 있는지 없는지?
+        if(!isRepeat(v_userNum)){   // 배열요소중에 일치하는 것이 없다면
+            v_nums[v_nums.length] = v_userNum;
+        }
+    }
+
+    alert("입력하신 서로 다른 값 5개는"+ v_nums + "입니다. 흥!");
+*/
+</script>
+</body>
+</html>

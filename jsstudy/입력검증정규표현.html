@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="충돌.html">
+            <!-- required // pattern -->
+            아이디 <input type="text" name="nm_id" value="" pattern="^[a-z]{5}\d{4,}" placeholder="영문5 + 숫자 최소 4개" required> <br>
+            비밀번호<input type="text" name="nm_pi" value=""  pattern="^[a-zA-Z]\w{5,}" placeholder="5자 이상" required title="영문숫자 4개이상"> <br>
+            전화번호<input type="text" name="nm_tel" value=""  pattern="\d{3}-\d{4}-\d{4}" placeholder="010-1234-5678" required> <br>
+            이메일<input type="text" name="nm_email" value="" pattern="\w+@\w+.\w+" placeholder="abcd@naver.com" required> <br>
+            <input type="submit" value="전송">        
+    </form>
+</body>
+</html>

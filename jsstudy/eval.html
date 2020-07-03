@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div  id="id_dv">난 div! ㅠㅠㅠㅠㅠㅠ</div>
+    <input type="text" id="id_cal" value=""> <br>
+    <input type="button" value="계산" onclick="f_cal()">
+    <script>
+        var v_cal = document.getElementById("id_cal");
+        function f_cal(){
+            /*
+                eval 함수 너무 강력하여 해킹에 일부 사용되는 관계로
+                사용자제를 권고 받는 함수 
+            */
+            // v_cal.value = eval(v_cal.value);
+            v_cal.value = eval("document.getElementById('id_dv').innerHTML");
+        }
+    </script>
+</body>
+</html>

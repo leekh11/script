@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_photo {
+            overflow: scroll;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            line-height: 200px; 
+            /* 글자 수직 가운데 정렬  */
+        }
+    </style>
+</head>
+<body>
+    <div id="id_photo" ondragover="f_dragOver()" ondrop="f_drop()">
+        여기에 사진을 올리세요!
+    </div>
+    <script>
+        var v_photo = document.getElementById("id_photo");
+        function f_dragOver() {
+            event.preventDefault();
+
+        }
+        function f_readOneFile(p_file){
+            var v_fileReader = new FileReader();         // 파일읽어주는 사람 생성
+            v_fileReader.readAsDataURL(p_file);          // 파일읽어주는 사람에게 파일 전달
+            v_fileReader.onload = function(){            // 다 읽었다면
+                console.log(v_fileReader.result);        // 읽은 내용은 result속성에 담겨있음!
+                var v_img = document.createElement("img"); 
+                v_img.setAttribute("src",v_fileReader.result);
+                v_img.setAttribute("width","200");
+                v_img.setAttribute("height","200");
+               // v_photo.innerHTML = "";              // 글자 포함 내용 싹 지우기
+               v_photo.appendChild(v_img);          // 페이지에 넣기, 넣어야 보임!
+            }
+        }
+
+        function f_drop(){
+            // 기본 기능 막기
+            event.preventDefault();
+            //console.log(event.dataTransfer.files); // 속성만 알아두면 끝!
+            v_photo.innerHTML = ""; 
+            var v_file = event.dataTransfer.files;
+            for(var i=0; i< v_file.length; i++){
+                f_readOneFile(v_file[i]);
+            }
+        }
+        // 브라우저의 drag drop 기능 막기
+        window.ondragover = function() {
+            event.preventDefault();
+        }
+        window.addEventListener("drop", function() {
+            event.preventDefault();
+            // console.log(event.dataTransfer.files);   // 속성만 알아두면 끝
+
+        })
+    </script>
+</body>
+</html>

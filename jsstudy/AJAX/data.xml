@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class>
+    <saram>
+        <name>안녕</name>
+        <nai>40</nai>
+        <nickname>녕안</nickname>
+    </saram>
+    <saram>
+        <name>안뇽</name>
+        <nai>60</nai>
+        <nickname>뇽안</nickname>
+    </saram>
+    <saram>
+        <name>안냥</name>
+        <nai>70</nai>
+        <nickname>냥안</nickname>
+    </saram>
+</class>

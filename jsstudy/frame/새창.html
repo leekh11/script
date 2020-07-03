@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="new_txt" type="text" value="hello:)" > <br>
+    <input id="new_btn" type="button" value="click" onclick="f_frm()">
+    <script>
+        function f_frm(){
+            // frameB에 접근, opener-> frameC
+            opener.parent.frames[1].document.getElementById("frB_txt").value=
+              document.getElementById("new_txt").value;
+        }
+    </script>
+</body>
+</html>

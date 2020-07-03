@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 100vw 100vh  v :브라우저  
+            브라우저 크기에 맞춰 내부사이가 조절되는 것을 
+            반응형 웹이라고 함
+        */
+        /*  * : 페이지 전체에 적용  */
+        * {
+            margin: 0 0;
+            padding: 0;
+        }
+        .wrapper{
+            /* margin: 0 0; */  /*top/bottom left/right  */
+            /* 가장 많이 사용하는 가운데 정렬*/
+            margin: 20px auto;
+            width: 60vw;
+            min-width: 400px;
+            max-width: 500px;
+            height: 100vh;
+            min-height: 300px;
+            border: 2px solid blue;
+        }
+        .child{
+            margin: 0 auto;
+            width: 50%;
+            height: 50vh;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+<body>
+        <div class="wrapper">
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_nemo {
+            position: relative; /* default값은 움직일 수 없음! */
+            width: 100px;
+            height: 100px;
+            background-color:black;
+            border: 2px solid pink;
+            border-radius: 50px; 
+            /*  픽셀의 절반하면 원이됨 */
+            background-image: url("./images/아이린1.jpg");
+            background-size: 100px 100px;
+            /* transform: rotate(5deg);   */
+            
+        }
+        #wrapper {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("./images/아이린7.jpg");
+            background-repeat: no-repeat;
+            background-size: 300px 400px;
+        }
+        #but1 {
+            position: relative;
+            background-color: black;
+            color: white;
+            top: 300px;}
+        #but2 {
+            position: relative;
+            background-color: pink;
+            color: white;
+            top: 300px;}
+        #id_bar {
+            width: 30px;
+            height: 10px;
+            position: relative;
+            left: 30px;
+            top: 180px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- div에 keydown 이벤트 걸때 tabindex 설정 필요 -->
+    <div id="wrapper" tabindex="0" onkeydown=f_lrMove()>
+        <div id="id_nemo" style="left:0px; top:0px"></div>
+        <input id="but1" type="button" value="Run!" onclick="f_right()">
+        <input id="but2" type="button" value="Change" onclick="f_cngback()">
+        <div id="id_bar"></div>
+    </div>
+    <script>
+        var v_bar = document.getElementById("id_bar");
+        function f_lrMove(){
+            // 초기값이 인라인 스타일로 지정되어 있지 않은 경우
+            if(!v_bar.style.left){
+                v_bar.style.left = "100px";
+            }
+
+            // 왼쪽 화살표
+            if(event.keyCode == 37){
+                v_bar.style.left = parseInt(v_bar.style.left) - 10 + "px";
+            }
+            //오른쪽 화살표ㄴ
+            if(event.keyCode == 39){
+                v_bar.style.left = parseInt(v_bar.style.left) + 10 + "px";
+            }
+        }
+
+        var ch = 1;
+        function f_cngback() {
+            document.getElementById("wrapper").style.backgroundImage = 'url'+'("./images/지수'+ch+'.jpeg")' ;
+            ch++;
+        }
+        // 버튼을 누르면 속도가 빨라지는데 빨라지지 않게 해보세용!
+        // 제한시간 10분, 힌트:  자바의 싱글톤 패턴과 비슷
+        var v_nemo = document.getElementById("id_nemo");
+        var v_mvWidth = 10;
+        var v_mvHeight = 10;
+
+        var v_called = false;  //  초기값 안 불렀음
+        function f_call(){                                                     //<------ Proxy 패턴(대리인을 시킴)
+            if(!v_called){
+                f_right();
+                v_called = true;   // 불렀다고 표시
+            }
+        }
+        var v_gakdo = 0;
+        function f_right(){
+            if(!v_bar.style.left){
+                v_bar.style.top = "180px";
+                v_bar.style.left = "100px";
+            }
+            if((parseInt(v_nemo.style.left)) == parseInt(v_bar.style.left)){
+                v_mvHeight = -v_mvHeight;           // 부호 바꾸기
+            }
+            //스크립트에서 스타일접근하기(inline), 내부스타일접근법은 다름
+            //alert(parseInt(v_nemo.style.left));
+            // 사용자 화면 넓이 window.innerWidth, 높이 window.innerHeight
+            v_nemo.style.left = parseInt(v_nemo.style.left) + v_mvWidth + "px"; // <--------------ParseInt!!
+            v_nemo.style.top = parseInt(v_nemo.style.top) + v_mvHeight + "px"; 
+
+            v_gakdo = v_gakdo + 10;
+            v_gakdo = (v_gakdo % 360) ;                                    // <--------------무한대 값 제어
+            v_nemo.style.transform = "rotate(" + v_gakdo +"deg)";
+            //console.log("브라우져넓이:"+window.innerWidth);
+            //console.log("브라우져높이:"+window.innerHeight);
+            // 오른쪽에 닿았을 때 왼쪽으로 가게 하기
+            if((parseInt(v_nemo.style.left)+100) >= 300 || 
+               parseInt(v_nemo.style.left) <= 0){
+                v_mvWidth = -v_mvWidth;           // 부호 바꾸기
+            }
+            // 아래 위 닿았을 때
+            if((parseInt(v_nemo.style.top)+100) >= 400 || 
+               parseInt(v_nemo.style.top) <= 0){
+                v_mvHeight = -v_mvHeight;           // 부호 바꾸기
+            }
+
+            // 왼쪽에 닿았을 때 방향바꾸기
+            /*
+            if(parseInt(v_nemo.style.left) <= 0){
+                v_mvWidth = -v_mvWidth;          // 부호 바꾸기
+            }
+            */
+            setTimeout(f_right,200);
+        }
+    </script>
+</body>
+</html>

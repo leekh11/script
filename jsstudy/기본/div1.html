@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 스타일에는 사눗적인 표현은 꼭 단위를 적어줘야함 */
+        #container {
+            width: 400px;
+            height: 300px;
+            /* border: 2px solid tomato; */
+        }
+        #header {
+            position: fixed;
+            top: 10px;
+            left: 100px;
+            background-color: violet;
+            height: 30%;
+            border: 2px solid steelblue;
+        }
+        #content {
+            height: 60%;
+            border: 2px solid teal;
+        }
+        #bottom {
+            height: 10%;
+            border: 2px solid grey;
+        }
+        .item{
+            display: inline-block;   /* <--------------- default : block 옆에 오는 것을 허락하지 않음 */
+            /* block , inline-block 은 width와 height를 줄수있다  
+            // inline 내용의 길이에 따라 자동 
+            // none : 다 사라짐! 페이지에 숨기고 싶을때 사용 */
+            position: static;  
+            /*position //default 값은 static 알아서 변경 <----------------------이거!!
+             // relative는 static으로 만들어진 상태를 기준으로 움직임
+             // left x값 top y값 으로 위치 변경  
+             // absolsult all-원점이 기준 
+             // fixed는 보통 메뉴바 스크립트 영향 안받게 만들때 사용 */
+             
+             left: 30px;
+             top: 30px;
+            border: 1px solid tomato;
+            margin: 5px;
+            padding: 3px;
+            width: 100%;
+            height: 15%;
+        }
+
+    </style>
+</head>
+<body>
+    <!--div.container -->
+    <div id="container">
+        <div id="header">움직이지 않음 고정</div>
+        <div id="content">
+            <div class="item">피카츄</div>
+            <div class="item">라이츄</div>
+            <div class="item">파이리</div>
+            <div class="item">꼬북이</div>
+            <div class="item">버터플</div>
+            <div class="item">피카츄</div>
+            <div class="item">라이츄</div>
+            <div class="item">파이리</div>
+            <div class="item">꼬북이</div>
+            <div class="item">버터플</div>
+            <div class="item">피카츄</div>
+            <div class="item">라이츄</div>
+            <div class="item">파이리</div>
+            <div class="item">꼬북이</div>
+            <div class="item">버터플</div>
+            <div class="item">피카츄</div>
+            <div class="item">라이츄</div>
+            <div class="item">파이리</div>
+            <div class="item">꼬북이</div>
+            <div class="item">버터플</div>
+            <div class="item">피카츄</div>
+            <div class="item">라이츄</div>
+            <div class="item">파이리</div>
+            <div class="item">꼬북이</div>
+            <div class="item">버터플</div>
+        </div>
+        <div id="bottom"></div>
+    </div>
+    
+</body>
+</html>

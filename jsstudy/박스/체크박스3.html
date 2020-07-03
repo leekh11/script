@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+당신이 보유한 스킬을 3개까지만 골라주세요
+<hr>
+자바 <input type="checkbox" name="nm_skill" value="java" onclick="f_ck(this)"> <!--f_ck(this) 중요!!-->
+오라클 <input type="checkbox" name="nm_skill" value="oracle" onclick="f_ck(this)">
+HTML <input type="checkbox" name="nm_skill" value="html" onclick="f_ck(this)">
+CSS <input type="checkbox" name="nm_skill" value="css" onclick="f_ck(this)"> <br>
+JSP <input type="checkbox" name="nm_skill" value="jsp" onclick="f_ck(this)">
+SPRING <input type="checkbox" name="nm_skill" value="spring" onclick="f_ck(this)">
+JS <input type="checkbox" name="nm_skill" value="javascript" onclick="f_ck(this)">
+MongoDB <input type="checkbox" name="nm_skill" value="mongodb" onclick="f_ck(this)">
+<script>
+    var v_ckboxs = document.getElementsByName("nm_skill"); 
+    var v_ckCnt = 0; //초기상태 체크된 갯수 0
+    function f_ck(p_this) {
+        if(p_this.checked) {v_ckCnt++;}
+        else {v_ckCnt--;}
+        //4번째를 제어하기
+        if(v_ckCnt == 4){
+            alert("3개만 체크")
+            p_this.checked = false;
+            v_ckCnt --; // <------------------- 해제했으므로 카운트도 감소
+        }
+    }
+
+</script>
+</body>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 정렬 보통 sorting 이라고 함
+    // var v_arr = [5,1,2,5,6,1,9,8,6];
+   /*  제일 큰숫자가 맨 앞에 오게 하려면      
+    <버블정렬!> : 서로 이웃한 데이터들을 비교하며 가장 큰 데이터를 가장 뒤로 보내며 정렬
+    for(var i=1; i<v_arr.length; i++){ // 첫번째 배열부터 돌릴필요가 없다
+        if(v_arr[0] < v_arr[i]){
+            var v_temp = v_arr[0];
+            v_arr[0] = v_arr[i];
+            v_arr[i] = v_temp;
+        }
+    }
+    // 가장큰수 앞으로 빼는 법
+    정렬하는 법*/
+
+    // 위 반복 상황을 정리하세요
+    // for(var j=0; j<v_arr.length; j++){
+    //     for(var i=j+1; i<v_arr.length; i++){
+    //         if(v_arr[j] < v_arr[i]){
+    //             var v_temp = v_arr[j];
+    //             v_arr[j] = v_arr[i];
+    //             v_arr[i] = v_temp;
+    //         }
+    //     }
+    // }
+
+    // 검증! 루프안에 변수를 찍어 중복 사용코드가 있는 지 검증해서 처리함 
+    // alert(v_arr);
+
+    var v_arr = ["2019-02-11", "2020-01-10", "2018-02-11", "2020-03-23", "2019-10-10",
+                 "2019-12-25", "2019-09-09", "2020-01-01" ] ;
+    // 숫자 변환 함수
+    function f_replace(v_str){
+        while(v_str.indexOf("-") != -1) {
+            v_str = v_str.f_replace("-","");
+        }
+        return parseInt(v_str);
+    }
+    // 부호를 빼고 숫자로 변환하는 함수 
+
+    for(var j=0; j<v_arr.length; j++){
+        for(var i=j+1; i<v_arr.length; i++){
+            if(v_arr[j] < v_arr[i]){
+                var v_temp = v_arr[j];
+                v_arr[j] = v_arr[i];
+                v_arr[i] = v_temp;
+            }
+        }
+    }
+
+    
+    alert(v_arr);
+
+
+</script>

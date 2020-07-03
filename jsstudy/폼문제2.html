@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        이름 : <input type=text name="nm_name" value=""><br>
+        성별 : 남 <input type=radio name="nm_sb" value="남자">
+               여 <input type=radio name="nm_sb" value="여자"><br>
+        취미 : 여행<input type=checkbox name="nm_hobby" value="여행">
+               독서<input type=checkbox name="nm_hobby" value="독서">
+               영화감상<input type=checkbox name="nm_hobby" value="영화감상">
+               바둑<input type=checkbox name="nm_hobby" value="바둑">
+               장기<input type=checkbox name="nm_hobby" value="장기">
+               등산<input type=checkbox name="nm_hobby" value="등산">
+               낚시<input type=checkbox name="nm_hobby" value="낚시">
+        <input type=button id="id_btn" value="결과출력"><br>
+        <textarea id="id_txarea" rows=10 cols=50></textarea>
+    </form>
+    <script>
+        var v_name = document.getElementsByName("nm_name");
+        var v_sbs  = document.getElementsByName("nm_sb");
+        var v_hobbis = document.getElementsByName("nm_hobby");
+        var v_btn = document.getElementById("id_btn");
+        var v_txArea = document.getElementById("id_txarea");
+        v_btn.onclick = function(){
+            var r_name = v_name[0].value;
+            var r_sb, r_hobbis=[];
+            //성별 체크 (라디오버튼)
+            for(var i=0; i< v_sbs.length; i++){
+                if(v_sbs[i].checked){
+                    r_sb = v_sbs[i].value;
+                    break;   // 라디오 버튼은 그룹중에 오직 하나만 체크 가능!
+                }
+            }
+            //취미 체크 (체크박스)
+            for(var i=0; i< v_hobbis.length; i++){
+                if(v_hobbis[i].checked){
+                    r_hobbis.push(" " + v_hobbis[i].value );
+                }
+            }
+            var v_result = r_name + "씨\n";
+            v_result += "당신은 " + r_sb + "이고\n";
+            v_result += "취미는" + r_hobbis + "이군요!";
+
+            v_txArea.value = v_result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이것은 중급과제! 
+        유럽중앙은행에서 가져온 환율데이타로 차트를 그려봅니다.
+        조건1: 달라, 엔, 원화 값만 뽑아서
+        조건2: 데이타가 날짜순으로 정렬이 안되어 있는데, 날짜순으로 정렬!
+    -->
+    <div style="width:400px;height:400px">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <script>
+        // 로컬스토리지 값 가져오기
+        var what  = localStorage.getItem('what');
+        // 빈객체 생성
+        var v_jpy = [];
+        var v_krw = [];
+        // 데이타 가져오기
+        var v_data = JSON.parse(what).rates;
+        console.log( v_data);
+       // 데이터 키값 가져오기 
+        var date = Object.keys(v_data);
+        var v_date = []
+        console.log(date);
+        // 배열 집어넣기
+        for(var i in date ){
+            v_date[i] = date[i];
+        }
+        // 배열 정렬 sort(function(a,b){ return a.replace(/-/g , "") - b.replace(/-/g , "")  })
+        v_date.sort();
+        console.log(v_date);
+        // 빈배열에 값 집어 넣기
+        for(var i=0; i<v_date.length; i++){
+            v_jpy.push(v_data[v_date[i]].JPY *10);
+            v_krw.push(v_data[v_date[i]].KRW);
+        }
+         // 최종 결과 제이슨 완성하기
+         var v_result = {
+             "date" : v_date ,
+             "jpy" : v_jpy ,
+             "krw" : v_krw
+         };
+         console.log(v_result);
+         // 요건 차트 생성 API
+ var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    // 차트 타입
+    type: 'line', // line, bar, pie
+    data: {
+        // x축 값 
+        labels: v_result.date,
+        datasets: [{
+            //배열 1 데이터 정보
+            label: 'yen',
+            // 배열 2데이터 
+            data: v_result.jpy ,
+            borderWidth: 1
+        },
+        {
+            //배열 2 시작!
+            label: '원',
+            data: v_result.krw ,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // 0으로 시작 true or false
+                    beginAtZero: false
+                }
+            }]
+        }
+    }
+});
+
+    </script>
+</body>
+</html>

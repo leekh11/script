@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <h1 id="id_h1">시------------계</h1> <br>
+    <div id="id_clock"></div>
+    <input type="button" value="STOP" onclick="f_stop()">
+    <input type="button" value="Run" onclick="f_run()">
+</body>
+<script>
+    var v_timerID;
+    function f_stop(){
+        clearTimeout(v_timerID);  //실행중인 타이머를 제거하는 함수
+    }
+    function f_run() {
+        f_clock();
+    }
+    // 자바스크립트는 자바의 Data 객체를 벤치마킹
+    // 서버시간이 아니고 접속자(클라이언트) 시간이라 별로 중요하게 생각하지 않음
+
+    // var v_today = new Date('2020-03-19'); // 현제 컴퓨터의 날짜 시간을 읽어옴
+    function f_clock() {
+        var v_today = new Date();
+        var v_year = v_today.getFullYear();
+        var v_month = v_today.getMonth()+1;
+        var v_date = v_today.getDate();
+        var v_hour = v_today.getHours();
+        var v_min = v_today.getMinutes();
+        var v_sec = v_today.getSeconds();
+        
+        var v_timeStr = v_year + "년 " + v_month + "월 " + v_date + "일 <br>" 
+                        +"<h1>" + v_hour + "시 " + v_min + "분 " + v_sec + "초 </h1>";
+
+        document.getElementById("id_clock").innerHTML = v_timeStr;
+
+        v_timerID = setTimeout(f_clock, 1000); //타이머 id를 돌려줌
+        console.log(v_timerID);
+    }
+    f_clock();
+    // document.getElementById("id_clock").innerHTML = "<img src='images/지수13.jpeg'>"
+    /*타이머는 동적 움직임을 만드는데 중요함
+    function f_msg() {
+        alert("hello")
+    setTimeout(f_msg,1000); //1000ms 뒤에 함주 f_msg를 불러라
+    //함수이름만! ()-붙이면 타이머와 상관없이 콜
+    }
+
+    f_msg(); */
+    // 아주 중요한 속석 innerHTml, 문자열더하기와 함께 땜빵에 최고봉 테크닉!!!
+    /* alert(document.getElementById("id_h1").innerHTML); // 태그 사이의 값이 innerHTML
+    document.getElementById("id_h1").innerHTML = "브라우져는 관대하다"
+    alert(document.body.innerHTML); */
+</script>

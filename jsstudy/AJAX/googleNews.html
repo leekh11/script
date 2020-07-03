@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+    검색어<input type=text id="id_sch" value=""><br>
+    <input type=button value="구글뉴스에서 찾기"  id="id_btn">
+    <div id="id_disp">
+
+    </div>
+    <script>
+        // 다른 사이트 정보는 가져올 때 먼저 CROSS-ORIGIN을 확인한다.
+        // 되면 좋고 안되면 서버경유 필요
+        var v_sch = document.getElementById("id_sch");
+        /*
+        function f_sch(){
+            onclick="f_sch()" 
+            var v_ajax = new XMLHttpRequest();
+            var v_schStr = "q=" + v_sch.value +"&hl=ko&gl=KR&ceid=KR:ko";
+            //v_schStr = encodeURIComponent(v_schStr);
+            // 공짜 사이트 이용!
+            var v_url = "https://api.rss2json.com/v1/api.json?rss_url=";
+            v_url += "https://news.google.com/rss/search?"+v_schStr;
+            v_ajax.open("get",v_url,true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    var v_recvData=JSON.parse(v_ajax.responseText);
+                    console.log(v_recvData);
+                }
+            }
+        }
+        */
+        
+        // function f_sch(){
+        //     var v_ajax = new XMLHttpRequest();
+        //     v_ajax.open("get","serverbypass.php?yuyu="+v_sch.value,true);
+        //     v_ajax.send();
+
+        //     v_ajax.onreadystatechange = function(){
+        //         if(v_ajax.readyState == 4 && v_ajax.status == 200){
+        //             var v_recvData = JSON.parse(v_ajax.responseText);
+        //             var v_items = v_recvData.channel.item;
+        //             var v_style = "border:2px solid black;";
+        //             var v_style2 = "border:2px solid black;font-size:2em";
+        //             v_style2 += ";background-color:black;color:yellow;";
+        //             for(var i=0; i< v_items.length; i++){
+        //                 var v_div = document.createElement("div");
+        //                 v_div.innerHTML = v_items[i].description;
+
+        //                 if(v_items[i].description.indexOf("비니") != -1){
+        //                     console.log("있당");
+        //                     v_div.setAttribute("style",v_style2);
+        //                 }else{
+        //                     console.log("없당");
+        //                     v_div.setAttribute("style",v_style);
+        //                 }
+        //                 document.body.appendChild(v_div);
+        //             } 
+        //         }
+        //     }
+        // }
+        function f_sch(){
+            $.ajax({
+                type:"get",
+                url:"serverbypass.php?yuyu="+v_sch.value,
+                success:function(p_rslt){
+                    var v_recvData = JSON.parse(p_rslt);
+                    var v_items = v_recvData.channel.item;
+                    var v_style = "border:2px solid black;";
+                    var v_style2 = "border:2px solid black;font-size:2em";
+                    v_style2 += ";background-color:black;color:yellow;";
+                    for(var i=0; i< v_items.length; i++){
+                        if(v_items[i].description.indexOf("비니") != -1){
+                            $("<div></div>").html(v_items[i].description).attr("style",v_style2).appendTo(document.body);
+                        }else{
+                            $("<div></div>").html(v_items[i].description).attr("style",v_style).appendTo(document.body);
+                        }
+                    }
+                }
+            });
+        }
+
+
+        $("#id_btn").click(function () {
+            $.ajax({
+                method: "get",
+                url: "serverbypass.php?yuyu=" + $("#id_sch").val(),
+                success: function (p_result) {
+                    // console.log(p_result);
+                    var v_recevData = JSON.parse(p_result);
+                    // console.log(v_recevData);
+                    for (var i = 0; i < v_recevData.channel.item.length; i++) {
+                        $("#id_disp").append(
+                            v_recevData.channel.item[i].description + "<br>"
+                        //  "<a href =' " + v_recevData.channel.item[i].link + " '>" + v_recevData.channel.item[i].title + "<a><br>"
+                            );
+                    }
+
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>

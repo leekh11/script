@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 클래스 네임으로 그룹화  */
+        .cl_pg {
+            position: absolute;
+            width: 605 px;
+            top : 70px;
+            height: 300;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="cl_pg"> <!-- v_divs[0] 임!-->
+        <img src="images/지수1.jpeg" width="300" height="300">  <!--ctrl h 찾아서 바꾸기-->
+        <img src="images/지수2.jpeg" width="300" height="300"><br>
+        <img src="images/지수3.jpeg" width="300" height="300">
+        <img src="images/지수4.jpeg" width="300" height="300">
+    </div>
+    <div class="cl_pg">
+        <img src="images/지수5.jpeg" width="300" height="300">
+        <img src="images/지수6.jpeg" width="300" height="300"> <br>
+        <img src="images/지수7.jpeg" width="300" height="300">
+        <img src="images/지수8.jpeg" width="300" height="300">
+    </div>
+    <div class="cl_pg">
+        <img src="images/지수9.jpeg" width="300" height="300">
+        <img src="images/지수10.jpeg" width="300" height="300"> <br>
+        <img src="images/지수11.jpeg" width="300" height="300">
+        <img src="images/지수12.jpeg" width="300" height="300">
+    </div>
+    <div class="cl_pg">
+        <img src="images/지수13.jpeg" width="300" height="300">
+        <img src="images/지수14.jpeg" width="300" height="300"> <br>
+        <img src="images/지수15.jpeg" width="300" height="300">
+       <a href = "images/지수20.jpeg"> 
+        <img src="images/지수16.jpeg" width="300" height="300"> </a> 
+    </div>
+    <input id="id_txt" type="text" value="" style="width: 50px;">
+    <input type="button" value="<=" class="cl_but" onclick="f_pre()">
+    <input type="button" value="=>" class="cl_but" onclick="f_next()">
+    <script>
+        var v_currIndex = 0;  //선택된 div를 가리키는 index
+        var v_divs = document.getElementsByClassName("cl_pg");
+ 
+        function f_zindexInit(){
+            //z-index를 초괴화
+            for(var i=0; i<v_divs.length; i++) {
+                v_divs[i].style.zIndex = 100;
+            }
+        }
+
+        function f_next() {
+            v_currIndex++;
+            if(v_currIndex == 4) {
+                v_currIndex = 0;
+            }
+            f_zindexInit(); //초기화 함수호출
+            v_divs[v_currIndex].style.zIndex = 999;
+            document.getElementById("id_txt").value = (v_currIndex+1) + "/" + v_divs.length;
+        }
+        function f_pre() {
+            v_currIndex--;
+            if(v_currIndex == -1) {
+                v_currIndex = 3;
+            }
+            f_zindexInit(); //초기화 함수호출
+            v_divs[v_currIndex].style.zIndex = 999;
+            document.getElementById("id_txt").value = (v_currIndex+1) + "/" + v_divs.length;
+        }
+        document.getElementById("id_txt").value = (v_currIndex+1) + "/" + v_divs.length;
+        //스크립트로 z-index 초기화
+        v_divs[v_currIndex].style.zIndex=999;
+    </script>
+</body>
+</html>

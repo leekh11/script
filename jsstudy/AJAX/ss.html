@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    이미지 검색어<input type=text id="id_sch" value="">
+    <input type=button value="눌렁" onclick="f_ajax()">
+    <script>
+        // ajax 사용 테스트!
+        // 텍스트박스의 검색어를 이용 flicker사이트에서 이미지 경로를
+        // 가져와 id_disp에 뿌리시옹!
+        // 먼저 flicker 사이트는 크로스오리진이 열려있는지 닫혀있는지 체크!
+        var v_sch = document.getElementById("id_sch");
+        var v_disp = document.getElementById("id_disp");
+        function f_ajax(){
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get","dolgi.php?imgsch="+v_sch.value,true);
+        //    v_ajax.open("get",v_flikrURL,true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    var v_content = v_ajax.responseText;
+                    v_content = v_content.substr(15,v_content.length-16); 
+                    v_content = JSON.parse(v_content);
+                    console.log(v_content);
+                    var v_items = v_content.items;
+                    v_disp.innerHTML = "";
+                    for(var i=0; i< v_items.length; i++){
+                        var v_img = document.createElement("img");
+                        v_img.src = v_items[i].media.m;
+                        v_img.width = 100;
+                        v_img.height = 100;
+                        v_disp.appendChild(v_img);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

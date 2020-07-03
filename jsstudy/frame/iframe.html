@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--inline frame 마이크로소프트가 만든이후 표준으로 자리잡음 -->
+    <iframe id="id_ifrm1" src="http://nextit.or.kr" width="500" height="300"></iframe>
+    <iframe id="id_ifrm2" src="새창.html" width="500" height="300"></iframe>
+    <input type="text" id="id_ifrm" value="아이프레임">
+    <input type="button" value="click" onclick="f_clk()">
+    <script>
+    // iframe에 접근, 막아논 사이트들이 있네요, 확인하고 씁시당
+ 
+    // iframe에 접근, 막아논 사이트들이 있네요, 확인하고 씁시당
+    function f_clk(){
+        document.getElementById("id_ifrm1").src = "http://mail3.nextit.or.kr";
+        //아이프레임속 새창.html에 접근
+        // contentWindow, contentDocument속성이 중요
+        var v_ifrmWin = document.getElementById("id_ifrm2").contentWindow;
+        v_ifrmWin.document.getElementById("new_txt").value = 
+          document.getElementById("id_ifrm").value;
+
+        v_ifrmDoc = document.getElementById("id_ifrm2").contentDocument;
+        v_ifrmDoc.getElementById("new_btn").value = "누르셩";
+
+    }
+    </script>
+</body>
+</html>

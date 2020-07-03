@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /*
+       clear();   // 모두 싹 깡그리 지우기
+       setItem("key값","value값");  // 쓰기
+       getItem("key값");            // key값에 해당하는 value값 읽기
+       removeItem("key값");         // key값에 해당하는 item 지우기
+       length;                      // item이 몇개인지
+       key(index넘버)               // 시작은 0번부터,  key값을 리턴해줌
+       
+       별표5개 ***** 꼭 기억, value값에는 문자열밖에 저장할 수 없음.!!!!!!!!!
+    */
+    //로컬스토리지 지원여부 확인
+    /*
+    if(!localStorage){
+        alert("로커스토리지를 지원하지 않는 아주 오래된 브라우져군용");
+    }else {
+        alert("로컬스토리지를 지원하는 그나마 최신 브라우져네용");
+    }
+    */
+
+    /*
+    localStorage.clear();  // 싹지우기
+    // key / value 저장하기
+    localStorage.setItem("키얌","그럼난 값");
+    localStorage.setItem("키얌2","그럼난 값2");
+    // key값이 같으면 value값을 덮어써버림
+    localStorage.setItem("키얌","바꾸자 바꿔 다 바꿩");
+    //alert(localStorage.getItem("키얌"));
+    //localStorage.removeItem("키얌");
+    //alert(localStorage.length);
+    alert(localStorage.key(1));
+    */
+
+    var v_names = ["고민석","장우석","이재현","유자영","김준원","윤승규"];
+    var v_ages = [20, 30, 40, 50, 60, 70 ];
+    var v_alias = [ ["고민","민석","고석"],
+                    ["장우","장석"],
+                    ["이재","이현"],
+                    ["유자","유영"],
+                    ["준원","원김","김준"],
+                    ["윤규","승윤"]
+                ];
+    // 테스트 한사람 정보를 1개의 jason에 묶어서, 6개의 JASON을 담은
+    // 1개의 배열을 localstorage에 저장해 보세요
+
+    var v_result = [];
+
+    for(var i=0; i<v_names.length; i++){
+        var v_person = {};      // 빈객체 생성
+        v_person.name = v_names[i];
+        v_person.age = v_ages[i];
+        v_person.alias = v_alias[i];
+        v_result.push(v_person);
+    }
+    localStorage.setItem("6명", JSON.stringify(v_result) );
+
+    /*
+        window에선 xampp를 설치, next만 쭉누름
+        c:/xampp란 디렉토리에 설치되고, c:/xampp/htdocs 디렉토리가 
+        아파치 홈 디렉토리가 됨  여기에 디렉토리를 만들면 똑같은 환경이 됨!
+        프로그램 서치하면 xampp contral pane1이 나오고 거기서 아파치 시작/멈춤으로 컨트롤 할 수 있음 
+    */ 
+    
+    /*
+    localStorage.setItem("배열",JSON.stringify(v_arr));       // 배열은 어떻게 되나요?
+    var v_arr1 = JSON.parse(localStorage.getItem("배열"));
+    alert(v_arr1[0]);
+    */
+    /*
+     var v_json = {"target":"정보처리기사","goal":"합격","etc":"불합격하면 입 다물장1"};    
+     // 그래서 나왔습니다, 유틸객체 JSON!
+    localStorage.setItem("확인11",JSON.stringify(v_json));
+    var strToObj = JSON.parse(localStorage.getItem("확인11"));
+    alert(strToObj.goal)
+    */
+
+     //alert(v_json.toString());
+     /* eval함수를 사용하면  어찌어찌 문자열로 저장하고, 꺼낼때 객체로 변환
+     가능하지만 많이 불편함!
+     localStorage.setItem("확인",v_json);
+     eval("var ppp="+localStorage.getItem("확인"));
+     alert(ppp.target);
+    */
+
+
+
+
+</script>

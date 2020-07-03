@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper {
+        position: relative;
+        width: 750px;
+        height: 500px;
+        border: 1px solid black;
+        display: flex;
+    }
+    #child1 {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        width: 350px;
+        height: 400px;
+        /* border: 1px solid black; */
+
+        background-repeat: no-repeat;
+        background-size: 350px 400px;
+    }
+    #child2 {
+        position: absolute;
+        top: 10px;
+        left: 375px;
+        width: 350px;
+        height: 400px;
+        /* border: 1px solid black; */
+
+        background-repeat: no-repeat;
+        background-size: 350px 400px;
+    }
+</style>
+</head>
+<body>
+    <div id="id_title" style="font-size: 2em; width: 750px; text-align: center;">
+        좋아하는 영화 찾기!
+    </div>
+    <div id="wrapper">
+        <div id="child1" onclick="f_win(this)">
+
+        </div>
+        <div id="child2" onclick="f_win(this)">
+        </div>
+        <img src="images/icon.jpg" alt="" width="150px" height="70px" style="top: 425px; left: 300px; position: absolute;" onclick="f_send()">
+    </div>
+    <script>
+        //  display 할 배열 지정
+        var imgArr = ["신과함께.jpeg" ,  "국제시장.jpg" ,  "어벤져스.png" ,  "겨울왕국.jpg" ,  "아바타.jpg" ,  "베테랑.jpg" ];
+        var winArr = [];
+        var finalArr = [];
+        var v_child1 = document.getElementById("child1");
+        var v_child2 = document.getElementById("child2");
+        var v_title = document.getElementById("id_title");
+       var v_imgU = "url(images/";
+       var v_cnt = 0;
+       var v_cnt2 = 0;
+        //1서클 배경 세팅
+        function f_start(){
+            if(v_cnt<6){
+            v_child1.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+            v_cnt = v_cnt+1;
+            v_child2.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+            v_cnt = v_cnt+1;
+            console.log(v_cnt);
+            } else{
+                alert("다음라운드!");
+            }
+        }
+        window.onload = function() {
+            v_child1.style.backgroundImage = "url(images/명량.jpg)"
+            v_child2.style.backgroundImage = "url(images/극한직업.jpg)"
+        }
+        // 
+        //1사이클
+        //처음에 1,2 세팅하고 누르면 이긴 것은 이긴 배열에 들어감  카운트 하기 
+        // 카운트가 4면 다음 라운드 alert
+        //  2라운드 이긴배열 1, 2 세팅
+        // 카운트가 2면 다음라운드 alert
+        //  결승 배열
+        // 이긴 것을 전송
+
+
+        // 누르는 함수
+        var v_flag = true;
+        var v_flag2 = true;
+        var v_flag3 = true;
+        var sendVal = "";
+        function f_win(p_this) {
+        //  1 cycle
+        if(v_flag){
+            if(p_this.id == "child1"){
+                winArr.push(p_this.style.backgroundImage);
+                if(v_cnt<imgArr.length){
+                v_child1.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+                v_cnt = v_cnt+1;
+                v_child2.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+                v_cnt = v_cnt+1;
+                } else{
+                    alert("Round 2");
+                    v_title.innerHTML = "4강!";
+                    v_child1.style.backgroundImage = winArr[0];
+                    v_child2.style.backgroundImage = winArr[1];
+                    v_flag = false;
+                }
+            } else {
+                winArr.push(p_this.style.backgroundImage);
+                if(v_cnt<imgArr.length){
+                v_child1.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+                v_cnt = v_cnt+1;
+                v_child2.style.backgroundImage = v_imgU + imgArr[v_cnt] + ")" ;
+                v_cnt = v_cnt+1;
+                } else{
+                    alert("Round 2");
+                    v_title.innerHTML = "4강!";
+                    v_child1.style.backgroundImage = winArr[0];
+                    v_child2.style.backgroundImage = winArr[1];
+                    v_flag = false;
+                }
+            }
+        // 2 cycle
+        }  else if(!v_flag && v_flag3){
+            if(p_this.id == "child1"){
+                finalArr.push(p_this.style.backgroundImage);
+                if(v_flag2) {
+                v_child1.style.backgroundImage= winArr[2];
+                v_child2.style.backgroundImage= winArr[3];
+                v_flag2 = false;
+                } else {
+                alert("Final round");
+                v_title.innerHTML = "결승";
+                v_child1.style.backgroundImage = finalArr[0];
+                v_child2.style.backgroundImage = finalArr[1];
+                v_flag3 = false;
+            } 
+        }   else {
+            finalArr.push(p_this.style.backgroundImage);
+                if(v_flag2) {
+                v_child1.style.backgroundImage= winArr[2];
+                v_child2.style.backgroundImage= winArr[3];
+                v_flag2 = false;
+                } else {
+                alert("Final round");
+                v_title.innerHTML = "결승";
+                v_child1.style.backgroundImage = finalArr[0];
+                v_child2.style.backgroundImage = finalArr[1];
+                v_flag3 = false;
+            } 
+        }
+        // 결승
+        } else {
+            if(p_this.id == "child1"){
+                v_child2.style.backgroundImage= "";
+                v_child1.style.left = "200px"
+                sendVal = v_child1.style.backgroundImage;
+                v_title.innerHTML = sendVal.split("(")[1].split(")")[0].replace('"' , "").split("/")[1].split(".")[0] + " 우승!";
+                console.log(sendVal.split("(")[1].split(")")[0] )
+                console.log(opener.document.getElementById("id_reo").src);
+            } else {
+                v_child1.style.backgroundImage= "";
+                v_child2.style.left = "200px"
+                sendVal = v_child2.style.backgroundImage;
+                v_title.innerHTML = sendVal.split("(")[1].split(")")[0].replace('"' , "").split("/")[1].split(".")[0] + " 우승!";
+                console.log(sendVal.split("(")[1].split(")")[0] )
+                console.log(opener.document.getElementById("id_reo").src);
+            }
+        }
+        }
+        // 부모창 전송 함수
+        function f_send(){
+            if(!sendVal){
+                alert("결정하세요");
+            } else {
+                opener.document.getElementById("v").innerHTML += sendVal.split("(")[1].split(")")[0].replace('"' , "").split("/")[1].split(".")[0] ;
+            }
+        }
+        // 색 랜덤 함수
+        function retColor() {
+            var v_red = Math.round(Math.random()*255);
+            var v_green = Math.round(Math.random()*255);
+            var v_blue = Math.round(Math.random()*255);
+            var v_alpla = "0." + Math.round(Math.random()*9);
+            if(v_alpla == "0.0"){
+                v_alpla = "1";
+            }
+            return "rgb("+v_red+","+v_green+","+v_blue+ "," + v_alpla+ ")";
+        }
+    </script>
+</body>
+</html>

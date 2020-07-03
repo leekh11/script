@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <!--select에 가장 많이 쓰는 이벤트는 change-->
+    <select id="id_sel" onchange="f_chgVal()"> 
+        <option value="java">자바</option>
+        <option value="jsp">JSP</option>
+        <option value="spring">SPRING</option>
+        <option value="tomcat">Tomcat</option> 
+        <option value="0" selected >선택하세요</option> 
+    </select> <br>
+    <input id="id_txt" type="text" value="ReadOnly" readonly>
+    <script>
+        function f_chgVal() {
+            document.getElementById("id_txt").value = document.getElementById("id_sel").value;
+        }
+    </script>
+</body>

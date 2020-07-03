@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<body>
+    취미 <hr>
+    코팅 <input type="checkbox" name="nm_hobby" value="코딩">
+    프로그램 <input type="checkbox" name="nm_hobby" value="프로그램">
+    알고리즘짜기 <input type="checkbox" name="nm_hobby" value="알고리즘"> <br>
+    sql갖고놀기 <input type="checkbox" name="nm_hobby" value="sql">
+    java갖고놀기 <input type="checkbox" name="nm_hobby" value="java">
+    JS갖고놀기 <input type="checkbox" name="nm_hobby" value="JS"> <br>
+    오라클갖고놀기 <input type="checkbox" name="nm_hobby" value="오라클">
+    HTML갖고놀기 <input type="checkbox" name="nm_hobby" value="HTML">
+    <input type="button" value="확인" onclick="f_ckBox()">
+    <script>
+        var v_ckboxs = document.getElementsByName("nm_hobby")
+        // 문제 사용자가 체크박스를 3개 넘게 체크했을 경우
+        // 3개까지만 가능하다고 메세지 , 체크박스의 체크를 전부 해제
+        function f_ckBox() {
+            var v_result = "선택한 값은 " ;
+            var v_cnt = 0;
+            for(var i=0; i<v_ckboxs.length; i++){
+                if(v_ckboxs[i].checked){ // 체크되었는지 확인
+                v_cnt = v_cnt + 1; //카운트 증가! <----------------------- !
+                v_result = v_result + " " + v_ckboxs[i].value;
+                }
+            }
+            //3개가 넘었는지 체크
+            if(v_cnt > 3){
+                alert("3개만 체크");
+                f_ckboxClear(v_ckboxs);
+                return;     //함수 강제 종료, 더이상 할필요없음
+            }
+            v_result = v_result + " 입니다."
+            alert(v_result); //눈으로 볼 수 있게 출력
+        } 
+        //체크박스의 배열을 받아서 배열속 체크박스의 체크를 해제하는 함수
+        function f_ckboxClear(p_ckboxs) {
+            for(var i=0; i<p_ckboxs.length; i++){
+                p_ckboxs[i].checked = false;
+            }
+        }
+        
+        
+            
+    </script>
+</body>

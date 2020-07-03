@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <input type="button" value="post" onclick="f_post()">
+        <script>
+            function f_post(){
+                var v_ajax = new XMLHttpRequest();
+                v_ajax.open("post", "test.php" , true);
+                // post 방식 전송시 아래 라인 추가 , send전에 해야함
+                v_ajax.setRequestHeader("content-type" , "application/x-www-form-urlencoded")
+                v_ajax.send("name=hello :)"); //post방식으로 전달할 때는 send안에 넣어줌
+                v_ajax.onreadystatechange = function(){
+                    if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                        console.log(v_ajax.responseText);
+                    }
+                }
+            }
+        </script>
+</body>
+</html>

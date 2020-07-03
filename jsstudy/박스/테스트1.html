@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <img id="id_img1" src="images/기생충3.jpg" width="200" height="200"> <br>
+    <input type="button" value="다음이미지" onclick="f_next()"> <br>
+    <input type="button" value="이전이미지" onclick="f_pre()">
+    <script>
+        var v_imgList = [ "images/기생충4.jpg" , "images/기생충5.jpg" , "images/무민.png" , "images/무우민.jpg" ] ;
+        var v_startIndex = 0;
+        // 줄여쓰기
+        //document.getElementById("id_img1").src = v_imgList[v_startIndex];
+        var v_img = document.getElementById("id_img1"); // 객체는 참조형이기때문에 별명을 붙일수 있음
+        // var v_imgSrc = document.getElementById("id_img1").src; // 이것은 줄여쓰기 x 속성값이 문자열이라서 
+
+        function f_next(){
+            // 버튼을 누르면 배열의 다음 이미지가 나오도록
+            // 마지막 이미지 다음에는 처음이미지가 나옵니다
+            v_startIndex = v_startIndex +1;
+                v_img.src = v_imgList[v_startIndex];
+                if(v_startIndex >= (v_imgList.length -1)){
+                    v_startIndex = -1;
+                }
+        }
+        function f_pre(){
+            v_startIndex = v_startIndex -1
+            if(v_startIndex <= -1) {
+                v_startIndex = 3;
+            }
+            v_img.src = v_imgList[v_startIndex];
+
+        }
+    </script>
+</body>

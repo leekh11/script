@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    <script>
+        var v_disp = document.getElementById("id_disp");
+        var nums = [];
+        // 20개 번호 생성
+        for(var i=0; i<20; i++){
+            nums[i] = Math.floor(Math.random()*45)+55;
+        }
+        v_disp.innerHTML = nums;
+
+        var v_max = nums[0];
+        var v_min = nums[0];
+
+        function f_maxMin(p_arr) {
+            var max = p_arr[0];
+            var min = p_arr[0];
+        for(var i=1; i<p_arr.length; i++) {
+            if(max < p_arr[i]){
+                max = p_arr[i];
+            }
+            if(min>p_arr[i]){
+                min = p_arr[i];
+            }
+        }
+        var result = {maxValue  :  max,  minValue  : min }; 
+        return result;
+    }
+
+    var v_result = f_maxMin(nums);
+    
+    v_disp.innerHTML = v_disp.innerHTML + " \n max : "+ v_result.maxValue +" min :" + v_result.minValue 
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp">안녕하세요오오오오오오오옹</div>
+    <form id="id_form1">
+        이름 <input type="text" name="nm_name" value=""> <br>
+        나이 <input type="text" name="nm_age" value=""><br>
+        별명 <input type="text" name="nm_alias" value=""><br>
+        <input type="button" value="call AJAX" onclick="f_ajax()">
+    </form>
+    <script>
+        // SPA : Single Page Application
+
+        // form 안에 input 타입이 많은 경우!
+        // 
+        var v_form = document.getElementById("id_form1");
+        function f_serialize(p_form){
+            var v_queryString = "";
+            var cnt = 0;
+            for(var i=0; i<p_form.elements.length; i++){
+                if(p_form.elements[i].type == "button") {continue;}
+                v_queryString += p_form.elements[i].name + "=";
+                if(i == p_form.elements.length){
+                    v_queryString += p_form.elements[i].value + "&";    
+                } else {
+                    v_queryString += p_form.elements[i].value + "&"; 
+                }
+                cnt++;
+            }
+            return v_queryString;
+        }
+        function f_ajax() {
+            // alert(f_serialize(v_form));
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "test.php?"+f_serialize(v_form), true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                    document.getElementById("id_disp").innerHTML = v_ajax.responseText;
+                }
+            }    
+        }
+        //  무조건 암기하기
+        /*var v_ajax = new XMLHttpRequest(); // 통신객체(대리 행위 객체)
+        v_ajax.open( "get","test.php", true ); // 인수 세개 !!  method(get/post), url, 동기(false)/비동기(true) 여부
+        v_ajax.send(); //서버에 연락
+        // 통신객체는 상태값이 바뀔때 마다 이벤트를 발생시켜 알려줌
+        v_ajax.onreadystatechange = function() {
+            // 우리가 관심있는 것은 통신이 잘 끝난 상황만 관심있음!
+            if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                // readyState 4 : 통신을 완료했다 // status 200 : 서버에서 보내는 완료 상태 
+                // alert("통신완료");
+                // alert(v_ajax.responseText);
+            }
+        }*/
+    </script>
+</body>
+</html>

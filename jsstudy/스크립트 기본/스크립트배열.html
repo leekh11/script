@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<script>
+    //스크립트 배열은 자바배열과 달리 고무줄이라서
+    // 마구 늘리고 줄이고 할 수있음.
+    // 배열은 indx(0부터 시작)와 length가 중요!
+    // 배열 선언
+    var v_arr =[]; // 배열선언
+    var v_arr1 = [1,2,3,4]; //초기값 줘서 선언
+    // alert(v_arr1[3]); 
+    var v_arr2 = [7, '안녕' , true , "졸려" , [99, 88, "힝"]]; 
+    //데이터형이 섞여두 상관없음.
+    // alert(v_arr2[4][2]);
+    // alert(v_arr2[4].length); // length 배열의 길이 알려줌 없는 값은 undefined
+    var v_arr3=[];
+    for(var i=1; i<=5; i++){
+        // v_arr3[i] = (i*1);
+        v_arr3[v_arr3.length] = (i*1); //자동으로 채번 증가 
+    }
+    v_arr3[v_arr3.length] = "마지막에 추가";
+    alert(v_arr3);
+// 여기서 테스트 문제
+    var v_test = [3, 7, 11, 2, 10, 4, 9];
+    //위 배열에서 최대값을 찾아내서 변수 v_max에 담으시오
+    var v_max = v_test[0];
+    for(var i=1; i<v_test.length; i++) {
+        if(v_max < v_test[i]){
+            v_max = v_test[i];
+        }
+    }
+    alert(v_max);
+
+</script>

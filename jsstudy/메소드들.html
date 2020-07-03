@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            border: 1px solid violet;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button id="id_btn">나도 버튼</button>
+    <input type="button" value="이동" onclick="f_mv()"> 
+    <input type="button" value="삭제" onclick="f_remCh()"> <br>
+
+    <div id="id_disp" style="top: 50px;"></div>
+    <div id="id_disp2" style="top: 300px;"></div>
+    <script>
+
+        var v_btn = document.getElementById("id_btn");
+        var v_disp = document.getElementById("id_disp");
+        var v_disp2 = document.getElementById("id_disp2");
+
+        function f_remCh(){
+            // appendChild <-> removeChild
+            // v_disp.removeChild(document.getElementById("img1"));
+            // for(var i = 0; i < v_disp.children.length;){
+            //     v_disp.removeChild(v_disp.children[0]); // 빈자리 채우기 위해 이동
+            // }
+            v_disp.innerHTML="";
+        }
+
+
+
+        function f_mv(){
+            var v_img1 = document.getElementById("img1");
+            //이미 !존재하는 객체를 다른곳에 붙이면 이동해버림
+            v_disp2.appendChild(v_img1);   // append보다는 appendChild가 호환성이 좋음
+        }
+
+        var v_imgs = ["아이린1.jpg","아이린2.jpg","아이린3.jpg","아이린4.jpg"];
+        var v_index=0;
+        v_btn.onclick=function(){
+            //태그 객체 생성
+            var v_img = document.createElement("img"); // 메모리상에 img객체가 생성됨
+            var v_imgPath = "./images/";
+            v_img.setAttribute("src",v_imgPath + v_imgs[v_index]);  // 속성 write
+            v_img.setAttribute("width","200");
+            v_img.setAttribute("height","200");
+            v_img.setAttribute("id","img"+(v_index+1));
+            v_index++ ;
+    
+            //어딘가에 넣어야 보임
+            v_disp.appendChild(v_img); 
+            //alert(v_img.getAttribute("src"));       // 속성 read
+
+        }
+        
+    </script>
+</body>
+</html>

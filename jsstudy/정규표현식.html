@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    //정규표현식은 자주쓰는 건 아니라서, 필요할 때 인터넷 검색을 잘해서 사용하면 좋습니다.
+    //정규표현식 최고의 엔진은 Perl이란 언어 있습니다.
+    //자바스크립트 정규표현식 엔진을 Perl에서 일부 가져왔습니다.
+    //외국에선 정규표현식을 일반인도 꽤 사용, 오타찾기에...
+
+    // 선언
+    //var v_regexp = new RegExp("어쩌구저쩌구");  // 잘 안씀
+    /*
+      ^   문장의시작
+      $   문장의종료
+      .   모든글자
+      * 0번이상
+      +   1번이상 반복
+      ?   0번 또는 1번
+      [az]  a 또는 z 를 의미
+      [0-9]   0~9의 숫자 의미  \d
+      [a-zA-Z]  영문자 의미
+      {1,}        반복 최소 1번
+      {2,5}       반복 2번에서 5번
+      {,4}        반복 최대 4번   
+      ()          그룹짓기, 첫번째부터 $1 $2 .....
+      [(ab)|(cd)]   ab 또는 cd
+      [0-9]         \d
+      [0-9a-zA-Z]      \w
+      빈공간(화이트스페이스)    \s
+    */
+    //var v_regexp = /010-[0-9]{4}-[0-9]{4}/;                          // 이 방법을 많이 씀, 좀더 빠름 
+    //var v_str = "010-4444-8888";
+    // 자주쓰는 메소드 test  거의 이것밖에 쓰지 않음.
+    //alert(v_regexp.test(v_str));
+
+    //문자열의 replace와 split 메소드가 정규표현식을 사용할 수 있음
+    // var v_str = "This this This this This\nThis this This this This\nThis this This this This\n";
+    //alert(v_str);
+    // alert(v_str.replace(/^This/gim,"흥"));  // g 옵션 global 전부 i 대소문자 무시
+    var v_str = "this This";
+    //alert(v_str);
+    //alert(v_str.replace(/^This/gim,"흥"));  // g 옵션 global 전부
+    // alert(v_str.replace(/(this) (This)/gi,"흥 $1, $2 치"));  // g 옵션 global 전부
+
+//'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'
+
+// 숫자를 입력받아서 3자리 마다 콤마를 찍어주는 함수를 만들기
+// 정규표현식 이용 힌트: ()를 사용 그룹짓기
+
+function commaInsert(p_num){
+  p_num = p_num + "";
+  var v_regExp = /(\d+)(\d{3})/
+  while(v_regExp.test(p_num)) {
+    p_num = p_num.replace( v_regExp,"$1,$2");
+  }
+  return p_num;
+}
+// alert(commaInsert(10000000000000));
+var v_regExp1 = /^[가-힣]+/; // 한글체크 정규표현식
+function korCheck(p_test) {
+  var v_regExp1 = /(^[가-힣])(\w+)/;
+  while(v_regExp1.test(p_test)){
+    p_test = p_test.replace(v_regExp1 , "''$2" )
+  }
+  if(p_test) {
+    alert("전부 한글이 아님");
+  }else {
+    alert("한글이야");
+  }
+}
+
+
+if([] == ![]){
+  alert("hi");
+}
+  /*
+     1.  ![] 에서 ! 때문에 []이 boolean으로 바뀐다.  new Boolean([]) 하면 true
+     2,  ![]은 !true 로  false
+     3,  [] == false는 비교테이블에서 object == boolean에 해당 
+     3.  boolean false가 숫자로 바뀌어 0가 된다
+     4.  object == 숫자 비교는 비교테이블에서 object가 원시타입으로 바뀐다 . 빈 문자열
+     5.  "" == 숫자 는 문자열이 숫자로 바뀐다. ""은 숫자 0
+     6.  최종적으로 0 == 0 이어서 true!
+  */
+
+
+</script>

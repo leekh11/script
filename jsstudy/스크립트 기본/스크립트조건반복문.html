@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<script>
+    // 조건 반복문은 자바와 거의 동일
+    // >,< , >=, <= , == , != 
+    // &&(and연산) , ||(or 연산)
+    // A || B  A,B 중에 1개만 참이여도 참
+    // A&&B   A,B 두개 다 참이어야 함
+/*    
+    if(조건) {
+
+    } else if(조건){
+
+    } else {
+        
+    }
+    */ //switch 문은 firmware에서 아주 많이 씀 (경우의 수가 정해져 있음.)
+
+    // 반복문 for , while
+    // 키워드 continue(생략) , break(탈출)
+    /*
+    var i=1;
+    for(; i<=9; ) {
+        if(i==5)  {
+            i = i+2;
+            continue; } 
+        if(i == 7) break;  // 반복문 종료 밖으로 뻗어서 감
+        alert(i);
+        i= i+2;
+        }
+        alert("종료확인" + i) ;
+    var i = 1
+    while(true) {
+        if(i<9) {
+            alert(i);
+            i++;
+        }
+        break;
+    } */
+    
+    var v_a = 3;
+    var v_c = v_a++; // 후치연산
+    /* 후치연산
+    var v_c = v_a;   ...1
+    v_a = v_a+1;    ...2
+    전치연산은 순서 바꿈! */
+    
+    var v_num = 337;
+    var v_str = "337";
+    //== loose한 비교 자동형변환이됨
+    // 좀더 자세한 것은 wrapper 를 배운 다음에...
+    // wrapper : Integer/ Double .. 같은 것  , 크게 편하게 씌운것(조정이 쉽게)
+    if(v_num == v_str) {
+        alert("참");
+    }
+    // strict 비교 / 자동형변환이 일어나지 않음!
+    if(v_num === v_str) {
+        alert("참일까?");
+    }
+    
+
+    //느낌이 온다면 you dom't js
+
+</script>

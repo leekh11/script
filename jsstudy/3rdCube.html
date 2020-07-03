@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            transform : 회전하기 rotate 이동하기 translate
+            CSS로 3D는 apple에서 맨 처음 제안.. 현재 진행중
+
+         */
+         #scene {
+             width: 600px;
+             height: 400px;
+             border: 2px solid black;
+             perspective: 1200px;
+             /* 1200px 떨어진 곳에서 바라보기  */
+             perspective-origin: bottom right;
+             
+         }
+         #obj3d {
+            position: relative;
+            top: 100px;
+            left: 100px;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;  /* 3d로 표현하겠다는 의미 */
+            transform-origin: 100px 100px 0px; /* x , y, z*/
+         }
+         .common {
+             position: absolute;
+             width: 200px;
+             height: 200px;
+             border: 1px solid black;
+             font-size: 6em;
+             text-align: center;
+             line-height: 200px; /* 글자 수직 가운데로*/
+         }
+         .cs_front {
+            background-color: rgba(255, 0, 0, 0.8);
+            transform: rotateY(0deg) translateZ(100px);
+         }
+         .cs_right {
+            background-color: rgb(247, 162, 6, 0.8);
+            transform: rotateY(90deg) translateZ(100px);
+         }
+         .cs_back {
+            background-color: rgb(228, 228, 8 , 0.8);
+            transform: rotateY(180deg) translateZ(100px);
+
+         }
+         .cs_left {
+            background-color: rgb(7, 252, 7, 0.8) ;
+            transform: rotateY(-90deg) translateZ(100px);
+         }
+         .cs_top {
+            background-color: rgb(27, 27, 173 , 0.8);
+            transform: rotateX(90deg) translateZ(100px);
+
+         }
+         .cs_bottom {
+            background-color: rgb(184, 2, 184 , 0.8);
+            transform: rotateX(-90deg) translateZ(100px);
+         }
+    </style>
+</head>
+<body>
+    <input type="button" value="회전" onclick="f_rot3d()">
+    <!-- div#scene>div#obj3d>div#common*6 -->
+    <div id="scene">
+        <div id="obj3d">
+            <!-- <div class="common cs_front"><img src="images/제니1.gif" width="200" height="200"></div>
+            <div class="common cs_right"><img src="images/제니1.gif" width="200" height="200"></div>
+            <div class="common cs_back"><img src="images/제니1.gif" width="200" height="200"></div>
+            <div class="common cs_left"><img src="images/제니1.gif" width="200" height="200"></div>
+            <div class="common cs_top"><img src="images/제니1.gif" width="200" height="200"></div>
+            <div class="common cs_bottom"><img src="images/제니1.gif" width="200" height="200"></div> -->
+            <div class="common cs_front"><video src="movies/blackswan.mp4" autoplay muted width="200"></video></div>
+            <div class="common cs_right"><video src="movies/boywithluv.mp4" autoplay muted width="200"></video></div>
+            <div class="common cs_back"><video src="movies/dogs.mp4" autoplay muted width="200"></video></div>
+            <div class="common cs_left"><video src="movies/programmer1.mp4" autoplay muted width="200"></video></div>
+            <div class="common cs_top"><video src="movies/roze.mp4" autoplay muted width="200"></video></div>
+            <div class="common cs_bottom"><video src="movies/sorim.mp4" autoplay muted width="200"></video></div>
+        </div>
+    </div>
+    <script>
+        var v_obj3d = document.getElementById("obj3d");
+        var v_gak = 0;
+        var v_state = 1;  // 여러 시쿼스를 반복
+        var v_cnt = 10;
+        var timerID =null;
+        // img 태그 모두에 이벤트 걸기
+        // getelement s By Tag Name 은 xml 문서 다룰때 많이 사용
+        var v_imgs = document.getElementsByTagName("img");
+        for(i=0; i<v_imgs.length; i++) {
+            v_imgs[i].addEventListener("mouseover", function(){
+                clearTimeout(timerID);
+            });
+            v_imgs[i].addEventListener("mouseout", function(){
+                f_rot3d();
+            });
+        }
+        
+        function f_rot3d() {
+            v_gak += 36;
+            // 1번 동작시작
+            if(v_state == 1) {
+                v_obj3d.style.transform = "rotateX(" + v_gak + "deg)" ;
+                v_cnt++;
+                if(v_cnt >=10) {
+                    v_state = 2;
+                    v_cnt =0;
+                }
+            } if(v_state == 2) {
+                v_obj3d.style.transform = "rotateY(" + v_gak + "deg)" ;
+                v_cnt++;
+                if(v_cnt >=10) {
+                    v_state = 3;
+                    v_cnt =0;
+                }
+            } if(v_state == 3) {
+                v_obj3d.style.transform = "rotateY(" + v_gak + "deg)" + "rotateX(" + v_gak + "deg)" ;
+                v_cnt++;
+                if(v_cnt >=10) {
+                    v_state = 4;
+                    v_cnt =0;
+                }
+            } if(v_state == 4) {
+                v_obj3d.style.transform = "rotateZ(" + v_gak + "deg)" ;
+                v_cnt++;
+                if(v_cnt >=10) {
+                    v_state = 1;
+                    v_cnt =0;
+                }
+            }
+            timerID = setTimeout(f_rot3d, 100); 
+        }
+
+    </script>
+</body>
+</html>

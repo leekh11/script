@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #id_modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-color: gray;
+        opacity: 0.8;
+        /*border: 5px solid black;*/
+    }
+    #id_content {
+        width:60%;
+        height:60%;
+        margin: 50px auto;
+        background-color: black;
+        color:pink;
+    }
+    </style>
+    </head>
+    <body>
+        <!--modal -->
+        <input type=button value="모달창 열기" onclick="f_modal()">
+        <div id="id_modal">
+            <div id="id_content">
+                흥칫뿡입니까? 대답안하면 못나가요?<br> 
+                <input type=button value="예" onclick="f_answer(1)">
+                <input type=button value="아니오" onclick="f_answer(0)">
+            </div>
+        </div>
+        <script>
+       function f_answer(p_ck){
+            if(!p_ck){
+                alert("예라고 안하면 못 나가용!");
+            }else {
+                alert("역시 흥칫뿡이셨군요! ㅋㅋ");
+            v_modalWindow.style.display = "none"
+            }
+        }
+        var v_modalWindow = document.getElementById("id_modal");
+        function f_modal(){
+           v_modalWindow.style.display = "block";
+        }
+        </script>
+    </body>
+</html>

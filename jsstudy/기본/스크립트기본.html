@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 자바스크립트는 동적언어! 자바스위치는 머리에서 끕니다.
+    // 변수 선언 및 변수 타입 = 오른쪽의 값에 의해 변수타입이 자동으로 설정 
+    // var 변수선언을 알려줌
+    "use strict"            // 엄격(Strict) 체크모드 적용
+    var nx_aaa = 337;         // number
+    var nx_bbb = "hello :)''";  // String 
+    var nx_kkk = 'bye " :(';    // 
+    var nx_ccc = true;       // boolean
+    var nx_ddd = [];         // 배열
+    var nx_eee = {};         // json 타입 (JavaScript Object Notation)
+    var nx_fff = null;         // null
+    var nx_ggg = undefined; //정의안됨
+    alert(nx_bbb);            //bbb변수값으로 확인
+    
+    nx_ddd = "999";   //그냥 데이터 타입이 변함 <동적언어>
+    /*
+        더하기에는 문자열 더하기와 숫자 더하기가 존재 문자열 더하기 우선
+        빼기 곱하기 나누기는 산술연산자만 존재 문자열은 없음!
+    */
+    var v_aa = 3;
+    var v_bb = '337';
+    // alert(v_aa+v_bb); // 문자열 더하기 
+    // alert(v_bb-v_aa); // 숫자빼기
+    // alert(v_bb*v_aa);
+    // alert(v_bb/v_aa);
+    var v_cc = v_bb - 0 ; // 숫자형으로 변환 
+    // alert(typeof v_cc);
+
+    //여기서 테스트! v_cc를 다시 문자열로 변환하려면?
+    v_cc = v_cc + "";
+    // alert(typeof v_cc);
+
+    // alert("aaa" - 3); //NaN : Not a Number
+
+    //실제로 자주쓰는 변환 명령어 문자열 ->정수
+    v_cc = "456party" ;
+    var v_dd = parseInt(v_cc);
+    alert(v_dd);
+
+    alert(nx_kkk);
+</script>

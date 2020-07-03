@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    아이디<input type=text value=""><br>
+    암호<input type=password id="id_pw1" value="" onfocus="f_focus()"><br>
+    암호확인 <input type=password id="id_pw2" value="" onfocus="f_focus2()" onblur="f_blur()"><br>
+    <div id="id_msg" style="display:none;color:red">암호가 일치하지 않아요!</div> <br>
+    <input type=submit value="전송해">
+<script>
+    function f_focus2() {
+        // console.log("hi");
+    }
+    function f_focus(){
+        // console.log("커서가 제게 왔어요!");
+    }
+    function f_blur(){
+            var v_pw1val = document.getElementById("id_pw1").value;
+            var v_pw2val = document.getElementById("id_pw2").value;
+            if(v_pw1val != v_pw2val){
+               // alert("암호가 일치하지 않아용~ㅠㅠ");
+                document.getElementById("id_msg").style.display = "block";
+                document.getElementById("id_pw1").focus();
+            }
+        }
+</script>
+</body> 
+</html>

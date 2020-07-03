@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp" style="border:2px solid black"></div>
+    <input type=button value="눌렁" onclick="f_post()">
+    <script>
+        function f_post(){
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get","dolgi.php",true);
+            v_ajax.send();
+
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    alert(v_ajax.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

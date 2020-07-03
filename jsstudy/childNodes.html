@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_parent">
+        <div>자식1</div>
+        <div>자식2</div>
+        <div>자식3</div>
+    </div>
+    <script>
+        //var v_childs = document.getElementById("id_parent").children;
+        //var v_childs = document.getElementById("id_parent").childNodes;
+        // node를 사용하면 아주 힘들어지므로 node관련 속성은 
+        // 특별한 경우가 아니면 사용하지 않습니다.
+        //console.log(v_childs);
+        document.getElementById("id_parent").style["border"] = "2px solid black";
+        // 배열로 접근하면 '-'(하이픈) 을 그대로 사용하면 됨!
+ </script>
+</body>
+</html>

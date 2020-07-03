@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<div id="id_disp"></div>
+<input type="button" value="생성" onclick="f_lotto()">
+<script>
+    // 중복체크는 반복 사용될 가능성이 높아 함수로 표현한다
+
+    // 중복이 있는지 체크해주는 함수
+    function ckRepeat(p_arr, p_num) {
+        var v_isRepeat = false;
+        for (var i=1; i<p_arr; i++) {
+            if(p_arr[i] == p_num){
+                v_isRepeat = true;
+                break; 
+            }
+        }
+        return v_isRepeat; // 중복이 있으면 false 중복이 없으면 tru!
+    }
+
+
+
+    function f_lotto() {
+        
+
+    // 오늘 과제 로또 번호 생성(중복체크 로직의 좋은 사용 예)
+    var v_nums = []; //로또번호를 담기위한 배열
+    for(var i=1; i<=45; i++){
+        v_nums[v_nums.length] = i+"";
+    }
+    var v_ranNum = v_nums [ Math.floor(Math.random()*(v_nums.length-1)) ] +"" ;
+    // alert(v_nums); 1~45   
+    // 위 소스를 참고하여 6개의 중복되지 않는 로또코드 만들기
+    // 몇번을 돌려야하는지 알수없다
+
+    v_cnt = 0;
+    var v_selNums = [];
+    for(;1;) { //무한반속
+        // 무한루프 탈출조건
+        if(v_cnt>=6) {
+            break;
+        }
+
+
+        v_ranNum= v_nums [ Math.floor(Math.random()*(v_nums.length-1)) ] ;
+        //중복체크 필요 -> 중복체크
+        var v_isRepeat = false; // 없다고 가정
+        for(var i=0; i<v_selNums.length; i++){
+            if(v_selNums[i] == v_ranNum) {
+                v_isRepeat = true; // false라는 가정이 틀렸음 같은게 있음
+                break;              // 같은게 1개만 찾아도 더 돌필요가 없음 break = 루프 탈출!
+            }
+        }
+        // 같은게 없을때
+        if(!v_isRepeat) {
+            v_selNums[v_cnt] = v_ranNum;
+            // v_selNums[v_selNums.length] = v_ranNum;
+            v_cnt++;
+        }
+    }
+    document.getElementById("id_disp").innerHTML += v_selNums +"<br>";
+
+    }
+    
+
+    /*
+    var v_lot = [];
+    v_lot[0] =v_nums [ Math.floor(Math.random()*(v_nums.length-1)) ] +"" ;
+    for (var j=1; j<100; j++) {
+        var v_ranNum = v_nums [ Math.floor(Math.random()*(v_nums.length-1)) ] ;
+        if(v_lot.indexOf(v_ranNum) == -1) {
+            v_lot[j] = v_ranNum;
+            if(v_lot.length == 6) {
+                break;
+            }
+        }
+    }*/
+ 
+    // for(var i=1; i<=6; i++) {
+    //     v_lot[v_lot.length] = 
+    // }
+
+    // alert(v_lot);
+    // var v_loot = v_lot; 
+    // for(var i=0; i<v_lot.length; i++) {
+    //     for(var m=0; m<v_lot.length; m++){
+    //         if(v_lot)
+    //     v_lot[i].indexOf(v_lot[m])
+
+    //     }
+    // }
+    // // //6개 숫자 필터
+    // for(var i=0; i<v_lot.length; i++){
+    //     if(v_lot[i].indexOf(v_lot) )
+    // }
+
+
+
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function myfunc(p_json){
+            alert(p_json.save);
+            alert(p_json.age);
+        }
+    </script>
+    <script src="jsonp.php"></script>
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="id_disp">출력</div>
+    </table>
+    <input type="button" value="call Ajax" id="id_btn">
+    <script>
+        var v_btn = document.getElementById("id_btn");
+        var v_disp = document.getElementById("id_disp");
+        v_btn.addEventListener("click", function() {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "http://192.168.10.15/", true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                    alert(v_ajax.responseText);
+                    // console.log(JSON.parse(v_ajax.responseText).name);
+                }
+            }
+        })
+        // ajax는 기본적으로 크로스 오리진 문제를 가지고있다. (block 되어있어서 허용해야 사용가능 ) but JSONP는 없어도 사용 가능
+        // 오리진 구성요소 3개  프로토콜 + 도메인(ip) + 포트 번호 (default 80)
+        //                                     http://mail3.nextit.or.kr
+        //                                     https://mail3.nextit.or.kr
+        //                                     http://huk.nextit.or.kr
+        //                                     http://mail3.nextit.or.kr:8080
+    </script>
+</body>
+</html>

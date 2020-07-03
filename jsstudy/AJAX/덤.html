@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="눌렁"  id="id_btn">
+    <input type="button" id="id_btn2" value="눌렁2">
+    <div id="id_test">나는 사람이다 너는 누구냐</div>
+    <div>
+        <img src="../images/아이린1.jpg" width="50" height="50">
+        <img src="../images/아이린2.jpg" width="50" height="50">
+        <img src="../images/아이린3.jpg" width="50" height="50">
+        <img src="../images/아이린4.jpg" width="50" height="50">
+    </div>
+    <script>
+        $("#id_btn").on("click",  function(){
+            // $("<img></img>").attr("src" , "../images/아이린10.jpg")
+            //                                      .attr("width", "100").attr("height", "100")
+            //                                     .prependTo($("img").eq(1))
+            $("div").prepend($("<img></img>").attr("src" , "../images/아이린10.jpg"). attr("width", "100").attr("height", "100"));
+        })
+        $("#id_btn2").on("click",  function(){
+            $("#id_test").html("안녕" +$("#id_test").html());
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // p_start에서 p_end사이의 랜덤한 숫자를 리턴해주는 함수
+        function f_ranNumber(p_start, p_end){
+            var gap = p_end - p_start;
+            return p_start + Math.round(Math.random()*gap);
+        }
+
+        //  배열선언
+        var v_arr = [];
+        // 20개 숫자 배열에 담기
+        for(var i=1; i<=20; i++){
+            v_arr.push(f_ranNumber(55,100));
+        }
+        // 배열을 매개변수로 받아 최대값을 리턴해주는 함수
+        function f_maxNum(p_arr){
+            var v_max = p_arr[0]; 
+            for(var i =1; i<p_arr.length; i++){
+                if(v_max < p_arr[i]) {
+                   v_max = p_arr[i]; 
+                }
+            }
+            return v_max;
+        }  
+
+        // 배열을 매개변수로 받아서 최소값을 return 함수
+        function f_minNum(p_arr){
+            var v_min=p_arr[0];
+            for(var i=1;i<p_arr.length;i++){
+                if(v_min > p_arr[i]){
+                v_min = p_arr[i];
+                }
+            }
+            return v_min;
+        }
+
+        //최종 원하던 함수 배열의 max,min 값을 json으로 묶어서 return
+        function f_minmax(p_arr){
+            return {
+                "maxNum":f_maxNum(p_arr),
+                "minNum":f_minNum(p_arr)
+            }
+        }
+
+        alert(v_arr);
+        var v_minmaxJson = f_minmax(v_arr);
+        alert("최대값"+ v_minmaxJson.maxNum + " 최소값" + v_minmaxJson.minNum);
+
+</script>
+</body>
+</html>

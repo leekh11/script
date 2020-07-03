@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<body>
+    남 <input id="id_rd1" type=radio value="남자" checked name="nm_sb"> 여 <input type=radio value="여자" name="nm_sb"> <br>
+    <!--checked 디폴트값 주기-->
+    내국인 <input type=radio value="kor" checked name="nm_nt"> 외국인 <input type=radio value="for" name="nm_nt"> <br>
+    선택값 확인 <input id="id_result" type="text" value=""> <br>
+    <input type="button" value="눌러서 체크" onclick="f_result()">
+    <script>
+        // alert(document.getElementById("id_rd1").checked); // checked 체크여부 읽기
+        // document.getElementById("id_rd1").checked = false;  // 체크여부 해제하기  
+        var v_sbRadios = document.getElementsByName("nm_sb"); // elements 라서 배열식으로 값 가져옴
+        var v_ntRadios = document.getElementsByName("nm_nt");
+        var v_txt = document.getElementById("id_result");
+        function f_result() {
+            for(i=0; i<v_sbRadios.length; i++) {
+                if(v_sbRadios[i].checked){
+                v_txt.value = v_sbRadios[i].value + " & "
+                }
+            }
+            for(i=0; i<v_ntRadios.length; i++) {
+                if(v_ntRadios[i].checked){
+                v_txt.value += v_ntRadios[i].value + " 입니다."
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

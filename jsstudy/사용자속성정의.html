@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 사용자 정의 속성은 무조건 data- 로 시작 -->
+    <div id="id_dv" data-lee="lee" data-kkk="kkk">
+        사용자가 html 엘리먼트에 속성을 정의할 수 있어용
+    </div>
+    <script>
+        // 사용자 정의 속성에 접근법 
+        // 사용자 정의 속성은 보통 조금 큰 프로젝트에서 사용됨/ 일반적으로 사용안됨 
+        var v_dv = document.getElementById("id_dv");
+        // v_dv.dataset["lee"];
+        // v_dv.dataset.kkk;
+
+    </script>
+</body>
+</html>

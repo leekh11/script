@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="frB_txt" type="text" value="프레임B">
+    <input id="frB_btn" type="button" value="click" onclick="f_frB()">
+    <script>
+        function f_frB() {
+            parent.frames[0].document.getElementById("frA_txt").value = 
+            document.getElementById("frB_txt").value;
+        }
+    </script>
+</body>
+</html>

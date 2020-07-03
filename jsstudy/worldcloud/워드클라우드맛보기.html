@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="wordcloud2.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 꼭 결과가 원하는대로 나왔는지 눈으로 확인해야 함-->
+    <canvas id="id_js" width=400 height=300></canvas>
+    <a href="../images/roze03.jpg" width=50 height=50 download="로제.jpg">다운로드</a><br>
+    <a href="#" id="id_save">이미저장</a>
+    <script>
+        var v_canvas = document.getElementById('id_js');
+        var v_save = document.getElementById("id_save");
+        v_save.addEventListener("click",function(){
+            v_save.download = "다운.png";
+            v_save.href=v_canvas.toDataURL(); // canvas내용을 데이타로 바꿔줌
+        })
+
+        var v_list = [];
+        for(var i=1; i<=100; i++){
+            var v_data = ["hi"+i, Math.ceil(Math.random()*10)+10];
+            v_list.push(v_data);
+        }
+
+        WordCloud(v_canvas, 
+                { 
+                    list: v_list,
+                    // backgroundColor: "magenta",
+                    color: "random-dark", 
+                    //drawOutOfBound: true,
+                    shape: "diamond",
+                    // color : "random-light",
+                    rotateRatio : 1 
+                } 
+        );
+    </script>
+</body>
+</html>

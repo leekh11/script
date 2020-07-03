@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<!-- this를 컨트롤 할 수 있는 3개의 메소드를 제공 
+  // call , apply , bind 특별한 상황에서 중요! 보통때는 별로 필요없음
+-->
+<input type="button" id="id_btn" value="click">
+<script>
+    // bind는 꼭 필요한 경우가 존재
+    // 새로운 함수를 만들어서 그 함수명(FP: Function Pointer)을 리턴해줌
+    var v_btn = document.getElementById("id_btn");
+    v_btn.onclick = f_clk.bind(location , "메시지") //( ) this , 매개변수
+    
+    function f_clk(p_msg){
+        alert(p_msg);
+        alert(this.href); // href는 location객체의 속성
+    }
+
+
+    //일반적인 상황 , 속성이나 메소드를 가지고 있는 객체를 가리킴
+    // document.write(this); // window 
+    function f_this(p_msg, p_msg1) {
+        document.write("함수안에서 this" + this.href + p_msg);
+        alert(p_msg1)
+    }
+    // f_this.call(document); // call메소드로 this를 document로 변경함
+
+    // f_this.call(new Saram("오참솔" , 55));
+    // f_this.call(location, "위-치");
+    // f_this.apply(location, ["위-치", "2번 위치"]);
+
+    // f_this.apply(window.location)
+
+
+    //항수 안에 this가 사용 되었을때
+    function Saram(p_name, p_age) {
+        this.nameA = p_name;
+        this.ageA = p_age;
+        this.print = function() {
+            console.log(this);
+        }
+    }
+    /* 함수 호출 값
+    Saram("홍길동" ,20 );
+    document.write(nameA +" : " + ageA );
+    
+
+    var v_abc = new Saram("이순신" , 30); // new가 붙으면 class키워드처럼 생성자로 동작
+    document.write(v_abc.nameA + " : " + v_abc.ageA);
+    // window.v_abc.print(); //바로위의 객체를 가리킴 
+*/  
+    // 특별한 상황 , this가 가리키는 객체를 바꾸고 싶음!
+
+
+</script>

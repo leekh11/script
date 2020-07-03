@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="level0">
+        <div class="level1">1</div>
+        <div class="level5">2</div>
+        <div class="level1">
+            <div class="level2">a</div>
+            <div class="level5">b</div>
+            <div class="level2">c</div>
+        </div >
+        <div class="level1">4</div>
+    </div>
+    <script>
+       // alert($("div").last().html());
+       // end는 다시 처음 선택으로 되돌린당!
+       //$(".level2").eq(0).css("backgroundColor","pink").end()
+       //            .eq(2).css("color","magenta");
+       //alert($(".level2").eq(1).closest(".level1").html());
+       
+       /* find vs filter
+          find는 자식에서만 찾기
+          filter는 현재선택된  것 중에서 찾기
+          외우기보단 실행된 결과를 눈으로 확인한 뒤에 사용하면 좋음
+       */
+       $(".level1").find(".level5").css("backgroundColor","black");
+ //      console.log($(".level1").filter(".level5").css("backgroundColor","black"));
+    </script>
+</body>
+</html>

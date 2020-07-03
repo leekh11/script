@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        사용자 파일 선택 상자, 일반적으로 이미지 파일 선택하는데만 사용됨 
+        자바스크립트는 기본적으로 보안상 사용자 시스템의 파일을 읽을수도
+        쓸수도 없음
+        허락된 것은 사용자가 선택해주는 파일을 읽을 수만 있음
+        이렇게 밖에 사용하지 않기 때문에 이 파일을 잘 가지고 있자 
+    -->
+    <div id="id_disp"></div>
+    <!-- <img id="id_img" src="" width="300" height="300"> <br> -->
+    <input id="id_file" type=file value="" accept=".jpg, .png, .jpeg, .gif" onchange="f_chImg()">   
+    <script>
+        var v_fileIn = document.getElementById("id_file");
+        // var v_img = document.getElementById("id_img");
+        var v_disp = document.getElementById("id_disp");
+        function f_chImg() {
+            console.log(v_fileIn.files[0]);   // 파일은 files 속성이 중요함 [배열!]
+            var v_file = v_fileIn.files[0];
+            //파일 읽기 파일리더 객체가 필요 
+            var v_fileReader = new FileReader();
+            v_fileReader.readAsDataURL(v_file); // readAsDataURL 파일 객체를 매개변수로 전달해줘야함
+            //다 읽었을때 온로드라는 이벤트를 발생시킴
+            //비동기 방식 
+            // 파일리더는 일을 대신해주고 알려주는 것
+            // 선택한 이미지가 모두 id_disp에 나오도록
+            // ㄱㄱ
+            
+            v_fileReader.onload = function() {
+                // alert(v_fileReader.result);
+                var v_imgStr = "<img src=" + v_fileReader.result + ">";
+                
+                v_disp.innerHTML += v_imgStr; 
+                
+            }
+        }
+    </script>
+</body>
+</html>

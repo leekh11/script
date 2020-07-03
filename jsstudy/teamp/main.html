@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Bootstarp -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <title>메인 화면</title>
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">페이지 제목</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">메뉴1</a></li>
+                <li><a href="#contact">메뉴1</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">관리자 메뉴 <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/project/html/member/createDummyMember.html">드롭 1</a></li>
+                    <li><a href="/project/html/member/readMember.html">드롭 1</a></li>
+                    <li><a href="#">드롭 1</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">드롭 1 소 메뉴</li>
+                    <li><a href="#">드롭 1</a></li>
+                    <li><a href="#">드롭 1</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">회원 메뉴 <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">드롭2</a></li>
+                    <li><a href="#">드롭2</a></li>
+                    <li><a href="#">드롭2</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">드롭2 소 메뉴</li>
+                    <li><a href="#">드롭2</a></li>
+                    <li><a href="#">드롭2</a></li>
+                  </ul>
+                </li>
+                <li><a href="login.html">Login</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="./teampi/slide1.jpeg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>창덕궁 달빛 기행</h1>
+              <p> 2020. 5. 28. ~ 6. 21.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">cdg.go.kr</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./teampi/slide2.jpeg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>이월드 수국 축제</h1>
+              <p>2020. 4. 30. ~ 6. 21. </p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">eworld.kr</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./teampi/울산고래축제.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>울산고래축제</h1>
+              <p> 2020. 6. 19. ~ 6. 21.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">ulsanwhale.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="./teampi/사진1.jpeg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>추천</h2>
+          <p>여행지 추천!</p>
+          <p><a class="btn btn-default" href="#" role="button">recommend &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="./teampi/사진2.jpeg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>여행길 만들기</h2>
+          <p>나만의 여행길</p>
+          <p><a class="btn btn-default" href="#" role="button">my tour &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="./teampi/사진3.jpeg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>후기</h2>
+          <p>후기게시판</p>
+          <p><a class="btn btn-default" href="#" role="button">review &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">여행지 순위 <span class="text-muted">선정</span></h2>
+          <p class="lead">여행지 Best</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="./teampi/사진4.jpeg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="./teampi/사진7.jpeg" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">공지사항 <span class="text-muted"></span></h2>
+          <p class="lead">Today</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">소식 <span class="text-muted">What's new</span></h2>
+          <p class="lead">Welcome</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="./teampi/사진6.jpeg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">위로 </a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

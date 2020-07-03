@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    /* 오늘의 과제
+     터미네이터를 만들기만 하면 인간이 부숴버려서 짜증난 스카이넷은
+     자가분열 터미네이터을 만들었습니다.
+     이놈은 2일차부터 매일 자가분열을 해서 2개로 됩니다.
+     물론 자가분열되어서 나온 터미네이터도 2일째부터 매일 자가분열을 합니다.
+     날짜(몇일차)를 매개변수로 넘기면 해당 일차에 터미네이터가 몇마리인지를
+     리턴해주는 재귀호출 함수를 작성하시오! ~ 푸하하하 쉽지용?
+     파보나치수열임당!   N = (N-1) + (N-2)
+     
+     0일차    A0                                1
+     1일차    A0                                1
+     2일차    A0  A1                            2
+     3일차    A0  A2  A1                        3
+     4일차    A0  A3  A2  A1  A11               5
+       function f_retCnt(p_day){
+            return 몇마리;
+       }  
+    */
+    function f_retCnt(p_day){
+        // 꼭 재귀호출을 사용합니다.
+        // 재귀호출은 무한루프에 빠지지 않도록 종료조건이 중요
+        // 매개변수의 최소값은 0 이므로 
+        if(p_day == 0 || p_day == 1) {
+            return 1;
+        }
+        return f_retCnt(p_day-1) + f_retCnt(p_day-2);
+    }  
+    alert(f_retCnt(2)); // f_retCnt(1) + f_retCnt(0)
+    alert(f_retCnt(5));
+    /*
+    f_retCnt(4) + f_retCnt(3)
+    f_retCnt(3) + f_retCnt(2) + f_retCnt(2) + f_retCnt(1)
+    f_retCnt(2) + f_retCnt(1) + f_retCnt(1) + f_retCnt(0) .....
+    */
+</script>

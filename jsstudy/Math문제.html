@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var v_ranSu = Math.ceil(Math.random()*10); // 1~10 사이 숫자
+        var cnt = 0;
+        for(;"언제 맞힐래";){
+            var v_userInput = prompt("1~10사이의 숫자를 입력하세용","1");
+            if(v_ranSu == v_userInput){
+                alert( "시도 : " + (cnt+1) + "  맞혔어용 끝");
+                break;                  // 무한 반복 빠져나가기
+            } else if( v_ranSu > v_userInput){
+                alert("더 큰 수");
+                 cnt++;
+            } else {
+                alert("더 작은 수");
+                cnt++;
+            }
+            
+        }
+    </script>
+</body>
+</html>
+<!-- cross origin 교차 출처 리소스
+    // http를 붙여서 위치를 읽어줌
+    // 도메인 - 프로토콜 - 포트
+    한 출처에서 실행 중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 
+    브라우저에 알려주는 체제입니다.  웹 애플리케이션은 리소스가 자신의 출처(도메인, 프로토콜, 포트)와 다를 때 
+    교차 출처 HTTP 요청을 실행합니다. -->

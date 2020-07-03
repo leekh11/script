@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp"></div>
+    이미지 검색어 <input type="text" id="id_sch" value="">
+    <input type="button" value="눌렁" onclick="f_ajax()">
+    <script>
+        // ajax사용 테스트
+        // 택스트박스의 검색어를 이용 flicker사이트에서 이미지 경로를  가져와  div에 담기
+        var v_flickrURL = "https://www.flickr.com/services/feeds/photos_public.gne?tags=";
+        var v_sch = document.getElementById("id_sch");
+        function f_ajax() {
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get" , "dolgi.php?imgsch="+v_sch , true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                    if(document.getElementById("onlyOne")){
+                        document.body.removeChild(document.getElementById("onlyOne"));
+                    }
+                    document.getElementById("id_disp").innerHTML ="";
+                    var v_schWord = document.getElementById("id_sch").value;
+                    var v_script = document.createElement("script");
+                    v_script.setAttribute("id","onlyOne");
+                    v_script.src = v_flickrURL + v_schWord + "&format=json";
+                    document.body.appendChild(v_script);
+                }
+            }
+        }
+       function jsonFlickrFeed(p_data){
+         var v_items = p_data.items;
+         for(var i=0; i< v_items.length; i++){
+             var v_img = document.createElement("img");
+             v_img.src = p_data.items[i].media.m;
+             v_img.width = "100";
+             v_img.height = "100";
+            document.getElementById("id_disp").appendChild(v_img);
+         } 
+         //console.log(p_data.items[0].media.m);
+       }
+    </script>
+</body>
+</html>

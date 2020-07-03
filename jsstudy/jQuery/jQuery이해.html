@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  편리하지만 무겁고 비효율적 성능에서 손해
+        // jQuery만들어지는 과정 이해
+        // 생성자
+        function Saram(p_name){
+            this.name = p_name
+            /*
+            this.getName = function(){
+                return this.name;
+            }*/
+
+        }
+        Saram.prototype.getName = function() {
+            return this.name;
+        }
+        Saram.prototype.setName = function(p_name) {
+            this.name = p_name;
+        }
+        // prototype이란 속성  - 함수 : 아무거나!
+        var v_a =new Saram("고양이");
+        v_a.setName("강아지");
+        console.log(v_a.getName() ) ;
+        //Saram(); this는 window를 가리킴
+        //new Saram(); function 키워드가 자바의 class키워드처럼 동작
+        // var v_pika = new Saram("피카츄");
+        // var v_dm = new Saram("도라에몽");
+        // alert(v_pika.getName() + v_dm.getName());
+    </script>
+</body>
+</html>
+<!-- 
+    /******** eq  *********/
+eq(인덱스번호)
+eq(뒤에서부터인덱스번호 곧 마이너스인덱스)
+ 
+/******** html  *********/
+html()
+html(문자열)
+html(function)  // 만약 function의 리턴값이 있으면 그 값으로
+ 
+/******** val  *********/
+val()
+val(값)
+val(function)
+ 
+/******** attr  *********/
+attr(속성명)
+attr(속성명, 값)
+attr(속성과값의 묶음 곧 JSON)
+attr(속성명, function(인덱스,값){}) // function의 리턴 값
+ 
+/******** css  *********/
+css(속성명)
+css(속성명묶음JSON)
+css(속성명, 값)
+ 
+/******** prop  *********/
+prop(속성명)
+prop(속성명, 값)
+prop(속성명값묶음)
+prop(속성명,function) // attr의 일부 문제를 개선
+ 
+/******** append  반대는 prepend *********/
+append(내용 [,내용])
+append(function) // return이 중요
+ 
+/******** appendTo  *********/
+appendTo(타겟)
+ 
+/******** remove  *********/
+remove(타겟)
+ 
+/******** trigger  *********/
+trigger(이벤트명)
+ 
+/******** show  *********/
+show()
+ 
+/******** hide  *********/
+hide()
+ 
+/******** addClass  *********/
+addClass(클래스명)
+ 
+/******** removeClass  *********/
+removeClass(클래스명)
+ 
+/******** each  *********/
+each(function)
+ 
+/******** 추가적으로 찾아봐야 할 메소드 ***********/
+find
+closest
+filter
+end
+first/last
+add
+is
+parent/children
+
+//
+jQuery객체.이벤트명(콜백함수)
+jQuery객체.on(이벤트명,콜백함수)
+jQuery객체.off(이벤트명)
+
+
+ -->

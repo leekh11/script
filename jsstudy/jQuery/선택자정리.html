@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* css selector cheat sheet 검색해보기! */
+
+        /* * {} */
+        
+        /* 모든 것 선택*/
+        /* div {} */
+
+        /*  태그 선택 */
+        /* #jayoung {} */
+
+        /* 아이디 선택 */
+        /* .jayoung {} */
+
+        /* 클래스 선택 */
+        h1,
+        h5 {
+            /*  여러개 선택은 ,로 나열 */
+            color: red;
+        }
+
+        h1.minsuck {
+            /* h1 태그중에 class가 minsuck인것 */
+            color: black;
+        }
+
+        h1#usuck {
+            color: yellowgreen;
+        }
+
+        input[type=button] {
+            /* 요건 웹개발자가 많이 사용하니 기억합시당 */
+            font-size: 3em;
+        }
+
+        input[type=button][name=nm_btn2] {
+            color: teal;
+        }
+
+        #id_parent .cl_child {
+            /* 공백은 후손까지 선택 */
+            color: blue;
+        }
+
+        #id_parent>.cl_child {
+            /* > 는 자손까지만 선택  */
+            color: red;
+        }
+
+        table>tbody>tr:nth-child(2n+1) {
+            /*  table밑에 tbody가 있음에 주의*/
+            background-color: tomato;
+        }
+        table>tbody>tr>td:nth-child(3) {
+            /*  table밑에 tbody가 있음에 주의*/
+            color: red;
+        }
+        /*  그럼 여기서 괜히 준제 피1~피6까지 글자색 빨강색으로 */
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <table border=1>
+        <tr>
+            <td>흥1</td>
+            <td>치1</td>
+            <td>피1</td>
+        </tr>
+        <tr>
+            <td>흥2</td>
+            <td>치2</td>
+            <td>피2</td>
+        </tr>
+        <tr>
+            <td>흥3</td>
+            <td>치3</td>
+            <td>피3</td>
+        </tr>
+        <tr>
+            <td>흥4</td>
+            <td>치4</td>
+            <td>피4</td>
+        </tr>
+        <tr>
+            <td>흥5</td>
+            <td>치5</td>
+            <td>피5</td>
+        </tr>
+        <tr>
+            <td>흥6</td>
+            <td>치6</td>
+            <td>피6</td>
+        </tr>
+    </table>
+
+    <div id="id_parent">
+        <div class="cl_child">자손1</div>
+        <div class="cl_child">자손2
+            <div class="cl_child">
+                자손2의 자손 ,곧 id_parent의 후손
+            </div>
+        </div>
+        <div class="cl_child">자손3</div>
+    </div>
+    <input type=text name="nm_txt1" value="안재근"><br>
+    <input type=text name="nm_txt2" value="앙재근"><br>
+    <input type=button name="nm_btn1" value="눌렁1"><br>
+    <input type=button name="nm_btn2" value="눌렁2"><br>
+    <h1 id="usuck">안넝1</h1>
+    <h1 class="minsuck">안넝2</h1>
+    <h5>안넝</h5>
+</body>
+
+</html>

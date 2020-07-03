@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/아이린4.jpg" type="image/x-icon">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 95vw;
+            height: 95vw;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <img id="id_img" src="images/아이린10.jpg" width="30" height="30" style="position: absolute;">
+    <div id="wrapper" onmousemove="f_mv()"></div>
+    
+    <script>
+        var v_img = document.getElementById("id_img");
+        function f_mv() {
+            console.log("마우스 x좌표"+ event.clientX);
+            console.log("마우스 y좌표"+ event.clientY);
+            v_img.style.left = event.clientX + "px";
+            v_img.style.top = event.clientY + "px";
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/myscript.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert("넘어온 아이디값 : " + request.getParameter("nm_id"));
+        alert("넘어온 암호 값 : " + request.getParameter("nm_pw"));
+        alert(request.getParameterValues("nm_hobby"));
+
+        /*
+        var v_jusoURL = location.href.split("?")[1];
+        //alert("인코딩된 상태" + v_jusoURL);  // 전송은 인코딩 값으로
+        //alert( "디코딩 값 :" + decodeURIComponent(v_jusoURL));
+        v_jusoURL = decodeURIComponent(v_jusoURL); // 넘겨받은 값 디코딩 
+        /*인코딩함수            디코딩함수 
+        escape                   unescape                아주 옛날
+        encodeURI               decodeURI                조금 옛날
+        encodeURIComponent     decodeURIComponent     최신 
+        */
+        // name 값을 매개변수로 넘겨주면 value를 찾아서 리턴해주는 함수 
+        // 주소줄의 특징name의 value값을 찾는 기능을 범용화
+        // 값이 안 넘어왔거나, 찾을수 없을 때는 null값을 리턴하는 걸로
+/*
+        function getParameter(p_name) {
+            var v_jusoVal = location.href;
+            if(v_jusoVal.indexOf("?") == -1){
+                return null;
+            }
+            // ? 오른쪽 문자열만 빼기
+            v_jusoVal = decodeURIComponent(v_jusoVal.split("?")[1]).split("&") ;
+            for(var i=0; i<v_jusoVal.length; i++){
+                if(v_jusoVal[i].split("=")[0] == p_name ){
+                    return v_jusoVal[i].split("=")[1];
+                }
+            }
+
+        }
+        */
+
+        // 함수 테스트!
+        
+        // 간단한 패키지화, 조금 더 함수를 범용화
+    
+    /*
+        var v_userID = v_jusoURL.split("&")[0].split("=")[1];
+        alert("당신의 아이디는" + v_userID + " 이군용!");
+        // 주소줄 값에서 아이디 뽑아내기
+        var v_userPW = v_jusoURL.split("&")[1].split("=")[1];
+        alert("당신의 암호는" + v_userPW + " 이군용!");
+        
+        // 취미는 ? 
+        var v_map = v_jusoURL.split("&");
+        var v_hobbies = []; // 취미를 담을 빈 배열
+        for(i=0; i<v_map.length; i++) {
+            var v_couple = v_map[i];        // name=value 형식
+            if(v_couple.split("=")[0] == "nm_hobby") {
+                v_hobbies.push(v_couple.split("=")[1]);
+            }
+        }
+        if(!v_hobbies.length) {
+            alert("no hobbies");
+            location.replace("폼1.html") // 되돌리기
+        }else {
+        alert("당신의 취미는: " + v_hobbies + " 입니다,");
+        }
+    */
+    </script>
+</body>
+</html>

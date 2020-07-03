@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+   <script>
+       // truthy(참과 같은) , falsy(거짓과 같은) 값
+       var v_lk = "나"; //truthy 값 
+       if(v_lk){
+            alert(' 공백만 거짓이다' ) ;
+       }
+       var v_kk = 1; //
+       if (v_kk) {
+           alert("0만 거짓이다");
+       }
+       //숫자는 0, 문자열은 ""만 거짓
+       var v_gg=[];
+       if(v_gg){
+        alert("배열은 다 참이다 nul 과 undefined 은 거짓!");
+       }
+       var v_uu = undefined;
+       if (!v_uu) {
+           alert("!로 뒤집어");
+       }
+       if(v_uu == undefined){
+            alert("?");
+       }
+   </script>

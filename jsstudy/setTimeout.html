@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    function f_check(p_name,p_msg){
+        console.log(p_name + "님" + p_msg);
+    }
+
+    setTimeout(f_check.bind(null, "안녕 " , " remember me?") ,1000);
+    // setTimeout(f_check, 1000 , "h1" , "h2");
+    // this 컨트롤  call, apply, bind
+    // bind만 함수 포인터를 리턴해주고, 
+    // call-apply는 해당함수를 실행시켜버림
+
+    console.log(screen.colorDepth);
+    console.log(screen.availWidth);
+    // 사용자가 사용하고 있는 브라우저를 구분할 때 사용!~
+    // 일반적으로 필요없고, 인터넷 진흥원처럼 브라우저 점유율등을 조사할 필요가 있는 회사에서만 사용
+    console.log(navigator.userAgent);
+</script>

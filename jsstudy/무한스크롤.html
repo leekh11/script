@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_bar {
+            position:absolute;
+            width:100vw;
+            height:3px;
+            background-color: violet;
+            border:2px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        무한 스크롤 , 모바일에서 아주 자주 사용 됨
+        특별한 케이스라서  아래 방식으로 사용
+    -->
+    <!-- 아주 어려운 집에서도 해야하는 주말과제 
+        막대가 스크롤바 중간에 계속 위치 하도록 해 보세용!
+    -->
+<div id="id_bar"></div>
+<script>
+    // 스크롤 바가 생기도록 더미 데이터
+    for(var i=1; i<=4; i++){
+        var v_img = document.createElement("img");
+        v_img.src = "images/아이린" + i + ".jpg";
+        document.body.appendChild(v_img);
+    }
+        //사용자 스크롤 이벤트
+        var v_cnt=1;
+        var v_bar = document.getElementById("id_bar");
+        window.onscroll=function(){
+            var v_top = document.documentElement.scrollTop;
+            var v_clH = document.documentElement.clientHeight; //보이는 영역높이
+            var v_docH = document.documentElement.scrollHeight;// 문서전체 높이
+            // v_top + v_clH = v_docH
+            if(v_top + v_clH >= (v_docH-50) ){
+                var v_h1 = document.createElement("h1");
+                v_h1.innerHTML = "안녕?"+v_cnt;
+                document.body.appendChild(v_h1);
+                v_cnt++;
+            }
+            console.log("v_top : " + v_top);
+            console.log("v_clH : " +v_clH);
+            console.log("v_docH : " +v_docH);
+            console.log("v_bar.top : " + v_bar.style.top);
+            v_bar.style.top = (v_top )+75+"px"; // 그냥 아무데나 넣은것임!
+            // 초기 스크롤바 크기 :  150px
+            // 화면 보이는 영역 - 고정
+            // scrollTop - 스크롤을 내릴때마다 변수
+            // v_docH 가면 스크롤바가 작아짐
+            // 스크롤바가 중앙에 위치하려면 v_clH에서 v_top의 크기의 중앙에 위치해야함 
+        }
+</script>
+</body>
+</html>

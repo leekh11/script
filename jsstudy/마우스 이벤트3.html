@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_nemo {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_nemo" onmousedown="f_mdown()" onmouseup="f_mup()" style="left:20px; top:20px;"></div>
+    <script>
+
+        var v_nemo = document.getElementById("id_nemo");
+        var v_isPressed=false;            // 처음엔 안 눌렸으니,false로 초기화
+        var v_initX, v_initY;             // 마우스 처음 눌렀을때 좌표값
+        var v_initLeft, v_initTop;        // 네모의 left, top 저장할 변수
+        function f_mdown(){
+            if(event.button == 0){        // 왼쪽부터 0,1,2
+                v_isPressed = true;       // 왼쪽버튼 눌렀음을 표시!
+                v_initX = event.clientX;
+                v_initY = event.clientY;
+                v_initLeft = v_nemo.getBoundingClientRect().left;
+                console.log(v_initLeft);
+                v_initTop = v_nemo.getBoundingClientRect().top;
+                console.log(v_initTop);
+                
+                //console.log("잘되남1");
+            }
+        }
+
+        function f_mup(){
+            v_isPressed=false;
+            //console.log("잘되남2");
+            // 움직임 구현할 때 기억하면 좋은 메소드 1개
+            // block형 객체의 left(x),top(x),width,height값을 가져옴
+            console.log("left",v_nemo.getBoundingClientRect().left);
+            console.log("top",v_nemo.getBoundingClientRect().top);
+            console.log("left",v_nemo.getBoundingClientRect().width);
+            console.log("left",v_nemo.getBoundingClientRect().height);
+        }
+
+        document.addEventListener("mousemove",function(){
+            if(v_isPressed){           // 왼쪽버튼이 눌려 있을 때만 
+                v_nemo.style.left = v_initLeft+ (event.clientX - v_initX) + "px";
+                v_nemo.style.top = v_initTop+(event.clientY - v_initY) + "px";
+            }
+           // console.log(event.clientX);
+           // console.log(event.clientY);
+        })
+
+        // 움직이는 공간을 지배하려는 자 산수는 필수!
+    
+    
+    </script>
+</body>
+</html>

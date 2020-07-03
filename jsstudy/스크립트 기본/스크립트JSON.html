@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <script>
+        // JASON(JavaScript Object Notation 자바스크립트 객체 표기법)
+        // 무조건 잘 써야함!, 데이터 전송포멧으로 아주 많이 쓰임 (xml 대체)
+        // 설정 파일 포멧으로 많이 쓰임
+        // xml은 미리 정해진 태그가 없음!
+        var v_jason = {}; // 빈 객체 선언
+        var v_lk = {
+            "name" : "이경훈" , 
+            "age" : 100 ,
+            "alias" : ["흥" , "치" , "피" ,
+                     {"alias" : ["가" , "나" , "다" , "라"]}
+                     ]
+        }; // { key : value } 형식으로 초기화 !! <-------------------------이거
+        alert(v_lk.name + "<-이름    나이 ->"+ v_lk.age); //객체 속성값 읽기
+        v_lk.name = "경훈" ; // 속성값 수정
+        // alert(v_lk.name);
+        alert(v_lk["name"]); // 윗라인과 똑같은 의미 배열식 접근이라고 부름
+        alert(v_lk.alias[3].alias[2]);
+
+        var v_jason2 = {} ;
+        v_jason2.name = "이경훈";
+        v_jason2.age = 1000;
+    </script>

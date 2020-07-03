@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://localhost/jsstudy/%ec%9b%80%ec%a7%81%ec%9d%b4%ea%b8%b0.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_memo {
+            position: relative; /* default값은 움직일 수 없음! */
+            width: 100px;
+            height: 100px;
+            background-color:black;
+            border: 2px solid pink;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_memo" style="left:0px; top:0px"></div>
+    <input type="button" value="오른쪽으로 가!" onclick="f_right()">
+    <script>
+        var v_memo = document.getElementById("id_memo");
+        var v_mvheight = 10;
+        var v_mvwith = 10;
+        var v_called = false;
+
+        function f_call() {
+            if(!v_called){
+                f_right();
+                v_called=true;
+            }
+        }
+        function f_right(){
+            //스크립트에서 스타일접근하기(inline) 내부스타일 접근법은 다름 
+            // alert(parseInt(v_memo.style.left));
+            // 사용자 화면 넓이 window.inerrWidth, 높이 window.innerHeight
+            v_memo.style.left = parseInt(v_memo.style.left) + v_mvwith + "px";
+            v_memo.style.left = parseInt(v_memo.style.top) + v_mvheight + "px";
+            /*if( (parseInt(v_memo.style.left) +100) >= window.innerWidth  ) {
+                v_mvwith = -v_mvwith;
+            }
+            if ((parseInt(v_memo.style.left)+100) <= 0){
+                v_mvwith = -v_mvwith;
+            }*/
+            if( (parseInt(v_memo.style.left) +100) >= window.innerWidth ||
+                parseInt(v_memo.style.left) <= 0 ) {
+                v_mvwith = -v_mvwith;
+            }
+            if( (parseInt(v_memo.style.top) +100) >= window.innerHeight ||
+                parseInt(v_memo.style.top) <= 0 ) {
+                v_mvheight = -v_mvheight;
+            }
+            // console.log("브라우져 높이" + window.innerHeight);
+            // console.log("브라우져 너비" + window.innerWidth);
+            setTimeout(f_right, 200);
+            //버튼을 누르면 속도가 빨라지는데 빨라지지 않게 해보세요
+
+        }
+    </script>
+
+</body></html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">h1</div>
+    <div>h2</div>
+    <div>h3</div>
+    <div>h4</div>
+    <input type="text" id="id_txt1" value="h1">
+    <input type="text" id="id_txt2" value="h2">
+    <script>
+        // $("#id_txt2").val("ggg");
+        // alert($("#id_txt2").val());
+        // 읽기는 첫번째 쓰기는 전부! ex> $("input")
+
+
+        // eq. html, attr, $()묶기 
+        $("div").css("color","red").css("backgroundColor", "yellow"); // 해당 속성에 값 쓰기
+        $("div").css({
+            color : "black" ,
+            backgroundColor : "yellow",
+            fontSize : "2em" ,
+            opacity : "0.2" ,
+            textAlign : "center" ,
+            margin : "0 auto"
+        })
+
+        // 이벤트 등록법
+        // $("#a").click(function(){
+        //     alert("hi");
+        // })
+
+        // 이벤트 등록법2 addEventListiner ("이벤트명" , 클릭)
+        $("div").eq(1).on("click", function() {
+            alert("?");
+        })
+
+        // call by value, call by reference
+    var v_divs = document.getElementsByTagName("div");
+    function f_exec(p_item, p_val){      // 함수도 객체당!!!!!!!
+        p_item.addEventListener("click",function(){
+            alert("왜 자꾸 눌렁!" + p_val);
+        })
+    }
+    for(var i=0; i<v_divs.length; i++){
+        f_exec(v_divs[i],i);
+    }
+
+        // document.body.childNodes[1].onclick = function(){
+        //     alert("a");
+        // }
+    </script>
+</body>
+</html>

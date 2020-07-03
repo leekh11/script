@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_box {
+            width: 200px;
+            height:200px;
+            border:1px solid black;
+        }
+        #grandMother {
+            width:300px;
+            height: 300px;
+            border:1px solid black;
+        }
+        #mother {
+            width:150px;
+            height:150px;
+            border:1px solid red;
+        }
+        #me {
+            width:50px;
+            height:50px;
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <!-- a 태그 href에 자바스크립트를 걸지 맙시다. 힘들어져요, 디버깅이...-->
+    <a href="#" onclick="f_ck2()">눌렁</a>
+    <div id="grandMother" onmouseover="f_ck(this.id)">
+        할머니
+        <div id="mother" onmouseover="f_ck(this.id)">
+            엄마
+            <div id="me" onmouseover="f_ck(this.id)">나</div>
+        </div>
+    </div>
+    <div id="id_box" onmouseover="f_mover()" onmouseout="f_mout()" onmousedown="f_mdown()" oncontextmenu="f_context()">마우스 올려줘</div>
+    <script>
+        function f_context(){
+            event.preventDefault(); // 
+        }
+        function f_mdown(){
+            // 마우스 눌렀을때
+            alert(event.button);  /* 왼쪽버튼부터 0,1,2 */
+            if(event.button == 2){  // 오른쪽 버튼 눌렀을 때
+                alert("어딜 소스보려고?");
+            }
+        }
+        function f_ck3(){
+            console.log("이것도 동작하남?");
+        }
+        function f_ck2(){
+            event.preventDefault();   // 기본동작(built-in) 막기
+            console.log("뭐하려고 했징?");
+        }
+        function f_ck(p_id){
+            event.stopPropagation();  // 이벤트 버블링 막기 꼭 기억
+            console.log(p_id); // 이벤트가 전파됨을 확인
+            // 이런것을 이벤트버블링이라고 부름!, 주의하지 않으면, 프로그램이 이상하게 동작
+        }
+
+        var v_box = document.getElementById("id_box");
+        function f_mover(){
+            v_box.style.backgroundColor="red";
+        }
+        function f_mout(){
+            v_box.style.backgroundColor="white";
+        }
+
+    </script>
+</body>
+</html>

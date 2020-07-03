@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #id_ball{
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            left: 50px;
+            top: 10px;
+            background-image: url(./images/아이린7.jpg);
+            background-size: 60px 60px;
+            border-radius: 50%;
+        }
+        #id_bar{
+            position: absolute;
+            width: 100px;
+            height: 15px;
+            left: 100px;
+            top: 300px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_ball"></div>
+    <div id="id_bar"></div>
+    <script>
+        var v_ball = document.getElementById("id_ball");
+        var v_bar = document.getElementById("id_bar");
+        var v_mvWidth = 10;
+        var v_mvHeight = 10;
+        
+        function f_init(){
+            v_ball.style.transform ="skewX(0deg)"
+            if(!v_ball.style.left) {
+                v_ball.style.left = "50px";
+                v_ball.style.top = "100px";
+            }
+            v_ball.style.left = parseInt(v_ball.style.left) + v_mvWidth + "px";
+            v_ball.style.top = parseInt(v_ball.style.top) + v_mvHeight + "px";
+            setTimeout(f_init, 100); // 모니터 주사율 60Hz 
+        
+        // 왼쪽이나 오른쪽에 부딪혔을때
+        if( (parseInt(v_ball.style.left) <= 0) || (parseInt(v_ball.style.left))+60 >=window.innerWidth ){
+            v_mvWidth = -v_mvWidth;
+        }
+        // 위나 아래에 부딪혔을때
+        if( (parseInt(v_ball.style.top) <= 0) || (parseInt(v_ball.style.top))+60 >=window.innerHeight ){
+            v_mvHeight = -v_mvHeight;
+        }
+
+        //충돌조건 
+        var v_vcond = (parseInt(v_ball.style.top)+60) >= parseInt(v_bar.style.top);
+        var v_hcond1 = (parseInt(v_ball.style.left)+60) >= parseInt(v_bar.style.left);
+        var v_hcond2 = parseInt(v_ball.style.left) <= (parseInt(v_bar.style.left)+200) ;
+        // 3가지 조건이 다 만족해야만 충돌
+        if(v_vcond && (v_hcond1 && v_hcond2)){
+            v_ball.style.transform = "skewX(45deg) scale(0.5)"; //비틀다, 뒤틀리다 
+            v_mvHeight = -v_mvHeight;
+        }
+
+
+    }
+        var KEYVALUE = {}
+        KEYVALUE.ArrowLeft = "ArrowLeft";
+        KEYVALUE.ArrowRight = "ArrowRight";
+        function f_keydown() {
+            // MDN 내용 조사결과 keyCode는 deprecated[폐쇄]되었다고 사용하지 않는다. key 사용
+            // alert(event.key);
+            if(!v_bar.style.left) {
+                v_bar.style.left = "100px";
+                v_bar.style.top = "300px";
+            }    
+            if(event.key == KEYVALUE.ArrowLeft ){
+                if(parseInt(v_bar.style.left) > 0) {
+                v_bar.style.left = parseInt(v_bar.style.left) -20 + "px";
+                }
+            }
+            if(event.key == KEYVALUE.ArrowRight){
+                if(parseInt(v_bar.style.left)+100 < parseInt(window.innerWidth)) {
+                v_bar.style.left = parseInt(v_bar.style.left) +20 + "px";
+                }
+            }
+        }
+
+        window.onload = f_init;
+        window.onkeydown = f_keydown;
+    </script>
+</body>
+</html>

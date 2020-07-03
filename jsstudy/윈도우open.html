@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="id_par" type="text" value="난 부모창 텍스트">
+    <input type="button" value="새창에 값 전달" onclick="f_sendNew()"> <br>
+    <input type="button" value="새창열기" onclick="f_new()">
+    <input type="button" value="창닫기" onclick="f_close()">
+    <script>
+        //자바스크립트에서 브라우져를 가리키는 키워드(예약어) window
+        var v_newWin = null;
+        function f_new() {
+        v_newWin = window.open("newin.html","hi","width =400 , height = 400, left=300, top=400"); // url, 이름, 속성
+        console.log(v_newWin);
+        }
+        function f_close() {
+            // if(!v_newWin){
+            //     return;
+            // }
+            if(v_newWin) {
+                v_newWin.close();
+                v_newWin = null; 
+            }
+        }
+        function f_sendNew() {
+            //document는 window에 소속된 객체
+            v_newWin.document.getElementById("id_child").value = document.getElementById("id_par").value
+        }
+    </script>
+    
+</body>
+</html>

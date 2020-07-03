@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+    <!--multiple이 있으면 여러개 선택 가능-->
+    <select id="id_sel" multiple size="8"> <!--선택상자 -->
+        <option value="java">자바</option>
+        <option value="jsp">JSP</option>
+        <option value="spring">SPRING</option>
+        <option value="tomcat">Tomcat</option> 
+        <option value="0" selected >선택하세요</option> <!--selected : default 값 설정-->
+    </select> <br>
+    <input type="button" value="확인" onclick="f_setVal()">
+    <script>
+        var v_selbox = document.getElementById("id_sel");
+        function f_setVal() {
+            // console.log(v_selbox.options) 옵션으로 존재함
+            /* 정상적 선택된 값 확인 방법
+            var v_opts = v_selbox.options // 객체는 줄여쓰기 가능하다!
+            for(var i = 0; i < v_opts.length; i++){
+                if(v_opts[i].selected) {
+                    alert("선택은 : " + v_opts[i].value);
+                }
+            }
+            */
+            //alert(v_selbox.value); // 이렇게 써도 됨
+
+            var v_opts = v_selbox.options // 객체는 줄여쓰기 가능하다!
+            var v_resultArr = [];
+            // var v_index = 0;
+            for(var i = 0; i < v_opts.length; i++){
+                if(v_opts[i].selected) {
+                v_resultArr[v_resultArr.length] = v_opts[i].value; // <-----------------length속성!!
+                // v_index++;
+                }
+            }
+            alert("선택 : " + v_resultArr);
+        }
+    </script>
+</body>

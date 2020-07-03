@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <!-- 웹 프로그래머는 form을 잘 못쓰면 폼이 나지 않아요
+         서버쪽에 전달하고픈 값은 꼭 form 태그로 묶어줘야 합니다.
+         서버쪽에 전달하고픈 태그는 꼭 name 속성이 있어야 넘어값니다.
+         ?nm_id=eggmoney&nm_pw=337   쿼리스트링이라고 부름(서버쪽에 넘기는 문자열)
+         
+         전송방식 : GET - 넘어가는 값이 주소표시줄에 보임. 용량제한 있음, 디버깅에 유리함
+                   POST - 주소표시줄에 보이지 않음. 용량제한 없음
+    -->
+    <!-- method 전송방식 선택  
+          전송 직전에 발생하는 이벤트 onsubmit = return 함수명() -->
+    <form method="get" action="test.php" onsubmit="return f_submit()">
+        아이디<input type=text name="nm_id" value=""><br>
+        암호<input type=password name="nm_pw" value=""><br>
+        <input type="submit" value="전송하장">
+        <input type="reset"  value="다시쓸려">
+    </form>
+    
+    <script>
+        function f_submit() {
+            return false; // 전송막기
+            return true;  // 전송하기 
+                        // 서버부하를 줄임 
+        }
+    </script>
+
+    <!-- form 태그는 화면에 1개만 있을 필요는 없음-->
+    <form>
+        아이디<input type=text name="nm2_id" value="moneyegg"><br>
+        암호<input type=password name="nm2_pw" value="772"><br>
+        <input type="submit" value="전송하장">
+        <input type="reset"  value="다시쓸려">
+    </form>
+    
+</body>
+</html>

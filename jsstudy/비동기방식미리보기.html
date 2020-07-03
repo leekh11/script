@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        사용자 파일 선택 상자, 일반적으로 이미지 파일 선택하는데만 사용됨 
+        자바스크립트는 기본적으로 보안상 사용자 시스템의 파일을 읽을수도
+        쓸수도 없음
+        허락된 것은 사용자가 선택해주는 파일을 읽을 수만 있음
+        이렇게 밖에 사용하지 않기 때문에 이 파일을 잘 가지고 있자 
+    -->
+    <div id="id_disp"></div>
+    <!-- <img id="id_img" src="" width="300" height="300"> <br> -->
+    <input id="id_file" multiple type=file value="" accept=".jpg, .png, .jpeg, .gif" onchange="f_chImg()">   
+    <script>
+   
+         "use strict";  // 엄격모드 적용, 변수 선언 안하고 쓰면 에러 발생
+        var v_fileIn = document.getElementById("id_file");
+        var v_disp = document.getElementById("id_disp");
+        // 파일 1개씩 읽는 함수
+        function f_singleFile(p_file){
+            var v_fileReader = new FileReader();
+            v_fileReader.readAsDataURL(p_file);
+                 
+            v_fileReader.onload = function(){
+                var v_img = document.createElement("img");
+                v_img.src = v_fileReader.result;
+                v_img.setAttribute("width","100");
+                v_img.setAttribute("height","100"); //여기까지는 눈에 안보임!
+                v_disp.appendChild(v_img);    // 붙여야 눈에 보임!
+            }
+        }
+        function f_chImg(){
+            v_disp.innerHTML = "";
+            var v_file = v_fileIn.files;
+            for(var i=0; i< v_file.length; i++){
+                f_singleFile(v_file[i]);
+            }
+        }
+    
+    </script>
+</body>
+</html>

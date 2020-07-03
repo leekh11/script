@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="frA_txt" type="text" value="프레임A">
+    <input id="frA_btn" type="button" value="click" onclick="f_frA()">
+    <script>
+        function f_frA() {
+            // parent개념을 사용, parent대신 top이란 키워드를 많이씀, 최상위 위도우를 의미
+            parent.frames[1].document.getElementById("frB_txt").value = 
+            document.getElementById("frA_txt").value;
+            //top!
+            top.frames[2].document.getElementById("frC_txt").value = 
+            document.getElementById("frA_txt").value;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #oo{
+            display: flex; 
+            flex-direction: row-reverse;
+            justify-content: space-around;
+            align-content: center;
+            border: solid 1px black;
+            width: 500px;
+            height: 500px;
+            /* 원래 flexbox였는데 flex로 표준화 됨 */
+            /* 
+                flex에 대해 조사해서 사용법을 익혀 오는 것
+                self-study과제
+                flex를 쓰면 수평정렬을 잘 할 수 있어요!
+             */
+        }
+        .a{
+            width: 100px;
+            height: 100px;
+            border: solid 1px red;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="oo">
+        <div class="a">1</div>
+        <div class="a">2</div>
+        <div class="a">3</div>
+    </div>
+</body>
+</html>

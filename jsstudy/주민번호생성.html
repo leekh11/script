@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type=text id="id_jumin1" value="">-
+    <input type=text id="id_jumin2" value=""><br>
+    <input type=button value="가짜주민번호생성" onclick="f_fakeJumin()">
+    <input type="button"  value="체크" onclick="f_juminCheck()">
+    <div id="id_disp"></div>
+    <script>
+    function f_fakeJumin(){
+        // 년도월일  [1234]중1개 아무숫자5개 마지막숫자(?)   
+        var v_year = 40+Math.round( Math.random()*59) ; // 년도 40 ~ 99까지
+        var v_month = Math.ceil(Math.random()*12);
+        if(v_month < 10 ){
+            v_month = "0" + v_month;
+        } 
+        var v_day = Math.ceil(Math.random()*28);
+        if(v_day < 10) {
+            v_day = "0" + v_day;
+        } 
+        var v_preNum = "" + v_year + v_month + v_day;
+
+        var v_postNumber = "";
+        v_postNumber += Math.ceil(Math.random()*2);
+        for(var i=1; i<=5; i++){
+        v_postNumber += Math.round(Math.random()*9);
+        }
+        v_postNumber +=  f_juminCheck(v_preNum, v_postNumber);
+        v_completerJumin = v_preNum + "-" + v_postNumber;
+        document.getElementById("id_disp").innerHTML +=  v_completerJumin + "<br>";
+
+    }
+    
+        function f_juminCheck(v_jumin1 , v_jumin2 ){
+            //1. A*2 + B*3 + ... + H*9 + I*2 + ... + L*5 의 총합을 구한다.
+            var v_values1 = v_jumin1.split("");
+            var v_values2 = v_jumin2.split("");
+            var v_A = v_values1[0]*2;
+            var v_B = v_values1[1]*3;
+            var v_C = v_values1[2]*4;
+            var v_D = v_values1[3]*5;
+            var v_E = v_values1[4]*6;
+            var v_F = v_values1[5]*7;
+
+            var v_G = v_values2[0]*8;
+            var v_H = v_values2[1]*9;
+            var v_I = v_values2[2]*2;
+            var v_J = v_values2[3]*3;
+            var v_K = v_values2[4]*4;
+            var v_L = v_values2[5]*5;
+
+            var v_sum = v_A + v_B + v_C + v_D + v_E + v_F +
+                        v_G + v_H + v_I + v_J + v_K  + v_L;
+
+            //2. 1번의 합을 11로 나눈 나머지를 구한다 
+            var v_namugi = v_sum % 11;
+            //3. 11에서 2번의 결과를 뺀다
+            //4. 3번의 결과가 0~9이면 값 그대로, 10이면 0, 11이면 1로 변환 
+            var v_check = (11 - v_namugi) % 10;
+            //4번의 결과와 M자리의 값이 같으면 맞는 번호이다.
+            return v_check;
+        }
+
+        
+    </script>
+</body>
+</html>

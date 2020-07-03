@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var v_dummyCnt = 272;
+        v_datas = [];
+        for (var i = 1; i <= v_dummyCnt; i++) {
+            var v_gul = {};
+            v_gul.uniq = i;
+            v_gul.title = "피카츄" + (i + 1);
+            v_gul.writer = "지우" + i
+            v_gul.content = "<h1>난 포켓몬마스터다" + (i + 1) + "<h1>";
+            v_gul.date = (new Date()).toLocaleDateString();
+            v_datas.push(v_gul);
+        }
+        localStorage.setItem("gesiT", JSON.stringify(v_datas));
+    </script>
+</body>
+
+</html>

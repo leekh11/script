@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+<script>
+    //함수안에서 자기 자신을 호출하는 것을 재귀호출
+    // 1부터 특정숫자까지 합을 더하는 간단한 함수 
+    /* 
+    var v_sum = 0;
+    function f_sum(p_endNum){
+        for(var i =1; i<=p_endNum; i++){
+            v_sum = v_sum + i;
+        }
+        return v_sum;
+    }
+    alert(f_sum(10));
+    */
+    // 위함수를 재귀호출로...
+    function f_sum(p_endNum) {
+        if(p_endNum == 1 ) { return 1;} //종료조건
+        return p_endNum + f_sum(p_endNum - 1) ;
+        /*
+        return 5+ f_sum(4)
+        return 5+ 4 + f_sum(3)
+        return 5+ 4 + f_sum(3)
+        return 5+ 4 + 3 + f_sum(2)
+        return 5+ 4 + 3 + 2 +  f_sum(1)
+        return 5+ 4 + 3 + 2 + 1
+        */
+    }
+    alert(f_sum(5));
+</script>

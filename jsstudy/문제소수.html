@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id_disp">여기에 소수를 나열해 주세용</div>
+    <script>
+        // Prime Number(소수) 구하기 문제
+        // Prime Number란 1과 그 자신 이외의 숫자로는 나누어 떨어지지 않는 숫자
+        // 1은 제외,  예를 들면 7은 1과 7로만 나누어 떨어지므로 소수
+        // 9는 3으로 나누어 떨어지므로 안 소수
+        // 문제 사용자로 부터 숫자를 입력받아서  1과 해당숫자사이의 모든 소수를 출력하는
+        // 프로그램을 작성하시옹! -- (무한루핑으로 짜고, 종료조건은 사용자가 0을 입력했을 때)
+
+        function f_ckPrime(p_num){  // 숫자 1개에 대해서 소수여부를 체크하는 함수 
+            var v_isPrime = true;         // 소수라고 가정
+                for(var i=2; i<=p_num/2; i++){     //  검증
+                    if(!(p_num % i)){
+                        v_isPrime = false;    // 가정이 틀렸음
+                        break;                // 더 돌 이유가 없음!, 더 돌면 상황이 바뀜
+                    }
+                }
+                return v_isPrime;
+        }
+        
+        while([] == ![]){
+            var v_userInput = prompt("숫자를 입력해주세용","10");
+            if(!v_userInput || v_userInput == "0") break;
+            v_userInput = v_userInput -0;  // 숫자로 그냥 바꿔주기
+            var v_result = [];             // 결과 담을 배열
+            for(var i=2; i< v_userInput; i++){
+                if(f_ckPrime(i)){               // 가정이 맞았다면, 곧 소수라면 배열에 담기
+                    v_result.push(i);
+                }
+            }
+            alert("2부터" + v_userInput+" 사이의 소수는" + v_result + "입니다");
+            //document.getElementById("id_disp").innerHTML = v_result;  //  결과 뿌리기,덮어쓰기
+        }
+        
+    </script>
+</body>
+</html>

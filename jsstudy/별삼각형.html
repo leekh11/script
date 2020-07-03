@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .vNemo {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .aNemo {
+            display:inline-block;
+            width:20px;
+            height:20px;
+            border: 1px solid white;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_disp" style="display: inline-block;"></div> <br>
+    <input type="button" value="삼각형 만들기" onclick="f_triMake()">
+    <input type="button" value="클론 만들기" onclick="f_clone()">
+    <script>
+        // 반복문 잘 쓰는가?확인하기 위해서 많이 내는 문제
+        /* for(var j=1; j<=10; j++){
+                for(var i=1; i<=j; i++){
+                     document.write("*");
+                }
+                document.write("<br>");
+        } */
+        function f_clone() {
+            //console.log(v_disp.cloneNode()); // 얕은 복사
+            //console.log(v_disp.cloneNode(true));  // 깊은 복사
+            // v_disp.cloneNode(true);
+            var v_clone = v_disp.cloneNode(true);
+            document.body.appendChild(v_clone);
+            
+        }
+        function retColor() {
+            var v_red = Math.round(Math.random()*255);
+            var v_green = Math.round(Math.random()*255);
+            var v_blue = Math.round(Math.random()*255);
+            var v_alpla = "0." + Math.round(Math.random()*9);
+            if(v_alpla == "0.0"){
+                v_alpla = "1";
+            }
+            return "rgb("+v_red+","+v_green+","+v_blue+ "," + v_alpla+ ")";
+        }
+        var v_disp = document.getElementById("id_disp");
+        function retDiv(p_char){     // 네모난 div를 리턴해주는 함수
+            var v_div = document.createElement("div");
+            if(p_char){
+                v_div.setAttribute("class","vNemo");
+                v_div.style.backgroundColor = retColor();
+                v_div.innerHTML = p_char;
+            } else {
+            v_div.setAttribute("class","aNemo");
+            }
+            return v_div;
+        }
+        // document.getElementById("id_disp").appendChild(retDiv("*"));
+        v_maxLine = 5;
+        function f_triMake(){
+            v_disp.innerHTML = "";
+        for(var i=1; i<=v_maxLine; i++){
+            for(var j=1; j<=v_maxLine-i ; j++){
+                v_disp.appendChild(retDiv(""));
+            }
+            for(var k=1; k<=(i*2)-1; k++){
+            v_disp.appendChild(retDiv("*"));
+            }
+            v_disp.innerHTML += "<br>";
+        }
+        setTimeout(f_triMake, 1000);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            $(function(){
+                alert("체크" + $("div").html() );
+            })
+    </script>
+   <div id="id_disp">Hi jQuery</div>
+   <div class="cl_disp">Bye jQuery</div>
+   <script>
+       v_disp = document.getElementById("id_disp");
+       
+        // 제이쿼리에서 window.onload에 해당
+        // 정확히 말하면 window.onload는 페이지에 있는 이미지까지
+        // 모두 로딩되면 발생하는데, jQuery ready는 이미지 로딩까지는 기다리지 않음
+        /*
+        $(document).ready(function() {
+            console.log("window.onload에 해당");
+        })
+        */
+
+        $(function(){
+            console.log($("div").html());
+            console.log($("#id_disp").html());
+            console.log($(".cl_disp").html());
+            console.log("이렇게 써도됨!")
+        })
+        
+    </script>
+</body>
+</html>

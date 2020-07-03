@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="aaa">개1</div>
+    <div>양2</div>
+    <div class="aaa">소3</div>
+    <div id="bbb">말4</div>
+    <div class="aaa">닭4</div>
+    <script>
+        // css의 선택자를 매개변수로 받는 메소드
+        var v_divs = document.querySelector("#bbb"); //모든 div태그를 선택
+        console.log(v_divs); // 처음에 찾은것 하나
+        v_divs = document.querySelectorAll(".aaa"); // css문법과 같음!
+        console.log(v_divs); // 전부
+    </script>
+</body>
+</html>

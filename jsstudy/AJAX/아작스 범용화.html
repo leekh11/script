@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 오늘의 과제 어떻게 아래 AJAX 부르는 방식을 범용화 하면 
+        // 편하게 쓸 수 있을까, 생각해 보기!
+        // 매번 똑같이 쓰는 부분은 안써도 되게?
+        // 힌트: 함수의 매개변수를 json으로 넘긴다면?
+        // function ajax(p_method, p_url, p_func){
+        //     var v_ajax = new XMLHttpRequest();
+        //     v_ajax.open(p_method , p_url , true);
+        //     v_ajax.send();
+        //     v_ajax.onreadystatechange = function() {
+        //         if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+        //             p_func(v_ajax.responseText);
+        //         }
+        //     }
+        // }
+        // ajax("get", "data.xml", function(p_receive){
+        //     alert(p_receive);
+        // });
+    
+    var $ = {};
+    // 패키지 만드는 것
+    $.ajax =  function (p_setting){
+        var v_ajax = new XMLHttpRequest();
+            v_ajax.open(p_setting.method , p_setting.url , true);
+            v_ajax.send();
+            v_ajax.onreadystatechange = function() {
+                if(v_ajax.readyState == "4" && v_ajax.status == "200"){
+                    p_setting.success(v_ajax.responseText);
+                }
+            }
+    }
+
+    $.ajax({ 
+                "method" : "get" , 
+                "url" : "data.xml" ,
+                "success" : function(p_receive) {
+                    alert(p_receive);
+                }
+    })
+    </script>
+</body>
+</html>

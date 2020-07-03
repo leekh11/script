@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cl_common {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            background-color: rgb(255, 0, 0);
+            color: rgb(0, 0, 0);
+        }
+        #id_lay1{
+            z-index: 999;  /* <--------------------- 이거! 레이아웃 순서 index값으로 정함 */
+            /* default 값이 없이 무조건 큰 숫자가 위로 올라감 */
+            
+        }
+        #id_lay2{
+            left: 10px;
+            top: 10px;
+            background-color: rgb(255, 123, 0);
+            color: rgb(0, 0, 0);
+            z-index: 100;
+        }
+        #id_lay3{
+            left: 20px;
+            top: 20px;
+            background-color: rgb(251, 255, 0);
+            color: rgb(0, 0, 0);
+            z-index: 101;
+        }
+        #id_lay4{
+            left: 30px;
+            top: 30px;
+            background-color: rgb(0, 248, 0);
+            color: rgb(0, 0, 0);
+            z-index: 102;
+        }
+        .cl_but {
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body> <!--인라인 스타일이 우선으로 적용됨!!-->
+    <div id="id_lay1" class="cl_common" style="z-index:300">레이어1</div>
+    <div id="id_lay2" class="cl_common" style="z-index:400">레이어2</div>
+    <div id="id_lay3" class="cl_common" style="z-index:200">레이어3</div>
+    <div id="id_lay4" class="cl_common" style="z-index:100">레이어4</div>
+    <input type="button" value="click" onclick="f_zindex()" class="cl_but">
+    <script>
+        function f_zindex() {
+            // alert(document.getElementById("id_lay2").style.zIndex); //하이픈은 빼고 다음글자를 대문자로
+            /*
+            var v_layer = document.getElementsByClassName("cl_common"); //클래스 배열식!
+            for(var i=0; i<v_layer.length; i++){
+                v_layer[i].style.zIndex = 100;
+            } */
+            for (var i=0; i<=4; i++){
+                var v_layer = document.getElementById("id_lay" + 1);
+                v_layer.style.zIndex =500
+            }
+            //원하는 레이어만 큰 값 주기
+            document.getElementById("id_lay1").style.zIndex = 999;
+        }
+    </script>
+</body>
+</html>

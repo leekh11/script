@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            #disp {
+            display:inline-block;
+            width:200px;
+            height:200px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        v_JASON ={ "a0" : [ {"감독" : "김한민" , 
+                                                    "배우" : "최민식, 류승룡, 조진웅" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a1" : [ {"감독" : "이병헌" , 
+                                                    "배우" : "류승룡, 이하늬, 진선규" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a2" : [ {"감독" : "김용화" , 
+                                                    "배우" : "하정우, 차태현, 주지훈" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a3" : [ {"감독" : "윤제균" , 
+                                                    "배우" : "황정민, 김윤진, 오달수" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                     "a4" : [ {"감독" : "안소니 루소, 조 루소" , 
+                                                    "배우" : "Robert Downey Jr. , Chris Evans" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a5" : [ {"감독" : "크리스 벅, 제니퍼 리" , 
+                                                    "배우" : "엘사, 안나, 올라프" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a6" : [ {"감독" : "제임스 카메론" , 
+                                                    "배우" : "샘 워싱턴, 조 샐다나" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+                                    "a7" : [ {"감독" : "류승완" , 
+                                                    "배우" : "황정민, 유아인, 유해진" , 
+                                                    "스크린샷" : ["1.jpg" , "2.jpg", "3.jpg", "4.jpg"]  }  ] ,
+        }
+        var v_div = document.createElement("div")
+        v_div.setAttribute("id" , "disp");
+        p_num=1;
+        // document.body.appendChild(v_div);
+        function f_set(p_num) {
+            var v_div = document.createElement("div");
+            v_div.setAttribute("id" , "disp");
+            if(p_num ==0) {
+                v_div.innerHTML =  "감독 : " +  v_JASON.a0[0].감독 +"<br>배우: " + v_JASON.a0[0].배우 + "<br>"
+            }
+            if(p_num == 1){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a1[0].감독 +"<br>배우: " + v_JASON.a1[0].배우 + "<br>"
+            }
+            else if(p_num==2){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a2[0].감독 +"<br>배우: " + v_JASON.a2[0].배우 + "<br>"
+            }
+            else if(p_num==3){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a3[0].감독 +"<br>배우: " + v_JASON.a3[0].배우 + "<br>"
+            }
+            else if(p_num==4){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a4[0].감독 +"<br>배우: " + v_JASON.a4[0].배우 + "<br>"
+            }
+            else if(p_num==5){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a5[0].감독 +"<br>배우: " + v_JASON.a5[0].배우 + "<br>"
+            }
+            else if(p_num==6){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a6[0].감독 +"<br>배우: " + v_JASON.a6[0].배우 + "<br>"
+            }
+            else if(p_num==7){
+                v_div.innerHTML =  "감독 : " +  v_JASON.a7[0].감독 +"<br>배우: " + v_JASON.a7[0].배우 + "<br>"
+            }
+                for(var i=1; i<=4; i++){
+                    var v_simg = document.createElement("img");
+                    var v_imgU = "images/"+p_num+"/" +i+".jpg"
+                    v_simg.setAttribute("src" ,  v_imgU);
+                    v_simg.setAttribute("width" , "300");
+                    v_div.appendChild(v_simg);
+                }
+            document.body.appendChild(v_div);
+        }
+        f_set(1);
+        // for(var i=1; i<=4; i++){
+        // var v_simg = document.createElement("img");
+        //    var v_imgU = "images/"+p_num+"/" +i+".jpg"
+        //     v_simg.setAttribute("src" ,  v_imgU);
+        //     v_simg.setAttribute("width" , "200");
+        // document.body.appendChild(v_simg);
+        // }
+        // var v_simg1 = document.createElement("img");
+        //    var v_imgU1 = "images/"+p_num+"/2.jpg"
+        //     v_simg1.setAttribute("src" ,  v_imgU1);
+        //     v_simg1.setAttribute("width" , "200");
+        // var v_simg2 = document.createElement("img");
+        //    var v_imgU2 = "images/"+p_num+"/3.jpg"
+        //     v_simg2.setAttribute("src" ,  v_imgU2);
+        //     v_simg2.setAttribute("width" , "200");
+        //     var v_simg3 = document.createElement("img");
+        //    var v_imgU3 = "images/"+p_num+"/4.jpg"
+        //     v_simg3.setAttribute("src" ,  v_imgU3);
+        //     v_simg3.setAttribute("width" , "200");
+        // document.body.appendChild(v_simg);
+        // document.body.appendChild(v_simg1);
+        // document.body.appendChild(v_simg2);
+        // document.body.appendChild(v_simg3);
+/*
+        var v_simg = document.createElement("img");
+           var v_imgU = "images/1/" + v_JASON.a1[0].스크린샷[0];
+            v_simg.setAttribute("src" ,  v_imgU);
+            v_simg.setAttribute("width" , "200");
+        var v_simg1 = document.createElement("img");
+           var v_imgU1 = "images/1/" + v_JASON.a1[0].스크린샷[1];
+            v_simg1.setAttribute("src" ,  v_imgU1);
+            v_simg1.setAttribute("width" , "200");
+        var v_simg2 = document.createElement("img");
+           var v_imgU2 = "images/1/" + v_JASON.a1[0].스크린샷[2];
+            v_simg2.setAttribute("src" ,  v_imgU2);
+            v_simg2.setAttribute("width" , "200");
+            var v_simg3 = document.createElement("img");
+           var v_imgU3 = "images/1/" + v_JASON.a1[0].스크린샷[3];
+            v_simg3.setAttribute("src" ,  v_imgU3);
+            v_simg3.setAttribute("width" , "200");
+        document.body.appendChild(v_simg);
+        document.body.appendChild(v_simg1);
+        document.body.appendChild(v_simg2);
+        document.body.appendChild(v_simg3);
+*/
+ /*       var v_simg = document.createElement("img");
+           var v_imgU = "images/2/" + v_JASON.a1[0].스크린샷[0];
+            v_simg.setAttribute("src" ,  v_imgU);
+            v_simg.setAttribute("width" , "200");
+        var v_simg1 = document.createElement("img");
+           var v_imgU1 = "images/2/" + v_JASON.a1[0].스크린샷[1];
+            v_simg1.setAttribute("src" ,  v_imgU1);
+            v_simg1.setAttribute("width" , "200");
+        var v_simg2 = document.createElement("img");
+           var v_imgU2 = "images/2/" + v_JASON.a1[0].스크린샷[2];
+            v_simg2.setAttribute("src" ,  v_imgU2);
+            v_simg2.setAttribute("width" , "200");
+            var v_simg3 = document.createElement("img");
+           var v_imgU3 = "images/2/" + v_JASON.a1[0].스크린샷[3];
+            v_simg3.setAttribute("src" ,  v_imgU3);
+            v_simg3.setAttribute("width" , "200");
+        document.body.appendChild(v_simg);
+        document.body.appendChild(v_simg1);
+        document.body.appendChild(v_simg2);
+        document.body.appendChild(v_simg3);
+        */
+    </script>
+</body>
+</html>

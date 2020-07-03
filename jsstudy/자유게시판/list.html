@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/myscript2.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .cl_yjy {
+        font-size: 1.3em;
+        color: tomato;
+    }
+</style>
+
+<body>
+    <h1>게시판 목록</h1>
+    <input type="button" value="선택된 것 삭제" onclick="f_ckDel()"><br>
+    <div id="id_list"></div>
+    <script>
+        function f_ckDel() {
+            var v_ckBoxs = document.getElementsByName("nm_del");
+            var v_ckVals = [];
+            for (var i = 0; i < v_ckBoxs.length; i++) {
+                if (v_ckBoxs[i].checked) {
+                    v_ckVals.push(v_ckBoxs[i].value);
+                }
+            }
+            for (var n = 0; n < v_datas.length; n++) {
+                for (var m = 0; m < v_ckVals.length; m++) {
+                    if (v_datas[n].uniq == v_ckVals[m]) {
+                        v_datas.splice(n, 1); // 배열에서 삭제 뒤에서 값을 땅겨오기때문에 
+                        n--;
+                        localStorage.setItem(v_tblName, JSON.stringify(v_datas));
+                    }
+                }
+            }
+            location.replace("list.html");
+        }
+        // onload를 함수로 담아서 사용해도 됨!!
+        var v_tblName = "gesiT";
+        var v_datas = JSON.parse(localStorage.getItem(v_tblName));
+        var v_list = document.getElementById("id_list");
+        var v_cntPerPage = 20;
+        var v_totalCnt = v_datas.length;
+        var v_totalPage = Math.ceil(v_totalCnt / v_cntPerPage);
+        var v_curPage = 1;  // 일단 시작페이지라고 가정
+        if (request.getParameter("pg_num")) {
+            v_curPage = request.getParameter("pg_num");
+        }
+
+        var v_startNum = (v_curPage - 1) * v_cntPerPage;
+        var v_endNum = v_startNum + (v_cntPerPage - 1);
+        if (v_curPage == v_totalPage) { // 마지막페이지라면
+            v_endNum = v_totalCnt - 1;
+        }
+        window.onload = function () {
+            var v_tblString = "<table border=1>";
+
+
+            v_tblString += "<tr><th>넘버</th><th>제목</th><th>작가</th><th>등록일</th><th>삭제</th></tr>"
+            for (var i = v_startNum; i <= v_endNum; i++) {
+                var v_gul = v_datas[i];
+                v_tblString += "<tr>";
+                v_tblString += "<td>" + (i + 1) + "</td>";
+                v_tblString += "<td><a href=read.html?uniq=" + v_gul.uniq + " >" + v_gul.title + "</a></td>";
+                v_tblString += "<td>" + v_gul.writer + "</td>";
+                v_tblString += "<td>" + v_gul.date + "</td>";
+                v_tblString += "<td><input type=checkbox name=nm_del value=" + v_gul.uniq + " ></td>";
+                v_tblString += "</tr>";
+            }
+            v_tblString += "</table>";
+            v_tblString += "<a href=write.html>글쓰기</a><br>";
+
+            for (var i = 1; i <= v_totalPage; i++) {
+                if (i == v_curPage) {
+                    v_tblString += "<a href=list.html?pg_num=" + i + " class=cl_yjy style=text-decoration:none;>[" + i + "]</a> &nbsp;"
+                } else {
+                    v_tblString += "<a href=list.html?pg_num=" + i + " style=text-decoration:none;> [" + i + "]  </a> &nbsp;"
+                }
+            }
+            v_list.innerHTML = v_tblString;
+        }
+    </script>
+</body>
+
+</html>

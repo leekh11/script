@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<body>
+당신이 보유한 스킬을 3개까지만 골라주세요
+<hr>
+자바 <input type="checkbox" name="nm_skill" value="java" onclick="f_ck(this)">
+오라클 <input type="checkbox" name="nm_skill" value="oracle" onclick="f_ck(this)">
+HTML <input type="checkbox" name="nm_skill" value="html" onclick="f_ck(this)">
+CSS <input type="checkbox" name="nm_skill" value="css" onclick="f_ck(this)"> <br>
+JSP <input type="checkbox" name="nm_skill" value="jsp" onclick="f_ck(this)">
+SPRING <input type="checkbox" name="nm_skill" value="spring" onclick="f_ck(this)">
+JS <input type="checkbox" name="nm_skill" value="javascript" onclick="f_ck(this)">
+MongoDB <input type="checkbox" name="nm_skill" value="mongodb" onclick="f_ck(this)">
+<script>
+    var v_ckboxs = document.getElementsByName("nm_skill"); 
+    function f_ck(p_this){
+        // 체크된 체크박스가 3개일때까지는 괜찮다가 4번째로 체크박스를 체크하면
+        // 3개까지만 가능하다고 메시지를 띄우고 4번째 체크한 체크박스는 체크를 해제하시오
+        if( f_ckCount() > 3) {
+            alert("3개만 체크하세요");
+            p_this.checked = false;
+        }
+    }
+
+    function f_ckCount() {
+        var v_ckedCnt = 0; //카운트 초기화
+        for(var i=0; i< v_ckboxs.length; i++) {
+            //체크된것 찾기
+            if(v_ckboxs[i].checked){
+                v_ckedCnt++;  // 찾으면 카운트 증가 
+            }
+        }
+        return v_ckedCnt;
+    }
+</script>
+</body>

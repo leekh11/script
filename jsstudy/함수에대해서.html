@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+
+// 즉각 실행 함수
+//메모리가 절약됨!!
+(function (p_msg){
+    alert(p_msg)
+})("하하하");
+
+
+
+
+/* 콜백(callback)함수, 매개변수로 넘어가는 함수
+
+var f_arrloop = function(p_arr, f_callback){
+    for(i=0; i<p_arr.length; i++){
+        f_callback(i, p_arr[i]);
+    }
+}
+
+var v_arr= [1,2,3,4,5,6];
+f_arrloop(v_arr, function(p_index, p_value) {
+    v_arr[p_index] = p_value*p_value;
+})
+
+
+f_arrloop(v_arr, function(p_inx, p_val) {
+    v_arr[p_inx] = p_val + 1;
+})
+
+alert(v_arr);
+*/
+/*
+var v_fp3 = function() {
+    return function(p_arg1) {
+        alert(p_arg1);
+    }
+}
+
+v_fp3()("hi");
+*/
+
+    /*var v_fp = function() {
+        alert("함수!");
+    }
+    
+    var v_f2 = v_fp;
+    */
+
+    //<============================== this 를 제어 call bind apply!!
+    // var myPrint = document.write.call(document, "흥");
+    // var myPrint = document.write.bind(document); // this-> document
+    // myPrint("<h1>???</h1>")
+
+    
+    /* out.print를 document.write를 이용해서 만든다면?
+    var out = {};
+    out.print = function(p_msg) {
+        document.write(p_msg);
+    }
+    out.println = function(p_msg){
+        document.write(p_msg + "<br>");
+    }
+
+    // 테스트
+    out.print("hi");
+    out.println("heeeeee");
+    out.print("hoooooooooo");
+    */
+</script>
