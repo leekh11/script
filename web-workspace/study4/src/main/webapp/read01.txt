@@ -1,0 +1,1397 @@
+	프로토콜(protocol) : 컴퓨터간에 정보를 주고받을 때의 통신방법에 대한 규칙과 약속. 대표적으로 tcp/ip 
+	
+	클라이언트-서버 : 고객/소비자 - 제공자  :: 네트워크를 통하여여 서비스를 요청
+	
+	어플리케이션 서버 - 분산 네트워크 내의 컴퓨터 내에서 응용프로그램에 비지니스 로직을 제공하는 서버 프로그램
+	웹 어플리케이션과 서버환경을 운영하기 위해 생성되는 시설 // 소프트웨어 프레임워크
+	
+	미들웨어 - 분산 컴퓨터 환경에서 서로 다른 기종의 하드웨어나 프로토콜, 통신환경을 연결 원만하게 해줌
+	
+	웹 어플리케이션 서버 : WEB + AS
+	
+	WebServer : Apache WebServer 
+	WAS : Apache Tomcat /WebSphere /Oracle Web Logic/ Redhat JBOSS / Caucho Resin / 
+	      Tmax jeus - 국내기업 TmaxSoft사에서 만든 한국산 웹 애플리케이션 서버
+	
+	
+	웹 서버 - 클라이언트가 서버에 페이지 요청을 하면 요청을 받아 정적 컨텐츠를 제공하는 서버
+	
+	WAS - 동적 컨텐츠를 제공하기 위해 만들어진 어플리케이션 서버(DB조회, 로직 처리)
+			   서버와 클라이언트 사이에서 안정적인 트랜잭션을 위해 존재함 
+	
+	ftp : Flie Transfer Protocol
+	http : Hyper Text Transfer Protocol
+	telnet : Tele network
+	
+	port : 운영체제의 종단점/ 네트워크 서비스나 특정 프로세스를 식별하는 논리단위
+	       20 FTP(data) 21 FTP(제어) 22 SSH 23 telnet 53 DNS 80 HTTP(월드 와이드 웹)
+	          1521,21 : Oracle 리스터 // 3306 mysql/maria // 1433,4 ms-sql
+	             큐브리드 티베로
+	
+	------------------------------------------------------------------------
+	WWW : 89년 3월  팀 버너스리 경 제안
+	HTTP :
+	
+	---------------------
+	CGI 역사 용어 Common Gateway Interface
+	 서버 프로그램에서 다른 프로그램을 불러내고, 
+	 그 처리 결과를 클라이언트에 송신하는 방법이 고안되었다. 
+	 이를 실현하기 위한 서버 프로그램과 외부 프로그램과의 연계법을 정한 것이 CGI이다.
+	 
+	 client <-> Web Server <-> Web AppicationServer
+	----------------------
+	이클립스 최적화
+	eclipse.ini 에 메모리 설정
+	
+	
+	window > java > editor > folding
+	소스파일에서 블록단위로 폴딩 되는 효과를 제거
+	
+	코드 자동완성기능 해체 
+	window java eidtor contentAssist
+	Spelling 체크 설정 해제
+	=> Preferences > General > Editors > Text Editors
+	 > Spelling : ‘Enable spell checking’ 체크해제
+	
+	불필요한 Validation (컴파일시 유효성체크) 설정 해제
+	(dtd,xml, xsl, jsp) 
+	=> Preferences > Validation
+	
+	작업중이지 않은 프로젝트 닫기
+	=> Project > Close Project
+
+------------------------------ 
+자동완성 :ctrl + space
+우분트 이클립스 : Alt+/ -> ctrk+space 변경  key
+메뉴 windows webBrowser 를 내장 브라우저 말고 다른것으로
+
+
+/////////////////////////////////////////2
+
+DNS : Domain Name System
+		 논리적인 이름의 서버이름 (www.daum.net milkis.com)
+		 실제 서버주소를 구한다
+		 그런데 그전에 hosts 파일을 먼저 검색
+		 unix : /etc/hosts
+		 win : C:/windows/system32/drivers/etc/hosts
+--------------------------------
+운영서버 : 실제 민간인에게 서비스를 제공하는 서버
+개발서버 : 개발할때 사용하는 서버
+  도메인을 사용해서 기술...
+host파일 수정해서 
+		 
+		 
+		 
+HTTP Status code :
+100번대 : 계속 진행
+200번대 : 요청에 대한 성공
+300번대 : 리다이렉트(우회) 요청 (자원이 바뀌어서)
+400번대 : 요청이 잘못되었음 (자원이 바뀌어서)
+500번대 : 서버의 오류
+
+
+MIME type : Multipurpose Internet Mail Extensions
+				다목적 인터넷 메일 확장 //
+				전자우편의 데이터 형식을 정의한 표준 포멧
+		text/html ;charset = utf-8
+		main category /sub category ; incoding (option)
+		
+서블릿 기본언어 : 영어 (서유럽어 : iso-8859-1)
+	한글 : 초기에 표준 : 조합형/완성형 -> euc-kr/ksc-5601
+			8bit -> 1byte (영어 대소 26 * 2+10 + 특수 30)
+			한글 2byte : 65000
+			2 4 6 16 | 32 64 128 256
+			
+			utf-8 (웹표준 '
+			영어+숫자+특수문자 : 1byte 표현
+			나머지 : 3byte 표현
+			
+---------------------------------------
+CGI : java 서블릿 
+	.class
+	개발자가 서블릿(자바를 사용하여 웹페이지를 동적으로 생성하는 
+	서버측 프로그램 or 사양)으로 간단한 화면 만들려면 힘들어서
+	사용자 별로 php, perl 에서 사용한 방식을 차용
+	jsp : java로 변경, 컴파일, 실행 (jsp 컨테이너) 
+
+	1부터 100까지 짝수의 합 : jsp
+	1부터 100까지 짝수의 합 : 서블릿
+	
+-----------------------------------------
+서블릿 : java 웹 개발을 위한 표준 스펙
+	3가지 중요한 객체
+		서블릿 : 요청을 처리하기 위한 객체 (HttpServlet을 상속해서 구현)
+		필터   : 요청 전/후에 공통적인 기능을 제공(Filter implement 구현)
+		리스너 : WAS 기동/초기화 관련 리스너 
+			     요청에 대한 리스너
+			     사용자 세션에 대한 리스너   
+
+	com.study.suvlet SumServlet 작성 : HttpServlet을 상속
+		service
+			doGet
+			doPost
+			doPut
+			doTrace
+			doDelete
+		http method 종류 
+		service : get/post 구분 없이 모두 처리
+		doGet : get 방식으로 요청한 경우 처리
+		실제 요청하는 url 하고 서블릿 매핑작업
+
+
+
+------------------------------------
+과제 table.html
+GuguServlet 작성 상속
+service 매서드 오버라이드 
+for문 제어문 구구단 생성
+
+DD(web.xml) 서블릿 등록 - 매핑 : *.wow
+
+//////////////////////////////////////////////////03
+
+JSP 컨테이너
+
+사용자가 해당 JSP를 호출하면
+
+	JSP -> 서블릿(java) 파일로 변경 -> 컴파일 -> 메모리에 적제
+		  	해당객체 호출
+		  
+ 	선언부<%! ~~ %> 는 java : 메서드, 변수
+ 	
+ 	String VS StringBuffer(StringBuilder)
+	int 4byte
+	char 1byte
+	String : ???
+	
+----------------------------------------------------
+
+	request 객체 : 클라이언트 정보
+					: getRemoteAddr()- 연결한 클라이언트의 ip주소를 구함
+				 	, getRequestURI() - 요청한 url에서 경로를 구함
+				 	, getContextPath() - 컨텍스트 경로를 구함
+	
+	ip4 - iot -> ip.v6
+	ip : 0:0:0:0:0:0:0:1
+	
+--------------------------------------------------------
+java에서 map에 들어 있는 정보를 출력하는 방법 3가지
+방법1. 
+
+Iterator<Map.Entry<String,String>> entries = hm.entrySet().iterator();
+
+while(entries.hasNext()){
+
+Entry<String,String> entry = (Entry<String,String>)entries.next();
+
+System.out.println("key : " + entry.getKey() + " , value : " + entry.getValue());
+
+}
+
+// Iterator를 이용해서 하나씩 돌려가며 key, value 정보를 읽는다
+
+----------------------------------------------------------------------------
+방법2.
+
+for(Map.Entry<String,String> entry : hm.entrySet()){
+
+System.out.println("key : " + entry.getKey() + " , value : " + entry.getValue());
+
+}
+
+// Map.Entry를 이용해서 for문을 돌린다.
+----------------------------------------------------------------------------
+방법3.
+
+hm.forEach((k,v) -> System.out.println("key : " + k + ", value : " + v));
+
+
+
+// JAVA8부터 지원하는 람다식을 이용하는 방법이다. 함수형 프로그래밍으로 아주 간단히
+
+사용할 수 있다.
+
+//////////////////////////////////////////////////04
+
+리다이렉트vs 포워드(redirect vs forward)
+리다이렉스 : 다른페이지로 이동하라고 응답하는 기능 // 특정페이지를 실행한 후 지정한 페이지로의 이동을 원할 때 사용
+포워드 : 시스템에 변화없이 단순 응답하는 경우
+
+요청을 받은 서버에서 요청에 대한 처리를 하고 화면을 생성할 필요없이
+클라이언트에 다른 페이지를 요청
+	서버에서 상태코드 30x 생성/ 요청페이지 지정
+		http 1.1 302
+		location : "index.jsp" 
+	응답을 받은 클라이언트(브라우저)는 규약에 따라서
+		Location 으로 서버에 요청을 합니다.
+	
+-- 로그인후에 성공메시지가 필요없이 메인으로 이동
+---------------------------------------
+포워드 : 서버에서 요청에 대한 처리를 하고 화면을 생성할 페이지가 따로 존재해서
+		 서버 내부에서 뷰로 이동. 클라이언트는 결과만 받음.
+
+	client ---------(main.jsp)----------------> main.jsp
+			 <--------(main.jsp)------------------ (fox.jsp, android.jsp ...)
+			 
+
+----------------------------------------------
+HDD의 버퍼메모리 : (메모리 vs HDD) 두 기기간의 속도차!! 빠르게...
+CPU : (CPU vs 메모리) - 캐시메모리
+
+/////////////////////////////////////////////////////05
+
+- (작업) 웹 어플리케이션 <- 독립적인 어플리케이션
+-> 웹서버에 배포 -> 웹서버에 입주해서 운영
+
+ http:// www.daum.net/news/
+ request.getContextPath()를 통해 어플리케이션 경로를 구함
+ 
+ ---
+ WEB-INF  : 웹의 설정을 관리하는 폴더(클라이언트가 직접 접근 불가)
+ 		web.xml : 설정파일(DD, 배포기술서)
+ 		/classes : 컴파일된 자바파일 위치
+ 		/lib : 외부 jar 파일 위치
+ 		/tags 
+ ---
+ ex) 
+ 오라클 드라이버 ojdbc6.jar
+ 
+ 클래스패스 : JRE/ext/lib : 전역으로 설정 
+ 			 (다른 자바어플리케이션이 신경안써도 되지만
+ 			  문제는 다른버전이 필요한 경우 문제가 발생)
+ 			
+ 			WAS(톰캣)내에 배치 : tomcat/lib  
+ 			( 해당 WAS 내에서 공유하는 곳
+ 			해당 어플리케이션이 다른 버전이 필요한 경우 문제가 발생)
+ 			
+ 			해당 어플리케이션 /WEB-INF/lib
+ 			( 다른 어플리케이션과 다르게 버젼문제를 회피
+ 			  직접 jar를 관리)
+ ---
+ 웹 어플리케이션 배포
+ - 처음에는 war 배포
+ 	(WAS 마다 다름. Simple WAR : 배치만 하여도 됨
+ 					  상용 WAS : 관리자 메뉴로 실행해야함 
+ 	 
+ - 이미 운영중/일부 소스만 변경
+ 	jsp/class 파일 -> 직접 배치
+ 	
+ - CI tool 활용 (컴파일/배포를 자동화)
+ 	
+ ---
+ pageContext : jsp 사용할 경우 없음
+  단 , tag 라이브러리를 생성하는 경우에는 필요
+  속성, 다른객체 구하기.
+  =========
+과제 :
+	ibm 차이니스 카렌더 관련 jar를 /WEB-INF/lib 복사
+	month.jsp 날자를 선택 (전송) 
+	monthResult.jsp
+		양력 / 음력 윤년 y or n
+  
+/////////////////////////////////////////////////////////06
+
+attribute : 
+	page 영역 : 현재 jsp를 위한 저장공간
+	request : 현재 요청을 위한 저장공간
+	session : 현재 사용자를 위한 저장공간
+	application : 모든 사용자를 위한 저장공간
+--------------------------------
+error :
+우선순위 : 1순위 : 현재 페이지에 지정된 에러페이지
+			    
+			    2순위 : web.xml(웹 어플리케이션의 설정파일)에서
+			    			exception-type
+			    
+			    3순위 : web.xml(웹 어플리케이션의 설정파일)
+			    			에서 error-code(https status code 400~500대)
+			    
+			    4순위 : WAS에서 기본 에러 페이지 
+			    
+	3순위 (error-code)가 가장 많이 사용되는 방법
+		404 : Not Found
+		403 : 권한이 없어요
+		500 : 내부서버오류
+		
+/////////////////////////////////////////////////////////////////07
+
+
+<jsp:include />
+--- 별도의 서블릿 (JSP) 본문에서 해당 서블릿을 호출 
+	호출받은 서블릿은 제어권을 받아서 처리 
+	작업이 끝나면 본문에 다시 제어권을 이전 
+
+
+<%@ include />
+-- C의 include 처럼 파일 자체를 본문에 삽입
+------------------------------------------------------------------
+이클립스에 템플릿을 추가
+-------------------------------------------------------------------
+	main 에서 sub로 제어권 이동 
+	<jsp:include />
+	그때 필요한 정보를 제공하는 방법이 2가지
+	1. <jsp:param /> 파라미터를 생성 :  문자열이 되는 값 
+		- param의 문제는 객체를 보낼수 없다
+	2. 속성을 사용해서 객체를 보낼수 있다.
+		- 실습은 포워드에서 
+	
+	<jsp:forward />
+	-- 별도의 서블릿(JSP) 본문에서
+		forward를 만나면 제어권을 해당 페이지에 이관
+		해당 페이지에서 결과처리를 합니다.
+		
+////////////////////////////////////////////////////////////////////08
+<jsp:include />
+실제로 각 페이지는 별개로 처리
+(단, request, response를 해당 jsp에 제공)
+서브가 작업이 끝나면 main으로 제어권(흐름)이 이동
+
+<@ include />
+해당 페이지 내용이 그대로 원본에 붙어서 서블릿이 생성되고 컴파일 됩니다.
+
+----------------------------------------------------------------------------------------------------------------------
+
+둘다 화면모듈을 제공할 수 있고
+공통변수, 자주 사용하는 것을 정의할 때 액션태그 보다는 디렉티브를 사용합니다.
+
+CDN 콘텐츠 전송 네트워크 (Contents Delivery Network)
+안정적으로 콘텐츠를 보내주는 것 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+JAVA에서 정보(데이터)를 표현하는 객체
+JavaBeans 서블릿에서
+VO (Value Object) : 값, 객체
+DTO (Data Transfer Object) : 데이터 전송 객체
+Domain 객체
+form 객체, command 객체 (스프링). Action Form(스트럿츠)
+Entity : JPA/ORM
+com.study.login.vo.UserVO
+	- userId
+	- userPass
+	- userName
+	- userRole
+////////////////////////////////////////////////////////////////////////////09
+
+회원가입
+가입폼 / 입력한 정보 확인
+MemberVO 생성
+DB - Member테이블 일부컬럼은 제거, not null - > null 허용
+
+데이터 딕셔너리를 사용해서 VO 생성
+VO 생성을 위한 쿼리
+
+user_tab_cols (tabs)
+user_tab_comments
+
+snippets : 작은 프로그램 단위 (문장들)
+
+// 필드 생성 쿼리
+select 'private ' ||
+        DECODE(a.data_type, 'NUMBER', 'int ', 'String ') ||
+        rpad(substr(lower(a.column_name), 1,1) 
+             || substr((replace(initcap(a.column_name), '_','')), 2) 
+             || ';' 
+            , 15, ' ') ||
+        '  /*' || b.comments || '*/' result
+from user_tab_cols a, user_col_comments b
+where a.table_name = b.table_name
+and a.column_name = b.column_name
+and a.table_name = upper(:tb);
+
+:tb   바인드// 검색할 데이터를 입력하면 됨// 실행해서
+
+
+jsp:useBean은 생성과 property"*" 만 기억
+
+MVC 패턴에서는 사용자의 파라미터를 컨트롤러(java)에서 처리하기 때문에 사용 x
+화면에 표현하는 방법 표현식 (<%= >) -> 표현언어 ${var}
+순수 JSP 만으로 작업할때 파라미터정보를 객체에 담고자 하는 경우에 딱 2줄만 기억   
+
+session : 사용자와 관련한 정보를 관리(속성)
+			  , 로그인 정보 장바구니 정보
+
+HTTP 비연결성 // 한번요청하면 연결이 종료
+FTP 연결성 // 지속적으로 연결하기위해서 프로토콜이 무거워짐
+
+////////////////////////////////////////////////////////////////////10
+
+http 프로토콜 특성상/ 비연결성
+(쿠키로 세션아이디를 클라이언트에 보관)
+
+cookie : 클라이언트(브라우저)에 정보를 보관
+			   아이디(기억하기), 오늘본 상품
+			   문제점 : 해커에게 노출될 가능성이 큼
+			   (보안과 관련된 사항은 보관하면 안됨
+
+session : 사용자와 관련한 정보를 관리(수정)
+			  로그인 정보, 장바구니 정보
+
+단점 : was내에 여러 웹어플리케이션 간에 세션 공유 안됨
+		 한 도메인 내에 서브도메인 간에 공유 안됨
+
+		 
+session.invalidate()  - 로그아웃
+
+-------------------------------------------------------------------------------------------------
+쿠키는 클라이언트에서 존재
+쿠키제어는 javascript 서버단에서 생성가능 
+
+쿠키 : 	이름 	   : 알파벳/숫자/언더바로 생성
+		 	값	 	   : 인코딩 필요(URLEncoder)
+			패스	   : (기본) 생성된 경로 이하로만 접근가능
+		 		  	   	  11차에서 생성한 쿠키는 11일차 이하에서 사용가능
+		 		 	       WAS내에서 모두 사용하려면 패스지정을 해야함
+		 도메인 	   : (기본) 생성된 서버에서만 접근 가능 
+		 			  	 동일 도메인에서 사용하려면 도메인 지정을 해야함
+		 유효시간 : (기본) 0 : 브라우저 살아있는 동안
+		 				 1주일간 (60*60*24*7)
+		 				 -1 로 설정하면 쿠키가 제거되는 효과 
+
+/////////////////////////////////////////////////////////////////////11
+
+JSP에서 쿠키를 제어하는 게 어려움
+cookie를 제어하는 클래스 - > cookieUtils 생성
+		 
+ ride : 기어오르다
+ loading : (여러개를) 적재하다 	 
+		 
+------------------------------------------------------------------------------
+
+* 아이디 기억하기 
+
+자주 가는 사이트에 아이디 기억하기 해둠
+
+login.jsp : 아이디 : malja
+				체크박스 : 체크("checked=\'checked'")
+
+loginCheck.jsp : 로그인에 성공했을때 아이디 기억하기를 체크함?("Y")
+						   ㄴ 체크 했다면 ID_SAVE라는 쿠키생성 / 값은 로그인한 아이디 , maxage = 60*60*24*30 (한달간보관)
+						 : 체크를 안했다면
+		 				   ㄴ  ID_SAVE 쿠키를 제거해달라는 의
+		 					  	 ID_SAVE라는 쿠키생성 / 값은 빝 값 / maxage = 0으로 해서 내보내기
+
+
+------------------------------------------------------------------------------------
+el(표현언어)
+
+기존 스크립트: ( 스크립트릿<%~~%> , 표현식 <%= ~%>
+ex)
+<%
+	if(x != null){
+		for(int i=0; i<10; i++){
+		%>
+		<li><%=i%>
+	<% }
+	}
+%>
+<ul>
+
+태그형식을 가지는 문법을 고안 JSTL (JSP Standard Tag Library
+<ul>
+	<if test="not empty">
+		<foreach var= "i" begin="1" end = "9">
+			<li>${i}	
+		</foreach>
+	</if>
+</ul>
+// JSTL표기법을 jsp 표준으로 EL(expression language)
+
+---------------------------------------------------------
+ctrl shift r - 파일 찾기
+&nbsp; 공백
+
+el 
+- 속성에 담긴 객체 표현
+
+// el : 이름검색 page -> request -> session -> application
+
+jstl : 라이브러리 필요(표준API)
+		(apache common tag-libary)
+-------------------------
+12 prod 폴더를 복사 14prod 스크립트릿 표현식 사용
+14 prod
+jstl과 el 표기법
+---------------------------
+iteration - 반복
+varstatus 상태용 변수 !
+${status.current} 현재 for문의 해당하는 번호
+${status.index} 0부터의 순서
+${status.count} 1부터의 순서
+${status.first} 첫 번째인지 여부
+${status.last} 마지막인지 여부
+${status.begin} for문의 시작 번호
+${status.end} for문의 끝 번호
+${status.step} for문의 증가값
+
+JSTL : c: url /  catch /  
+		 fnt : 국제화 : 메시지, 통화표기, 날짜 표기
+		 JSTL + EL의 조합을 말한다.
+HTML 코드 내에 java 코드인 스크립틀릿 <%= student %>를 ${student}로, <%=if %>문을 <c:if>, <%=for%>문을 <c:forEach>로 대체하여 사용한다.
+예전에는 스크립틀릿을 많이 사용했지만 가독성이 떨어지고, 뷰와 비즈니스로직의 분리로 인해 현재는 JSTL을 많이 사용하는 추세다. 
+
+-- 과제 :
+	com.study.common.util
+	studyfileUtils 클래스
+	+ public static String getFancySize(long size)
+	
+	1024 보다 작으면 byte
+	1024*1024 보다 작으면 KB
+	1024**1024*1024 작으면 MB
+	else GB
+	byte 초과 천단위 구분 소숫점 첫재자리 표현 decimalformat
+	
+	StudyfileUtils.getFancySize(256) -> 256byte
+	
+	StudyfileUtils.getFancySize(15210) -> 15.2KB
+	StudyfileUtils.getFancySize(1293630) -> 12.9MB
+	
+-----------------------------외부 jar 위치
+- jdk /ext/ : 해당 jre 전체에 공용으로 사용
+- WAS/lib : 해당 WAS 전체에서 사용
+- 컨텍스트 내 /WEB-INF/lib : 해당 컨텍스트에서 사용 
+
+
+----------------
+memberList
+memberView
+
+14장 읽기
+
+preparedStatement를 사용하는 이유 
+- SQL Injection을 당하지 않음!!
+- 값변환을 자동으로 / 
+- 간결한 코드/ 
+- 동일한 구문을 실행시 성능을 개선할 수 있다.
+
+구문을 DB에 요청 1. 구문이 올바른지 검색
+						   2. 구문내 객체가 올바른지 확인
+						   3. 구문을 재구성(최적화 구문) : 인덱스 사용
+						   4. 실행
+						   
+Statement는 위 구성을 실행시마다 매번
+PreparedStatement는 최초 실행 이후 1,2 ( 또는 3) 실행하지 않음
+										(단지 값만 재설정한다.)
+
+DBCP를 사용해야하는 이유
+oneConnOneJob : 13~15ms
+manyConnManyJob : 250~260ms(동일 작업 20 for : xe는 세션수 20
+oneConnManyJob :18~22ms
+manyConnManyJobDBCP : 10ms
+
+하나의 작업에서 Connection 구하는 시간 : 실행시간 
+9:1
+
+apache.org 자바기반 자료를 많이 제공해줌
+
+데이터베이스와 애플리케이션을 효율적으로 연결하는 커넥션 풀(connection pool) 라이브러리는 웹 애플리케이션에서 필수 요소입니다. 
+웹 애플리케이션 서버로 상용 제품을 사용하다면 보통 제조사에서 제공하는 커넥션 풀 구현체를 사용합니다. 
+그 외에 오픈소스 라이브러리로 Apache의 Commons DBCP와 Tomcat-JDBC, BoneCP, HikariCP 등이 있습니다.
+
+커넥션 풀 라이브러리를 잘 사용하면 데이터베이스와 애플리케이션의 일부분에서 발생하는 문제가 전체로 전파되지 않게 할 수 있고, 
+일시적인 문제가 긴 시간 이어지지 않게 할 수 있습니다. 
+반대로 값을 적절하지 못하게 설정해서 커넥션 풀이 애플리케이션에서 병목 지점이 되는 경우도 있습니다.
+ 웹 애플리케이션의 요청은 대부분 DBMS(database management system)로 연결되기 때문에 
+ 커넥션 풀 라이브러리의 설정은 전체 애플리케이션의 성능과 안정성에 영향을 미치는 핵심입니다.
+
+이렇게 중요한 커넥션 풀 라이브러리를 적절하게 사용하려면 라이브러리의 내부 구조와 원리, 속성값의 의미를 이해해야 합니다. 
+
+버전 선택과 속성 설정 방법
+JDK 버전과 Commons DBCP 버전
+JDK(Java development kit)의 버전에 따라서 Connection이나 Statement 같은 JDBC(Java database connectivity)의 인터페이스가 조금씩 다르므로 사용하는
+ JDK의 버전에 맞게 Commons DBCP 버전을 선택해야 안정된 동작을 기대할 수 있다. 예를 들어 JDK 6을 사용하면서 
+ Commons DBCP 1.3.x를 사용한다면 JDBC 4에 추가된 SQLTimeoutException 등을 드라이버에서 전달할 때 Commons DBCP가 정교하게 처리하지 못해 오류 파악하기 어려울 수 있다.
+
+
+------------------
+17일차에 있는 모든 커넥션을 DBCP를 통해서 처리
+memberList, memberBiew, memberEidt을 prepared로 변경
+
+----------------------------------------------------
+DAO (Data Access Object)
+
+transaction
+- commit, rollback, savepoint
+오류없이 수행할때 commit
+가장 작은 논리적 단위로 나누어 데이터 처리 -> DAO(쿼리단위)
+
+DAO : Persistence Layer - 하나의 메서드에서 하나의 작업만 하도록 작성 DAO 패턴
+
+Service : Businese Logic Layer -  최소단위(트랜잭션)의 업무단위로 구성 
+
+IMemberDao <- MemverDaoOracle 
+	insert
+	updatexxx
+	deletexxx
+	getxxx // findByxxx // selectxxxx
+	getxxxList
+	
+
+	IMemberService <- MemberServiceImpl
+	registxxx
+	modifuxxx
+	removexxx
+	getxxx
+	getxxxList
+
+	프레임 워크 - 소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 
+						재사용이 가능하게끔 일련의 협업화된 형태로 클래스들을 
+						제공하는 것
+					-> 자주 쓰는 유틸을 모은 것 // 설계의 기본 틀
+					
+-------------------------------------------------------------------------------------------------------------------\
+	예외 : JDBC의 단점 중 하나가 모든 메서드에서 SQL 예외 처리 
+	java 예외 : 개발자가 처리해야 예외 :Exception
+					  개발자가 처리하지 않아도 되지만
+					  상황에 따라서 예외처리 가능 : RuntimeException
+	
+	사용자 정의 Exception
+		Exception 클래스를 상속 받아 정의한 checked Exception
+		반드시 오류를 처리 해야만 하는 Exception
+		예외 처리하지 않으면 컴파일 오류를 발생 시킨다.
+		RuntimeException 클래스를 상속 받아 정의한 unChecked Exception
+		예외 처리하지 않아도 컴파일 시에는 오류를 발생시키지 않는다.
+	
+	
+	개발자가 예외처리를 한다 : 사용자가 예외를 처리할 수 있는 가?
+
+	- 등록을 했는데 Oracle(ORA-00001) 번 에러 유니크 에러 : 이미 사용중인 아이디 입니다.
+	
+	- 요즘은 사용자가 처리하기 힘든 것은 RuntimeException
+	
+	BizException <- RuntimeException
+	<- BizNotEffectedException
+	<- BizDuplicateException
+	<-BizNotFoundException
+
+	-Dao 단에서 발생시킬 예외
+	 DaoException <- RuntimeException	
+	 <- DaoBadSqlException
+	 < DaoduplicateException
+	 
+	 excuteQuery /// excuteupdate
+	 
+	--	 VO toString() 메서드에서 라이브러리 사용하기
+		commons.lang ToStringBuilder
+		
+		과제!
+	-- memberEidt.jsp 직업, 취미를 코드로 대체 
+	 
+	-- 수, 목, 금 : 자유게시판 <- 회원관리처럼 
+
+	free <- 
+	
+	com.study.free.vo.FreeBoardVO 
+ Serializable 구현
+ toString() 오버라이드 
+ 
+com.study.free.dao.IFreeBoardDao
+  public List<FreeBoardVO> getBoardList(Connection conn) throws DaoException;	
+  public FreeBoardVO getBoard(Connection conn, int boNum) throws DaoException;	
+  public int insertBoard(Connection conn, FreeBoardVO board) throws DaoException;	
+  public int updateBoard(Connection conn, FreeBoardVO board) throws DaoException;	
+  public int deleteBoard(Connection conn, FreeBoardVO board) throws DaoException;
+  public int increaseHit(Connection conn, int boNum) throws DaoException;
+
+com.study.free.service.IFreeBoardService	
+  public List<FreeBoardVO> getBoardList() throws BizException;	
+  public FreeBoardVO getBoard(int boNum) throws BizException;	
+  public void registBoard(FreeBoardVO board) throws BizException;	
+  public void modifyBoard(FreeBoardVO board) throws BizException;	
+  public void removeBoard(FreeBoardVO board) throws BizException;	
+  public void increaseHit(int boNum) throws BizException;
+	
+구현 freeBoardDaoOracle : getBoardList
+	
+프레임 워크 : 일정한 틀, 부품을 가지고 다양한 형태의 결과물을 만드는 것 
+				   : 제공받은 일정한 부품, 틀, 규약을 가지고 무언가를 만드는 일
+
+라이브러리 : 도구의 모음
+
+DBMS별 페이징 쿼리
+
+ctrl shift o - 임포트 자동정리
+ctrl shift r - 
+페이징 검색 삭제
+수정 및 삭제할때 
+where bo_num =?
+and bo_pass = ?
+where 절에 bo_pass는 빼고
+
+서비스에서 (modifyBoard)
+조회해서 입력한 패스워드하고 조회한 패스워드하고 비교
+맞지않으면 BizPasswordNotMatchedException을 던지도록 하겠습니다.
+
+페이징	
+- my sql, maria : limit
+	select from where orderby limit 인댁스[, 사이즈]
+	limit 0 : 첫번째 , limit 1 : 두번째 
+	limt 0 , 10 : 1페이지 10개 / limit 10, 10 : 2페이지 
+
+- DBMS 가 분석(윈도우)함수를 제공한다면(표준)
+ - MS sqlserver 2005 이상 , oracle 9i 이상,
+ 	row_number() over ()
+ 	
+- 별도로 가능 (oracle : rownum , sqlserver : top , ...)
+- oracle -
+
+
+db 
+- vo - dao / service - 구현(화면보이게) - exception - 디테일(페이징, 기능구현...) -  
+		- code 
+
+select *
+from ( select rownum rn, a.*
+        from ( select bo_num, bo_title, bo_writer
+                 from free_board
+                 where bo_del_yn = 'N'
+                 order by bo_writer asc ) a
+     ) b
+where rn between 1 and 10;
+
+-- select 문에서 order by절이 가장 늦게 동작하는 절임
+select * 
+from( select a.bo_num, a.bo_title, a.bo_writer
+        , row_number() over(order by bo_writer asc) rn
+        from free_board a
+       where bo_del_yn = 'N'
+     )
+where rn between 11 and 20
+;
+
+read25.txt
+오늘의 과제 :
+MemberSearchVO 생성 (PagingVO 상속)
+IMemberDao : + getMemberCount(conn, searchVO)
+             + getMemberList(conn, searchVO) <- refactor 
+
+	MemberDaoOracle 구현, 수정  
+
+IMemberService + getMemberList(searchVO) <- refactor
+  MemberServiceImpl 수정  FreeBoardServiceImpl.getBoardList() 참조
+  
+memberList.jsp 하단부 페이징영역처리 <- freeList.jsp 에서 복사                           
+
+폰트어썸!
+
+콘텐츠 전송 네트워크 [Content Delivery Network]
+
+이클립스의 jsp 에디터에서는 스크립트 어시스트가 작동이 안됨 
+
+마켓플레이스에서 tern eclipse 플러그인 설치 
+
+Help -> install new software
+			add버튼 클릭
+			http://oss.opensagres.fr/tern.repository/1.2.0/ 
+			프로젝트 팝업에서 configure - convert to tern project 
+			browser / 
+			 tern module 
+			 
+			 
+	data-XXX = ?
+	javascript : dataset.XXX , jquery data("XXX")
+
+
+	과제 memberlist도 만들기 
+
+
+커스텀 태그 교재 16장 
+교재 18장 mvc패턴!
+
+
+CHAR 는 고정길이 데이터
+VARHCAR2 는 가변길이(고정길이포함)일경우 사용하는데
+
+VARHCAR2 의 의미는 
+데이터 수정시 
+수정할 데이터의 크기가 클 경우 
+블럭을 분할하여 저장할 수 있게 허용한다는 의미입니다.
+
+CHAR 는 데이터가 없어도 빈(NULL) 데이터를 저장시
+미리 공간이 할당되기 때문에 
+비어있는 데이터를 UPDATE 하더라도 
+미리 할당된 공간 내에서 저장되기 때문에
+블럭 분할이 발생하지 않습니다.
+
+
+그런면에서 보면 
+오랜 시간이 지난 
+테이블의 조회성능을 생각해보면
+
+2개의 블럭 I/O 보다 
+1개의 블럭 I/O 를 읽어오는걸 원하게 되는 겁니다.
+
+사실 이런 데이터는 시간이 지나야지 알수 있는거지
+수십만건의 데이터를 마이그레이션 하고나서
+바로 성능비교를 한다고 해서 알 수 있는건 아닙니다.
+
+그리고 VARHCAR2 만 사용하는 프로젝트로 많은데
+
+이럴경우 
+고정길이 데이터를 저장할때 VARCHAR2 + NOT NULL 으로 설정해서
+블럭분할을 방지하고 있습니다.
+
+
+그리고 
+금액 필드에 NUBMER 를 설정하듯이
+고정길이 문자열은 CHAR 로 설정하는게 맞습니다.
+
+MVC를 위한 서블릿 컨트롤러를 구현하면서 jsp 직접요청을 하고 있죠 /free/freeList.wow
+그래서 클라이언트가 직접 jsp 요청을 못하게 하고 싶어요
+가장 좋은 곳은 web-inf/ 하위에 jsp를 두는게 안전
+
+디자인 패턴이란 https://gmlwjd9405.github.io/2018/07/06/design-pattern.html
+소프트웨어를 설계할 때 특정 맥락에서 자주 발생하는 고질적인 문제들이 또 발생했을 때 재사용할 할 수있는 훌륭한 해결책
+“바퀴를 다시 발명하지 마라(Don’t reinvent the wheel)”
+이미 만들어져서 잘 되는 것을 처음부터 다시 만들 필요가 없다는 의미이다.
+패턴이란
+각기 다른 소프트웨어 모듈이나 기능을 가진 다양한 응용 소프트웨어 시스템들을 개발할 때도 서로 간에 공통되는 설계 문제가 존재하며 이를 처리하는 해결책 사이에도 공통점이 있다. 이러한 유사점을 패턴이라 한다.
+패턴은 공통의 언어를 만들어주며 팀원 사이의 의사 소통을 원활하게 해주는 아주 중요한 역할을 한다.
+
+GoF 디자인 패턴
+GoF(Gang of Four)라 불리는 사람들
+에리히 감마(Erich Gamma), 
+리차드 헬름(Richard Helm), 
+랄프 존슨(Ralph Johnson), 
+존 블리시디스(John Vissides)
+
+23가지의 디자인 패턴을 정리하고 각각의 디자인 패턴을 
+생성(Creational), 구조(Structural), 행위(Behavioral) 3가지로 분류했다.
+
+디버깅 하는 법 
+1. System.out.print()
+2. IDE 활용해서 (JRE의 디버깅 모드)
+	F5 : step Into : 내부 호출메서드 진입
+	F6 : Step Over : 현재 라인 실행
+	F7 : Step Return : 현재 메서드에서 리턴(상위로)
+	F8 : resume : 진행(다음 중단점( 브레이크 포인트)까지)
+	중단점에 팝업으로 중단점 속성을 지정
+		hit count condition
+
+3. syso의 문제점 
+	(무조건 콘솔에 로그가 남는다 개발할때, 운영할때 구분 어려움 )
+	로그를 파일로 남겨야 함!
+	IDE의 문제점 
+	 개발할때 문제점을 찾을 때는 좋은 방법
+	실제 운영할때 에러난 상황을 재 연출하기가 어렵다
+-> 로그관리 라이브러리 사용(log4j, logback. jdk logger)
+-> 로그 프락시(대행자)를 기반으로 작성
+	(임의 개발자 또는 시스템에 어떤 로그 구현체를 사용할지 몰라서)
+
+import - new project existng project //-  acheive(압축파일) - alt enter // buildpath 재정의
+
+--- 앞으로 생각해야 할 부분들 
+회원관리 
+ -  현재의 회원관리는 어찌보면 관리자용 인데.. 경로에 /admin 을 사용할까?? 
+
+로그인 
+  login/login.wow ,  login/loginCheck.wow , login/logout.wow
+  LoginService 를 신규 생성할까 기본 MemberService를 활용할까 
+
+회원가입 
+  - 회원가입 : join/join.wow   
+  - 마이페이지 : 회원정보확인, 비밀번호 변경 등  
+    mypage/myinfo.wow   
+    
+페이징쿼리
+ - 동일한 쿼리를 계속 복사/붙이기 해야하나?
+   CommonSQL.PRE_PAGING_QRY, POST_PAGING_QRY
+
+
+필터! 
+Filter 인터페이스 구현
+java8 : 인터페이스에 기본을 (기능)을 기술할수 있음
+
+Tomcat 8 <-  java 7 버전 컴파일
+Tomcat 9 <-  java 8 버전 컴파일
+
+
+LoggingFilter
+/member/ 하위에 접근하려면 로그인을 체크
+
+LoginCheckFilter
+/member/ 하위에 접근하려면 로그인을 체크
+
+기본적으로 wow 로 접근하면 로그인 체크로 변경
+/login/login.wow
+/login/logout.wow
+/free/freeList.wow
+/join/join.wow
+
+IP 체크 A, D 등록이 안된 ip
+*.wow
+A : doFilter()
+D : out을 구해서 "당신의 아이피는 거부된 아이피입니다."
+
+34일차 : 필터(구현은 쉽고 , 기능은 막강)
+
+Filter 인터페이스 구현 :  
+Java 8 : 인터페이스에 기본을 (기능)을 기술하실수 있습니다. 
+   
+Tomcat 8 <- Java 7 버전으로 컴파일 
+ 모든 메서드 기술  
+Tomcat 9 <- Java 8 버전으로 컴파일
+ 필요한 메서드만 기술 
+
+LoggingFilter
+
+LoginCheckFilter
+/member/ 하위에 접근하려면 로그인을 체크 
+
+기본적으로 wow 로 접근하면 로그인 체크로변경
+예외목록  
+/login/login.wow
+/login/logout.wow
+/free/freeList.wow 
+/join/join.wow
+
+과제 : IPCheckFilter
+ *.wow 에
+ // A , D , 등록이 안된 ip
+ // A, 등록이 안된 ip : doFilter()
+ // D : 
+    out을 구해서 "당신의 IP 192.168.10.22 는 거부된 아이피입니다. 연락주세요~~"
+    또는 
+    ResultMessageVO 에 메시지를 담아서 
+    RequestDispatcher 사용하여 message.jsp 로 포워드 
+
+java 1.6 -> 1.8
+spring 3.1 -> 4.3
+서블릿/jsp -> 3.1/3.3
+
+기존에 사용했던 라이브러리
+BeanUtils DBCP2 Lang3 최신버전 추가
+
+오라클 드라이버(기본 저장소에 없어서 별도 저장소 검색)
+
+maven pom.xml
+scope 
+	complie - 기본 컴팓일 테스트 런타일 에러 사용(배포)
+	runtime - 런타임에 필요 컴파일시 필요하지 않지만 실행시 필요 (JDBC)
+	provided - 컴파일 시 필요, 실제 런타임 때에는 컨테이너 같은 것에서
+					  제공되는 모듈이며 배포시 제외됩니다.(sevlet, jsp, api)
+	test - 테스트 코드를 컴파일 할 때 필요, 테스트시 클라스 패스에 포함되고 배포시 제외됨
+	system - 해당 라이브러리의 경로를 물리적으로 지정
+				  (메이븐 저장소에 없을 때)
+
+ ---------------------------
+ 이클립스에서 maven 최초로 구성하고 해야할 것
+ 팝업메뉴에서 maven -> update project 
+ 					  Force Update 체크!
+ // Run AS => maven clean -> install -> clean
+ 
+ 프로젝트 속성에서 꼭 확인
+ Deployment Assembley
+ Maven Modulte 이 배포에 있는지
+ 
+ 스프링 설정 위치 
+ 	classpath : spring/mvc-servlet.xml
+ 					: spring/context-main.xml, context-datasource.xml
+ 
+ 
+ find ()
+ repl
+ 
+ 확장자 매핑 *.wow
+ 서블릿 매핑 "/" 
+ Restful : GET : /free/34    free/freeView.wow?boNum=34
+ 			  POST : /free/34   free/freeModify
+ 
+ 
+ 
+ Log를 기록하는 것은 중요!~!
+ System.out.print() <- 하면 안됨!
+ Java에서 로그를 처음 만든게 Log4j 자바를 위한 로그파일
+ > JDK logger, Logback ...
+ 
+ 소스에서 어떤 구현체를 직접 사용하지 않고
+ Facade 로그객체 사용  : commonn Logging - 어플리케이션 있는 실 구현체를 인식해서 처리 
+ 더 향상된 Facade 로그객체 : SLF4J
+ 
+ jcl-over-slf4j : common logging 동일한 패키지 클래스명 같도록 설정 
+ 
+ RollingFileappender
+ 홈에 log/study4_2-2- 일별 
+ 
+ debug
+ info
+ warning
+ error
+ fatal
+ 
+ 폴더 프로퍼티 log4j 테스트 항목 제거하기 
+ 
+ 입력정보 검증 클라이언트 사이드 검증 ㅣ HTML 검증속성 (required,pattern) 또는 자바스크립트로 검증
+ 클라이언트 검증은 개발자의 실수, 임의적으로 회피가능 
+ 서버 사이드 검증 서버단에서 
+ 
+ @valid 사용
+ 해당 vo 객체 기술
+ 	@size, @notEmpty, @email
+ 	
+ 요청 메서드의 vo객체 바로 앞에 @valid 기술
+ valid는 객체검증하고 
+ 
+  -- 스프링에서 제공하는 Validator 인터페이스로 할때 
+ 등록 및 수정을 검증할 때 각각 다르게 구현체를 만들어서 사용했는데
+ 
+ @Valid 는 그게 조금 어렵습니다. 
+ 현재 글번호 (boNum) 같은 경우 등록시에는 검증할 필요가 없지만 , 수정할때는 필수체크 요소입니다.
+ 위와 같은 문제를 해결하고자 group 속성이 제공되며 , Default 인터페이스를 제공합니다.
+ 
+ 
+ 현재 표준 @Valid 에서는 group 속성을 지원하지 않습니다.
+  
+ 하이버네이트에서 제공하는 @Validated 를 사용하여 group을 사용하여 이 문제를 해결 할 수 있습니다.
+ group 을 적용하려면 껍데기 인터페이스를 생성하시면 됩니다..
+ 일반 사용자용 등록/수정 , 관리자용 등록/수정 등 필요하시면 의미있는 이름으로 생성하면 됩니다.
+ Regist, Modify, ManagerRegist, ManagerModify 
+ 
+ common.group.regist.modify
+  
+ 스프링 ModelAndView 
+ 스프링 자체는 model과 view를 두개 반환함
+ 강제 사항은 아니고 선택해서 사용하면됨!
+ 
+ 
+ 포워딩
+웹 컨테이너(Web Container) 차원에서 페이지 이동만 있는 것이다. 실제로 클라이언트는 다른 페이지로 이동을 했는지 알 수 없다. 
+그렇기 때문에 웹 브라우저에는 최초에 호출한 URL이 표시되며 이동한 페이지의 URL 정보는 볼 수 없다. 
+동일한 웹 컨테이너에 있는 페이지로만 이동 할 수 있다.
+포워딩은 클라이언트와 통신없이 서버에서만 처리되는 것이기 때문에 리다이렉트보다 나은 성능을 보여준다.
+그리고 현재 실행중인 페이지와 Forwarding에 의해 호출될 페이지는 Request와 Response 객체를 공유한다. 
+객체를 요청에 담고 해당 요청을 사용할 다음 자원에 전송한다는 뜻이다.
+간단히 말하여 말 그대로 Forward(건내주기)한다는 것이다. 따라서 사용자가 최초로 요청한 요청정보는 다음 URL에서도 유효한 것이다.
+
+ 리다이렉트
+웹 컨테이너(Web Container)는 sendRedirect() 메서드가 호출되어 리다이렉트(Redirect) 명령이 들어오면 웹 브라우저에게 다른 페이지로 이동하라고 명령한다.
+이 명령에는 브라우저가 웹 컨테이너의 응답을 받은 후 다시 요청을 보낼 새로운 URL을 포함한다.
+그러면 웹 브라우저는 URL을 지시된 주소로 바꾸고 그 주소로 이동한다. 
+다른 웹 컨테이너에 있는 주소로 이동이 가능하며 새로운 페이지에서는 Request와 Response 객체가 새롭게 생성된다.
+리다이렉트는 추가적으로 발생한 처리 때문에 포워딩보다 느리다. 
+중요한 것은 마지막으로 수행하는 작업은 새로운 요청에 의한 것이고, 
+이것을 클라이언트가 알고있기 때문에 브라우저창의 주소가 처음 요청한 주소가 아닌 다시 요청을 보낼 새로운 주소값으로 변한다.
+간단히 말하여 최초 요청을 받은 첫 번째 URL에서 클라이언트에 Redirect할 두 번째 URL을 리턴하고, 
+클라이언트는 전혀 새로운 요청을 생성하여 두 번째 URL에 다시 요청을 보낸다. 따라서 처음 보냈던 요청정보는 더이상 유효하지 않는 것이다.
+
+IoC : 5계층
+/ 컨트롤러영역 
+/ 비지니스로직영역(서비스) 
+/ 퍼시스턴스영역
+문제점 : 퍼시스턴스 변경 (FreeBoardDaoOracle->FreeBoardDaoCubrid)
+		 비즈니스로직 영역이 변경이 필요 (New FreeBoardDaoOracle() 수정)
+		 
+		 도메인객체(모델, VO)를 제외하고 다른 객체는 기능성메서드(함수)만
+		 필요하니, 매번 객체를 생성해야 하나? 하나만 필요
+		 매번 객체를 만들때 디자인 패턴의 싱글턴 패턴으로 생성할까?
+		 
+ 
+Spring IoC/DI
+	설정(xml) : xml (최소한의 설정 component-scan)
+	설정(java): @Configuration\
+	
+	Bean등록 관련 어노테이션
+	@Component , [@Controller, @Service, @Repository]
+    @Bean(JSR)
+    
+    Injection(주입) 어노테이션
+    @Autowire : 타입기반, 필드, 생성자, 세터 
+    
+    @Resource(JSR-250) : 이름기반, 필드, 세터, 작성자
+    					 생성자에 2개이상의 객체를 주입하기 어려움
+    					 
+    @Injext (JSR-330) : @Autowire와 동급
+    
+    @Value : 일반적인 값 설정 
+    
+    @Autowire 타입기반이라 IBoardDao 구현체가 2개이상 존재할때 오류발생
+    이런 문제를 해결하려면 @Qualifier 같이 사용
+    
+    - 퍼시스턴스 계층 : ORM 프레임워크
+      Object Realation Mapping : Hibernate , JPA(표준)
+      						   : iBatis/MyBatis (JDBC mapper) 
+    
+    
+    
+    - 오늘은 MyBatise ( 커넥션 스프링 자동 주입)//
+    MyBatipse 플러그인 -  마켓플레이스
+    Maven(pox.xml) 관련 라이브러리 추가
+	 spring-orm
+	 mybatis
+	 mybatis-spring
+    
+    
+    my batis
+    #{}
+    ${}
+    
+    동적 SQL 문자열 검증
+    
+    문서내에 < , > 를 사용하려면
+    &lt; , %gt;
+    <![CDATA[<]> , <![CDATA[>]>  
+
+    include 할때 변수(프로퍼티)를 전달하려면
+     <include refid="">
+     <property
+     </include>
+    - 변수 사용시 제약
+      무조건 ${}로 기술
+      ctata 안에 있으면 안됨
+    
+    
+    REStful 하게 구현시 사용되는 어노테이션
+    
+    @Pathvariable 
+    	: URL 상의 경로에서 변수값을 지정가능
+    	
+    @ResponseBody
+    	: 결과를 바로 브라우저에 내보낼 때 사용하는 어노테이션
+    	  뷰(jsp)로 이동하지 않음
+   	@RequstBody
+   		: 클라이언트의 요청정보를 담기위한 어노테이션
+   		
+   	@RestController
+   		RESTful 기반의 컨트롤러 구현시 사용되는 어노테이션
+   		@Controller + @ResponseBody 합쳐진 결과
+   		즉, 모든 메서드의 반환결과가 브라우저에 보내진다  
+    
+    @ResponseBody 사용하여 객체를 xml, json, etc 로 변환하기 위한 컨버터가 필요
+    해당 존재하면 자동으로 컨버터가 등록됨
+    JSON : 구글에 Gson, JackSon
+    
+    
+    POJO
+    Plain Old Java Object, 간단히 POJO는 말 그대로 해석을 하면 오래된 방식의 간단한 자바 오브젝트라는 말로서 
+    Java EE 등의 중량 프레임워크들을 사용하게 되면서 해당 프레임워크에 종속된 "무거운" 객체를 만들게 된 것에 반발해서 사용되게 된 용어이다.
+    
+	resultMap ?   
+	MyBatis XML 파일에 쿼리를 작성하면, 쿼리 결과가 POJO 클래스에 자동으로 바인딩이 됩니다.
+    
+    
+    Spring 개발을 하다 보면, 컨트롤러 text/html 형식이 아닌 데이터 전달 목적으로 사용하고 싶을 때가 있습니다. 
+    물론, 쌩 문자열인 plain/text 형식으로 보내도 상관은 없습니다만, 보통은 데이터 구조를 표현하는 방식인 XML 또는 JSON 형태로 많이 보냅니다. 
+	데이터의 구조를 표현하는 이유는 데이터 표현도 있지만, 사실상 데이터를 사용하는 대상이 편하게 사용하기 위해서 입니다.
+	이 두개 중 Jackson은 JSON 데이터 구조를 처리해주는 라이브러리 입니다.
+
+
+
+    
+    
+    
+    
+ 
+ 
+ 
+ 
+ <mapper namespace="com.study.reply.dao.IReplyDao">
+	
+
+	<select id="getReplyCountByParent"
+			resultType="int"
+			parameterType="com.study.reply.vo.ReplySearchVO">
+		SELECT Count(*)
+		FROM reply
+		WHERE re_category = #{reCategory}
+		AND re_parent_no = #{reParentNo}
+	</select>
+	
+	<select id="getReplyListByParent"
+			parameterType="com.study.reply.vo.ReplySearchVO"
+			resultType="com.study.reply.vo.ReplyVO"
+			>
+		<include refid="common.PRE_PAGING_QRY"/>
+		SELECT
+		    re_no
+		    , re_category
+		    , re_parent_no
+		    , re_mem_id
+		    , re_content
+		    , re_ip
+		    , re_reg_date
+		    , re_mod_date
+		FROM reply
+		WHERE re_category = #{reCategory}
+		AND re_parent_no = #{reParentNo}
+		ORDER BY re_no DESC
+		<include refid="common.POST_PAGING_QRY"/>
+	</select>
+
+	<select id="getReply"
+			parameterType="int"
+			resultType="com.study.reply.vo.ReplyVO">
+		SELECT
+		    re_no
+		    , re_category
+		    , re_parent_no
+		    , re_mem_id
+		    , re_content
+		    , re_ip
+		    , TO_CHAR(re_reg_date, 'YY/MM/DD HH24:MI') AS re_reg_date
+		    , re_mod_date
+		FROM
+		    reply
+		WHERE re_no = #{reNo}
+	</select>
+	
+	<insert id="insertReply"
+			parameterType="com.study.reply.vo.ReplyVO">
+	INSERT INTO reply (
+			    re_no
+			    , re_category
+			    , re_parent_no
+			    , re_mem_id
+			    , re_content
+			    , re_ip
+			    , re_reg_date
+			) VALUES (
+			    seq_reply.nextval
+			    , #{reCategory}
+			    , #{reParentNo}
+			    , #{reMemId}
+			    , #{reContent}
+			    , #{reIp}
+			    , SYSDATE
+		)
+	</insert>
+	
+	<update id="updateReply"
+			parameterType="com.study.reply.vo.ReplyVO">
+			UPDATE reply
+			SET
+			  	re_category = #{reCategory}
+			    , re_parent_no = #{reParentNo}
+			    , re_mem_id = #{reMemId}
+			    , re_content = #{reContent} 
+			    , re_ip = #{reIp}
+			    , re_reg_date = #{reRegDate}
+			    , re_mod_date = #{reModDate}
+			WHERE
+			    re_no = #{re_no} 
+	</update>
+	
+	<update id="deleteReply"
+			parameterType="com.study.reply.vo.ReplyVO">
+	</update>
+	
+	
+</mapper>
+ 
+ 		$('#id_reply_list_area').on('click','button[name=btn_reply_edit]',function(e){
+			e.preventDefault();
+			// 가장 가까운 div
+			$div = $(this).closest('div.row');
+			$modal = $("#id_reply_edit_modal");
+			// 데이터 re-no 가져오기
+			reNo = $div.data('re-no');
+			reContent = $div.find('div > pre').text();
+			console.log(reNo);
+			console.log(reContent);
+			// 모달에 reNo이름 인풋을 찾아 reNo 값 세팅
+			$('input[name=reNo]', $modal).val(reNo);
+			// ..
+			$('textarea[name=reContent]', $modal).val(reContent);			
+			// 모달 띄우기
+			$modal.modal();			
+			// 입력영역 (textarea) 추가 , 기존 내용을 복사 , 기존 내용은 숨기고 
+			// (수정)저장버튼(btn_reply_modify)을 보이게하시면 됩니다.			
+		}); // btn_reply_edit.click
+		
+		
+ 		// 등록버튼 클릭 
+		$("#btn_reply_regist").click(function(e) {
+		
+			e.preventDefault(); 
+			f = document.forms.frm_reply
+			// 파라미터 내용 다 가져와서 세우기
+			// 시리얼 라이즈 - json 형식
+			params = $(f).serialize();
+/* 			alert(params); */
+			$.ajax({
+				type :"POST",
+				url : '<c:url value="/reply/replyRegist" />',
+				dataType : 'json',
+			/
+				data : params,
+				success : function(data) {
+					console.log("data", data);
+					if(data.result){
+						// 등록이된 이후 화면에 추가 또는 fn_reply_list (curPage = 1) 처리
+						$("#id_reply_list_area").empty();						
+						document.forms.frm_reply.reContent.value = "";
+						$('#btn_reply_list_more').show();
+						curPage = 1;
+						fn_reply_list();
+					}else {
+						alert(data.msg);	
+					}
+				},
+				error : function(req, st, err) {
+					console.log("req", req);
+          alert("에러 발생");
+				}
+			}); // ajax
+		});
+ 
+  
+  
+  Concerns : 관심사
+  
+  - core concerns : 핵심 관심사
+  	- 실제 해야 할 업무조직
+  - Cross cutting Concerns : 횡단 관심사
+  	- 핵심업무는 아니지만 필요한것
+  	- 시스템적으로 필요한것 ( 예외처리 , 로깅 , 트랜젝션 ...)
+  	
+	구현하는 advice 의 메서드 첫번째 인자는 JoinPoint
+	
+	excution([접근제어자] * [패키지&클래스] * *(..))
+	필수 : 반환 * 모든 반환
+		   매서드
+		   .. 모든 아규먼트 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+

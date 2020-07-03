@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<!--spring/di/step1.xml -->
+	
+	<util:map id="add">
+		<entry key="111" value="경찰신고" />
+		<entry key="114" value="전화번호 안내" />
+		<entry key="119" value="소방신고" />
+		<entry key="042-719-8850" value="넥스트아이티" />
+		
+	</util:map>
+	
+	<bean id="miPhone" class="com.ioc.step1.ShaoMiPhone" >
+		<property name="address" ref="add"></property>
+		<!-- <property name="address">
+			<ref bean="add"/>
+		</property> -->
+	</bean>
+	
+	<bean id="ssPhone" class="com.ioc.step1.SamsungPhone" p:address-ref="add" />
+	
+	<bean name="man2" 
+		  class="com.ioc.step1.Human"
+		  init-method="myInit"
+		  destroy-method="myDestroy"  
+		  c:phone-ref="ssPhone" 
+		  c:user="순자" />
+	
+	
+	
+	<bean name="man" class="com.ioc.step1.Human">
+		<!-- 1번 너무 길다  -->
+		<!-- <constructor-arg>
+			<ref bean="miPhone" />
+		</constructor-arg>
+		<constructor-arg>
+			<value>밀키스</value>
+		</constructor-arg> -->
+		<!--2번 -->
+		<constructor-arg ref="miPhone" />
+		<constructor-arg value="밀키스"/>
+	</bean>
+
+
+</beans>

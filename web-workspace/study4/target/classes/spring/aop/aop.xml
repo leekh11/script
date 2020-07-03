@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!-- spring/aop/aop.xml -->
+	
+	<!-- Target 빈등록  -->
+	<bean id="target" class="com.aop.TargetObject" />
+	
+	<!-- Advice 빈등록 -->
+	<bean id="logger" class="com.aop.LoggerAdvice" />
+	
+	<!-- AOP 설정  -->
+	<aop:config>
+		<!-- Spring AOP 구현체  -->
+		<!-- <aop:advisor advice-ref=""/> -->
+		
+		<!-- 공통적인 포인컷 지정  -->
+		<!-- <aop:pointcut expression="" id=""/> -->
+			 
+		<aop:aspect ref="logger">
+			<!-- <aop:before method="logging" pointcut="execution(public * com.aop.*.add(..))" /> -->
+			<aop:around method="timeCheck" 
+			            pointcut="execution(public * com.aop.*.add(..))" />
+		</aop:aspect>		
+	
+	</aop:config>
+</beans>
+
+

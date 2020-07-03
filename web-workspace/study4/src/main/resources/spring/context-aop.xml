@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<!-- 작성한 advice com.study.aop.LoggerAdvice  -->
+	<bean id="logger" class="com.study.aop.LoggerAdvice"/>
+	
+	<aop:config>
+		<!--현재 com.study. 모든 서비스의 public 메서드 포인트  -->
+		<aop:pointcut expression="execution(public * com.study..service.*Service.*(..))" id="servicePointcut"/>
+		<aop:aspect ref="logger">
+			<aop:before method="logging" pointcut-ref="servicePointcut"/>
+		</aop:aspect>
+	</aop:config>
+
+
+</beans>
